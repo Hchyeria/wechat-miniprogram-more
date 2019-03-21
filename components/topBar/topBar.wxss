@@ -1,0 +1,68 @@
+/* views/topBar.wxss */
+
+.container {
+  display: flex;
+  background: white;
+  justify-content: space-around;
+  --longWidth:500rpx;
+  --shortWidth:150rpx;
+  --height:30px;
+}
+
+.sv {
+  height:var(--height);
+  border-radius: 20rpx;
+  border: solid 2rpx;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.sv-true{
+  background-color:ghostwhite;
+  border-color:  ghostwhite;
+  width:var(--longWidth);
+}
+
+.sv-false{
+  background-color:white;
+  border-color: white;
+  width: var(--shortWidth);
+}
+
+.title {
+  height:var(--height);
+  line-height:var(--height);
+  margin-right: 200rpx;
+  transition: var(--transition);
+}
+
+.title-false{
+  width: var(--shortWidth);
+  opacity: 1;
+}
+
+.title-true{
+  width: 0;
+  opacity: 0;
+}
+
+.hr-view{
+  z-index:100;
+  position: absolute;
+}
+
+.hr{
+  text-align: center;
+  transition: all ease-in-out;
+  background-color: white;
+}
+
+.hr-true{
+  opacity: 0.8;
+  width:var(--longWidth);
+}
+
+.hr-false{
+  opacity: 0;
+  width: 0;
+}

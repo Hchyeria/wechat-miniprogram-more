@@ -1,0 +1,7 @@
+@import '../../app.wxss';
+
+.title{
+  width:400rpx;
+  height:50rpx;
+  margin:20rpx;
+}

@@ -1,0 +1,18 @@
+.tabBar{
+  --margin-bar:15rpx;
+  --margin-tab:30rpx;
+  background: white;
+  margin-top:var(--margin-bar);
+  margin-bottom:var(--margin-bar);
+  white-space: nowrap; 
+}
+
+.tab{
+  transition: var(--transition);
+  margin-left:var(--margin-tab);
+  margin-right:var(--margin-tab);
+  display: inline-block;
+}
+.tab-selected{
+  color:var(--tab-blue);
+}

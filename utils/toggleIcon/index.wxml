@@ -1,0 +1,5 @@
+<!--utils/toggleIcon/index.wxml-->
+<view class='container' bindtap='toggle'>
+  <image src='../../assets/{{image}}-fill.png' class='icon icon-fill icon-{{status}}'/>
+  <image src='../../assets/{{image}}-line.png' class='icon icon-fill icon-{{!status}}'/>
+</view>

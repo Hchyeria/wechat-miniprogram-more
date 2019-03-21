@@ -1,0 +1,6 @@
+/*global style const sheet*/
+page{
+  --transition:all ease-in-out .6s;
+  --icon-size:56rpx;
+  --icon-head-size:calc(2*var(--icon-size));
+}

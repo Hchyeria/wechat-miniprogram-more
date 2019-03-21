@@ -1,0 +1,29 @@
+.container{
+  width:var(--icon-size);
+  height:var(--icon-size);
+  padding:calc(0.3*var(--icon-size));
+}
+
+.icon{
+  width:var(--icon-size);
+  height:var(--icon-size);
+  transition: var(--transition);
+}
+
+.icon-fill{
+  z-index:101;
+  margin-right:calc(-1*var(--icon-size));
+}
+
+.icon-line{
+  z-index:100;
+  transform: translateX(calc(-1*var(--icon-size)));
+}
+
+.icon-true{
+  opacity: 1;
+}
+
+.icon-false{
+  opacity: 0;
+}

@@ -1,0 +1,51 @@
+.tab-bar {
+  --size:40rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-bar-border {
+  background-color: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleY(0.5);
+}
+
+.tab-bar-content{
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab-bar-item{
+  width: var(--size);
+  height: var(--size);
+  margin:15rpx;
+}
+
+.tab{
+  transition:all .6s;
+}
+
+.tab-true{
+  opacity: 1;
+}
+
+.tab-false{
+  opacity: 0;
+}
+
+.tab-fill{
+  z-index:100;
+}
+
+.tab-line{
+  z-index:101;
+  transform: translateY(calc(-1*var(--size)));
+}

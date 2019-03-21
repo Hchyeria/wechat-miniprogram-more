@@ -1,0 +1,14 @@
+<view class='row'>
+  <image src='../../assets/coin-full.png' class='left head-icon' />
+  <view class='right'>
+    <view class='tag'>
+      <text class='text'>{{comment.username}}</text>
+      <text class='text'>1:11:11</text>
+    </view>
+    <view class='message'>{{comment.content}}</view>
+    <view class='reply row' bindtap='reply'>
+      <image src='../../assets/reply.png' class='icon' />
+      <text class='col-middle'>回复</text>
+    </view>
+  </view>
+</view>

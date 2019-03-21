@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/testpage/testpage",
+    "pages/testpage1/testpage1",
+    "pages/detail/detail"
+  ],
+  "window":{
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "home"
+      },
+      {
+        "pagePath": "pages/testpage/testpage",
+        "text": "coin"
+      },
+      {
+        "pagePath": "pages/testpage1/testpage1",
+        "text": "user"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../app.wxss';
+
+.comment{
+  margin:20rpx;
+}
+
+.right{
+  width:550rpx;
+  margin:20rpx;
+}
+
+.reply{
+  float: right;
+}

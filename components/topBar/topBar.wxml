@@ -1,0 +1,12 @@
+<!--views/topBar.wxml-->
+<view class='container ' style="margin-top:{{statusBarHeight+(system=='i'?4:8)}}px">
+  <view>
+    <input class='sv sv-{{status}}' placeholder='🔍' bindfocus='toggle' bindblur='toggle' confirm-type='search' bindinput='getInput'>  </input>
+    <cover-view class='hr-view'>
+      <block wx:for='{{searchList}}' wx:for-key='svKey' wx:for-index='i' wx:for-item='item'>
+        <cover-view class='hr hr-{{status}}' id='hr-{{i}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s'>{{item}}</cover-view>
+      </block>
+    </cover-view>
+  </view>
+  <text class='title title-{{status}}'>More</text>
+</view>

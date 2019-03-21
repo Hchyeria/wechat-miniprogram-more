@@ -1,0 +1,26 @@
+<view class='container'>
+  <view class='bar'>
+    <view class='row'>
+      <image src='../../assets/coin-full.png' class='head-icon'/>
+      <view class='author-s'>
+        <text class='name'>{{article.username}}</text>
+        <text class='time'>{{article.time}}</text>
+      </view>
+    </view>
+    <toggleIcon class='col-middle' image='book' status='{{true}}'/>
+  </view>
+  <view disabled class='message' bindtap='onTap'>{{article.content}}</view>
+  <view class='album' bindtap='onTap'>
+    <block wx:if='{{article.pictures[0]}}'>
+      <image src='{{baseURL}}{{article.pictures[0].pURL}}'/>
+    </block>
+  </view>
+  <view class='bar'>
+    <view class='row'>
+      <toggleIcon image='heart' status='{{false}}'/>
+      <image src='../../assets/comment.png' class='icon' bindtap='toReply'/>
+      <text class='col-middle'>{{100}}</text>
+    </view>
+    <toggleIcon image='share' status='{{false}}'/>
+  </view>
+</view>

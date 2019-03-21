@@ -1,0 +1,19 @@
+@import '../../app.wxss';
+
+.bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.author-s{
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+}
+
+.album{
+  width:100%;
+  min-height:300rpx;
+}

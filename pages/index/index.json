@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "topBar": "/components/topBar/topBar",
+    "tabBar": "/components/tabBar/tabBar",
+    "message":"/components/message/message"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black"
+}

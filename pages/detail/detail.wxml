@@ -1,0 +1,10 @@
+<view class='container'>
+  <message article='{{article}}' toDetail='{{false}}' bind:toReply='toReply'/>
+  <image class='title' src='../../assets/comments.png' />
+  <view class='comments'>
+    <block wx:for='{{list}}' wx:key='comments' wx:for-item='item'>
+      <comment comment='{{item}}' bind:toReply='toReply'/>
+    </block>
+  </view>
+</view>
+<reply openID='{{openid}}'  isShow='{{isReply}}' attention='{{attention}}' aid='{{aid}}' bind:replySuccess='replySuccess'/>

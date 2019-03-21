@@ -1,0 +1,10 @@
+/*global style color sheet*/
+page{
+  --color-a: #7c756d;
+  --color-b: #f77b55;
+  --color-c: #e95105;
+  --color-d: #537cbc;
+  --at-blue: #35afe2;
+  --tab-blue: #3786c9;
+  --color-g: #adebf6;
+}

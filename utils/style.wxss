@@ -1,0 +1,29 @@
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.col-middle{
+  margin-top:auto;
+  margin-bottom:auto;
+}
+
+.message{
+  word-break: break-all;
+}
+
+.container{
+  width:100%;
+}
+
+.icon{
+  width: var(--icon-size);
+  height:calc(0.9*var(--icon-size));
+  margin:calc(0.3*var(--icon-size));
+}
+
+.head-icon{
+  width: var(--icon-head-size);
+  height:var(--icon-head-size);
+  margin:calc(0.3*var(--icon-size));
+}

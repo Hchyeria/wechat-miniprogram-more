@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class='top'>
+  <topBar />
+  <tabBar bindtabTap='tabTap'/>
+</view>
+<view class='messageList'>
+  <block wx:for='{{articleList}}'wx:key='article' wx:for-item='item'>
+    <message article='{{item}}' toDetail='{{true}}'/>
+  </block>
+</view>

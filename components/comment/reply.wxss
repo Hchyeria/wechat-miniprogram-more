@@ -1,0 +1,22 @@
+.reply{
+  --reply-height:65rpx;
+  position: fixed;
+  bottom:0;
+  box-sizing: border-box;
+  width:100%;
+  background: white;
+  border: black solid 5rpx;
+  padding:8rpx;
+  padding-bottom:env(safe-area-inset-bottom);
+  transition: var(--transition);
+}
+
+.reply-true{
+  opacity: 1;
+  height:calc(env(safe-area-inset-bottom)+var(--reply-height));
+}
+
+.reply-false{
+  opacity: 0;
+  height:0;
+}
