@@ -1,15 +1,16 @@
 import { request } from '../../utils/request.js'
 
 const targetURL = 'articles.php'
-
-export function loadArticles(that,tid,mode){
+export function loadArticles(that, tid, mode, limit = 15, page = 1) {
   request(targetURL, {
     secondType: 'select_article_by_type',
     typeID: tid,
-    mode: mode
-  }).then(data=>{
+    mode: mode,
+    limit: limit,
+    page: page
+  }).then(data => {
     that.setData({
-      articleList:data.result
+      contentList: data.result
     })
   })
 }

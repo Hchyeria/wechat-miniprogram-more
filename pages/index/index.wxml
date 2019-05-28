@@ -1,10 +1,7 @@
 <!--index.wxml-->
-<view class='top'>
-  <topBar />
-  <tabBar bindtabTap='tabTap'/>
+<toast isError="{{toastError}}" message="{{toastMessage}}"  />
+<view class='index-top'>
+  <login bindGoindex="Goindex" bindonLoadIndex="onLoadIndex" class='login'/>
 </view>
-<view class='messageList'>
-  <block wx:for='{{articleList}}'wx:key='article' wx:for-item='item'>
-    <message article='{{item}}' toDetail='{{true}}'/>
-  </block>
-</view>
+
+<include src='./protoIndex.wxml'  />

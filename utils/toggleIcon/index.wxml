@@ -1,5 +1,6 @@
 <!--utils/toggleIcon/index.wxml-->
-<view class='container' bindtap='toggle'>
-  <image src='../../assets/{{image}}-fill.png' class='icon icon-fill icon-{{status}}'/>
-  <image src='../../assets/{{image}}-line.png' class='icon icon-fill icon-{{!status}}'/>
+<view class='container-{{ok}}' bindtap='toggle'>
+  <image src='../../assets/{{image}}-fill.png' mode="aspectFit" class=' icon icon-fill icon-{{status}} icon-{{ok}}-{{ok}}'/>
+  <image src='../../assets/{{image}}-line.png' mode="aspectFit" class='icon icon-fill icon-{{!status}}  icon-{{ok}}-{{ok}}'/>
+  <button class='cover-button' open-type="{{status?'':openType}}" data-sharence='{{sharence}}'></button>
 </view>

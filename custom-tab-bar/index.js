@@ -1,14 +1,17 @@
+let app = getApp()
+
 Component({
   data: {
     selected: 0,
     color: "#7A7E83",
     selectedColor: "#3cc51f",
+    isshow: true,
     list: [{
       pagePath: "/pages/index/index",
       iconPath: "/assets/home-line.png",
       selectedIconPath: "/assets/home-fill.png",
     }, {
-      pagePath: "/pages/testpage/testpage",
+      pagePath: "/pages/index/item",
       iconPath: "/assets/coin-line.png",
       selectedIconPath: "/assets/coin-full.png",
     }, {
@@ -17,12 +20,11 @@ Component({
       selectedIconPath: "/assets/user-full.png",
     }]
   },
-  attached() {},
+  attached() { },
   methods: {
     switchTab(e) {
-      wx.switchTab({
-        url: e.currentTarget.dataset.path
-      })
+      let { path } = e.currentTarget.dataset
+      wx.switchTab({ url: path })
     }
   }
 })

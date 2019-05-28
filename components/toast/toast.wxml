@@ -1,0 +1,21 @@
+
+<view class="notyf {{isDisappear? 'displayHide' : ''}}" style="z-index:9990">
+    <view wx:if='{{isError}}' class="notyf__toast notyf__toast--error notyf__toast--disappear">
+      <view class="notyf__wrapper" style="z-index: 9999;">
+        <view class="notyf__icon">
+          <view class="notyf__icon--error" style="color: rgb(237, 61, 61);"></view>
+        </view>
+        <view class="notyf__message" >{{message || '请求失败！'}}</view>
+      </view>
+      <view class="notyf__ripple" style="background-color: rgb(237, 61, 61);z-index:9995"></view>
+    </view>
+    <view wx:if='{{!isError}}' style="z-index: 9999;" class="notyf__toast notyf__toast--success notyf__toast--disappear">
+      <view class="notyf__wrapper" style="z-index: 9999;">
+        <view class="notyf__icon">
+          <view class="notyf__icon--success" style="color: rgb(61, 199, 99);"></view>
+        </view>
+        <view class="notyf__message">{{message || '成功！'}}</view>
+      </view>
+      <view class="notyf__ripple" style="background-color: rgb(61, 199, 99);z-index:9995"></view>
+    </view>
+</view>

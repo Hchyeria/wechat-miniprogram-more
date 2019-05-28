@@ -1,0 +1,22 @@
+<view class='load' wx:if="{{isShow}}" style='height:{{containHeight}};z-index:9999;overflow:hidden;'>
+  <view style="position: fixed;width: 750rpx;background: #f9fafc;z-index: 5300;height:160rpx;"></view>
+  <view style="height: 280px;margin: auto;margin-top:3%;border-radius: 2%;width: 100%;background-color: #eeeeee"></view>
+  <view style="transition: all 0.2s ease-out;z-index: 5200;background-color: #f9fafc;width:96%;margin:auto;displaty:flex;flex-direction:column;align-items:flex-start;">
+    <block wx:for='{{contentList}}' wx:key='{{index}}' wx:for-item='item'>
+      <view style="width:96%;height: 130px;display: flex;margin:10px auto;padding:10px;border-bottom:solid #eeeeee 1px;">
+        <view style="width:55px;height: 55px;border-radius: 100%;displaty:flex;background-color: #eeeeee">
+        </view>
+        <view style="width:75%;displaty:flex;height: 100px;padding-left:25px;flex-direction:column;align-items:center;">
+          <view style="width:155px;height: 15px;margin:10px 0;displaty:flex;background-color: #eeeeee;animation: widthupdown 2.5s alternate-reverse infinite;transform-origin: left;animation-delay:{{item + 's'}}">
+          </view>
+          <view style="width:155px;height: 15px;margin:10px 0;displaty:flex;background-color: #eeeeee;animation: widthupdown2 2s alternate-reverse infinite;transform-origin: left;;animation-delay:{{item + 's'}}">
+          </view>
+          <view style="width:155px;height:15px;margin:10px 0;displaty:flex;background-color: #eeeeee;animation: widthupdown3 2s alternate-reverse infinite;transform-origin: left;;animation-delay:{{item + 's'}}">
+          </view>
+        </view>
+        <view style="width:5px;height: 15px;displaty:flex;background-color: #eeeeee">
+        </view>
+      </view>
+    </block>
+  </view>
+  </view>

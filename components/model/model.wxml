@@ -1,0 +1,23 @@
+<!--miniprogram/custom-tab-bar/index.wxml-->
+
+<cover-view class="model" wx:if='{{isEXIT}}' >
+  <cover-view class='box'>
+  	
+  <cover-view class='modelimg'>
+  <cover-image src='../../assets/modeldel.png' class='modeldel'></cover-image>
+  </cover-view>
+  <cover-view class='text'>
+  <cover-view class='title'>
+  <cover-view>{{text1}}</cover-view>
+  </cover-view>
+
+  </cover-view>
+  <cover-view class='button'>
+  <cover-view class='delete cancel' bindtap='delete' >
+  <cover-view>Yes</cover-view>
+  </cover-view>
+  <cover-view class='delete' bindtap='isEXIT' >
+  <cover-view>No</cover-view></cover-view>
+  </cover-view>
+  </cover-view>
+</cover-view>

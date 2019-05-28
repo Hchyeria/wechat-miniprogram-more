@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "toggleIcon": "../../utils/toggleIcon/index",
+    "model": "/components/model/model",
+    "reply": "/components/comment/reply"
+  }
+}

@@ -1,3 +1,4 @@
 @import './utils/color.wxss';
 @import './utils/const.wxss';
 @import './utils/style.wxss';
+@import './utils/ani.wxss';

@@ -1,10 +1,1 @@
-.top{
-  position: fixed;
-  width: 750rpx;
-  background: white;
-}
-
-.messageList{
-  padding-top:220rpx;
-  padding-bottom:70rpx;
-}
+@import './protoIndex.wxss';

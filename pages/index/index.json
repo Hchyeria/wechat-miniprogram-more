@@ -2,8 +2,15 @@
   "usingComponents": {
     "topBar": "/components/topBar/topBar",
     "tabBar": "/components/tabBar/tabBar",
-    "message":"/components/message/message"
+    "message":"/components/message/message",
+    "login": "/components/login/login",
+    "load": "/components/load/load",
+    "toast": "/components/toast/toast"
   },
   "navigationStyle": "custom",
-  "navigationBarTextStyle": "black"
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#f9fafc",
+  "backgroundColor": "#f9fafc"
 }

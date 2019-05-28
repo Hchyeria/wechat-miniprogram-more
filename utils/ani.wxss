@@ -1,0 +1,151 @@
+@keyframes arrowupdown{
+  0%{
+    transform: rotate(90deg) scale(0.8)
+  }
+  20%{
+    transform: rotate(90deg) scale(0.7)
+  }
+  40%{
+    transform: rotate(90deg) scale(0.8)
+  }
+  60%{
+    transform: rotate(90deg) scale(0.7)
+  }
+  80%{
+    transform: rotate(90deg) scale(0.8)
+  }
+  80%{
+    transform: rotate(90deg) scale(0.7)
+  }
+}
+@keyframes fadein{
+  from{
+    opacity: 0;
+    visibility: hidden;
+  }
+  to{
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.fadeIn{
+  animation: fadein .8s ease forwards;
+}
+@keyframes fadeinHeight{
+  0%{
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+  }
+  50%{
+    opacity: 0.5;
+    visibility: visible;
+    height: 500px;
+  }
+  100%{
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+}
+@keyframes fadeout{
+  from{
+    opacity: 1;
+    visibility: visible;
+
+  }
+  to{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.fadeOut{
+  animation: fadeout .8s ease forwards;
+}
+@keyframes fadeoutHeight{
+  0%{
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+  50%{
+    opacity: 0;
+    visibility: hidden;
+    height: 100px;
+  }
+  100%{
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    height:0px;
+  }
+}
+
+@keyframes heightout{
+  0%{
+    height: 800px;
+  }
+  100%{
+    height:43%;
+  }
+}
+
+@keyframes heightouthide{
+  0%{
+    height: 800px;
+  }
+  20%{
+    height: 600px;
+  }
+  70%{
+    height: 200px;
+  }
+  100%{
+    height: 0px;
+  }
+}
+
+@keyframes heightin{
+  0%{
+    height: 300px;
+  }
+  100%{
+    height: 1250px;
+  }
+}
+
+@keyframes slideup{
+  0%{
+    transform: translate(0, 0)
+  }
+  100%{
+    transform: translate(0, -100%)
+  }
+}
+@-webkit-keyframes fadeinup{0%{opacity:0;-webkit-transform:translateY(25%);transform:translateY(25%)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes fadeinup{0%{opacity:0;-webkit-transform:translateY(25%);transform:translateY(25%)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
+@-webkit-keyframes fadeoutdown{
+  0%{
+    opacity:1;
+    -webkit-transform:translateY(0);
+    transform:translateY(0);
+    }
+  to{
+    opacity:0;
+    -webkit-transform:translateY(25%);
+    transform:translateY(25%);
+  }
+}
+@keyframes fadeoutdown{
+  0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);display: auto;}
+  to{opacity:0;-webkit-transform:translateY(25%);transform:translateY(25%);display: none;}}
+
+@keyframes bannermotion{
+  0%{
+    transform: scale(1.1);
+    filter: grayscale(60%) blur(2px);
+  }
+  to{
+    transform: scale(1);
+    filter: grayscale(0) blur(0px);
+  }
+}

@@ -1,2 +1,39 @@
 <!--pages/testpage1/testpage1.wxml-->
-<text>pages/testpage1/testpage1.wxml</text>
+<view class='person'>
+
+  <view class='up'>
+    <view class='top'>
+      <view class = 'avatar'>
+        <image src='{{avatar}}' class='realava'></image>
+      </view>
+      <view class='uptext'>
+        <view class='upname'>{{nickName}}</view>
+        <view class='school'>{{school}}</view>
+      </view>
+    </view>
+    <view class='text'>
+      <view class='read'>
+        <view class='num'>{{reply}}</view>
+        <view class='title'>REPLY</view>
+      </view>
+      <view class='break'></view>
+      <view class='ptext'>
+        <view class='num'>{{post}}</view>
+        <view class='title'>POSTS</view>
+      </view>
+    </view>
+  </view>
+
+  <view class = 'my'>
+    <image src='../../assets/my-collection.png' class='myimage collection' bindtap="collection"/>
+    <image src='../../assets/my-post.png' class='myimage post' bindtap="post"/>
+    <image src='../../assets/my-message.png' class='myimage mymessage' bindtap="message"/>
+  </view>
+
+  <view class='bottom'>
+    <view class='user'>用户手册</view>
+    <view class='line'></view>
+    <view class='us'>联系我们</view>
+  </view >
+</view>
+

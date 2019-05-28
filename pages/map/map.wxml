@@ -1,0 +1,12 @@
+<view class="map-body">
+  <view class="page-section">
+    <map
+      id="myMap"
+      style="width: 100%; height: 100%;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      show-location= 'true'
+    ></map>
+  </view>
+</view>

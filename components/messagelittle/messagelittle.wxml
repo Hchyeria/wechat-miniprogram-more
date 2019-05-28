@@ -1,0 +1,49 @@
+<view class='container' wx:if='{{!post}}'>
+  <view class='break'></view>
+  <view class='bar'bindtap='onTap'>
+    <view class='row'>
+      <image src='{{article.avatar}}' class='head-icon avatar'/>
+      <view class='author-s'>
+        <view class='s-n'>
+        <text class='name'>{{article.username}}</text>
+        <text class='school'>{{article.school_name}}</text>
+        </view>
+        <text class='time'>{{timestamp}}</text>
+      </view>
+    </view>
+  </view>
+  <view disabled class='message'bindtap='onTap' >{{article.content||article.item_info}}</view>
+  <view class='depart' wx:if='{{isdelete}}'>
+    <image src='../../assets/delete.png' class='delete' bindtap='click'></image>
+  </view>
+  <model class='hhh' wx:if='{{isclick}}'  text1='{{(!iscol&&text1)||(iscol&&text2)}}'  ID='{{ID}}' bindtap='isEXIT' iscol='{{iscol}}' isItem='{{isItem}}'/>
+</view>
+ 
+
+<view class='container2' wx:if="{{post}}">
+  <view class='left'>
+    <view class='circle'></view>
+  </view>
+  <view class='main'>
+    <text class='time' bindtap='onTap'>{{timestamp}}</text>
+    <view wx:if='{{pictures[0]}}' class='album2 row2'>
+      <block wx:if='{{pictures[2]}}'>
+        <image class='i-3 twoimg' mode='aspectFill' src='https://{{BASE_URL}}{{pictures[0].pURL}}' data-index='0' bindtap='preview' bindload='onLoadImage'/>
+        <image class='i-3 twoimg' mode='aspectFill' src='https://{{BASE_URL}}{{pictures[1].pURL}}' data-index='1' bindtap='preview' />
+        <image class='i-3 twoimg' mode='aspectFill' src='https://{{BASE_URL}}{{pictures[2].pURL}}' data-index='2' bindtap='preview' />
+      </block>
+      <block wx:elif='{{pictures[1]}}'>
+        <image mode='aspectFit' src='https://{{BASE_URL}}{{pictures[0].pURL}}' data-index='0' bindtap='preview' class='two twoimg' />
+        <image mode='aspectFit' src='https://{{BASE_URL}}{{pictures[1].pURL}}' data-index='1' bindtap='preview' class='height twoimg' />
+      </block>
+      <block wx:elif='{{pictures[0]}}'>
+        <image mode='aspectFit' src='https://{{BASE_URL}}{{pictures[0].pURL}}' data-index='0' bindtap='preview' class="one height twoimg" />
+     </block>
+  </view>
+    <view disabled class='message2 message'bindtap='onTap' >{{article.content||article.item_info}}</view>
+  </view>
+  <view class='depart' wx:if='{{isdelete}}'>
+    <image src='../../assets/delete.png' class='delete' bindtap='click'></image>
+  </view>
+  <model class='hhh' wx:if='{{isclick}}'  text1='{{(!iscol&&text1)||(iscol&&text2)}}'  ID='{{ID}}' bindtap='isEXIT' iscol='{{iscol}}' isItem='{{isItem}}'/>
+</view>

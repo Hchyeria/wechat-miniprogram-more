@@ -1,4 +1,4 @@
-.container{
+.container-false{
   width:var(--icon-size);
   height:var(--icon-size);
   padding:calc(0.3*var(--icon-size));
@@ -7,12 +7,13 @@
 .icon{
   width:var(--icon-size);
   height:var(--icon-size);
-  transition: var(--transition);
+  transition: all .2s;
 }
 
 .icon-fill{
   z-index:101;
   margin-right:calc(-1*var(--icon-size));
+  position: absolute
 }
 
 .icon-line{
@@ -22,8 +23,27 @@
 
 .icon-true{
   opacity: 1;
+  transform: scale(1);
 }
 
 .icon-false{
+  opacity: 0;
+  transform: scale(0);
+}
+.container-true{
+  width:calc(0.5*var(--icon-size));
+  height:calc(0.5*var(--icon-size));
+  padding:calc(0.3*var(--icon-size));
+}
+.icon-true-true{
+  width: calc(0.6*var(--icon-size));
+  height:calc(0.6*var(--icon-size));
+}
+
+.cover-button{
+  position: absolute;
+  width:var(--icon-size);
+  height:var(--icon-size);
+  z-index: 300;
   opacity: 0;
 }

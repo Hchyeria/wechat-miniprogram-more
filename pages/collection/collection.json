@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "messagelittle": "/components/messagelittle/messagelittle"
+  },
+  "navigationBarBackgroundColor": "#f9fafc",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f9fafc",
+  "backgroundTextStyle": "light"
+}

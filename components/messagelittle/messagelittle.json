@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "toggleIcon": "../../utils/toggleIcon/index",
+    "model": "/components/model/model"   
+  }
+}

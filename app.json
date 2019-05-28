@@ -1,13 +1,16 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/testpage/testpage",
     "pages/testpage1/testpage1",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/collection/collection",
+    "pages/post/post",
+    "pages/mymessage/mymessage",
+    "pages/index/item",
+    "pages/search/search",
+    "pages/send/send",
+    "pages/map/map"
   ],
-  "window":{
-    "enablePullDownRefresh":true
-  },
   "tabBar": {
     "custom": true,
     "list": [
@@ -16,7 +19,7 @@
         "text": "home"
       },
       {
-        "pagePath": "pages/testpage/testpage",
+        "pagePath": "pages/index/item",
         "text": "coin"
       },
       {
@@ -24,5 +27,6 @@
         "text": "user"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

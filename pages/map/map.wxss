@@ -1,0 +1,10 @@
+/* pages/map/map.wxss */
+page{
+  height: 100%
+}
+.map-body{
+  height: 100%
+}
+.page-section{
+  height: 100%
+}

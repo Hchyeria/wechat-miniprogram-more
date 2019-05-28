@@ -1,0 +1,74 @@
+<!--login.wxml-->
+<view class='index-contain {{goindexClass}}' >
+<toast isError="{{toastError}}" message="{{toastMessage}}" wx:if='{{istoast}}' />
+  <view class='index-button {{islogin? "hide" : ""}}'>
+    <view class='button-left-sign pull-left' style='width:{{buttonWidth.left}}'>
+      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='signup-button pull-left' hover-class="button-hover" >
+        <view class='login-text'>{{isfinalsure? " 确定" : "登录 | Sign Up"}}</view>
+        <image src='../../assets/arrow.png' mode="aspectFit" class="arrow-left pull-right" bindload="onLoadIndex"/>
+      </button>
+    </view>
+    
+  </view>
+ <view class='section {{issure? "fadeIn":"hide"}}'>
+   <view class="spinner {{isload? '' : 'hide'}}"></view>
+   <view class="section-block" bindtap='onShowSlectLocation'>
+    <view class="section-title">
+      <view>
+          {{locationId? "已选择":"请选择省份"}}
+      </view>
+      <view class='msg-arrow-contain'>
+        <image src='../../assets/arrow.png' mode="aspectFit" class="msg-arrow" />
+      </view>
+    </view>
+    <view class="selct-text-contain">
+        <view class="{{locationId? 'selct-type-text':'hide'}}">{{locationPickText}}</view>
+    </view>
+    <view class='pick-shcool-position {{isshowselct[0]? "fadeIn":"hide"}}'>
+      <view class="pick-shcool" catchtap='onSlectlocation'>
+        <view class='pick-shcool-contain'>
+          <block wx:for='{{objectlocationArray}}' wx:key='locationKey' wx:for-item='item' wx:for-index='i' >
+            <view class='selct-item-list  {{item.style}}' id='selct-type-{{i}}'>
+              <view class="selct-type-text" data-lid='{{item.location_id}}'>
+              {{item.location_name}}
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+   </view>
+  <view class='section-block' bindtap='onShowSlectSchool'>
+      <view class="section-title">
+        <view>
+            {{schoolPickText? "已选择":"请选择学校"}}
+        </view>
+        <view class='msg-arrow-contain'>
+          <image src='../../assets/arrow.png' mode="aspectFit" class="msg-arrow" />
+        </view>
+      </view>
+      <view class="selct-text-contain">
+          <view class="{{schoolPickText? 'selct-type-text':'hide'}}">{{schoolPickText}}</view>
+      </view>
+      <view class='pick-shcool-position {{isshowselct[1]? "fadeIn":"hide"}}'>
+        <view class="pick-shcool" catchtap='onSlectSchool'>
+          <view class='pick-shcool-contain'>
+            <block wx:for='{{objectschoolArray}}' wx:key='schoolKey' wx:for-item='item' wx:for-index='i' >
+              <view class='selct-item-list  {{item.style}}' id='selct-type-{{i}}'>
+                <view class="selct-type-text" data-sid='{{item.sID}}'>
+                {{item.school_name}}
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+  </view>
+  </view>
+  <view class='index-arrow {{islogin? "fadeIn" : "displayHide"}}' bindtap="onGoindex">
+    <image src='../../assets/arrow.png' mode="aspectFit" class="goindex" />
+  </view>
+  <view class='index-contain-img'>
+    <image src='../../assets/login.png' mode="aspectFill" class='index-more' />
+  </view>
+</view>

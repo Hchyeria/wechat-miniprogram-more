@@ -1,0 +1,26 @@
+<view class='messageList'>
+<view class='up'>
+<view class='name'>Collection</view>
+<view class='button'>
+<view class = 'buttonMail {{new}} button-A ' bindtap = 'turntoup'>Article</view>
+<view class='buttonMail {{all}} button-B'bindtap = 'turntonext'>Item</view>
+</view>
+</view>
+
+  <view wx-if='{{isNot}}'>
+  <view class='message2' wx:if='{{isanull}}'>
+  <view class='null'>暂无帖子</view>
+  </view>
+  <block wx:for='{{articleListlittle}}'wx:key='article' wx:for-item='item' wx-if='{{isNot}}'>
+    <messagelittle article='{{item}}' toDetail='{{true}}' isItem='{{false}}'isdelete='{{true}}'iscol='{{true}}'/>
+  </block>
+  </view>
+  <view wx-if='{{isnot}}'>
+  <view class='message2' wx:if='{{isinull}}'>
+  <view class='null'>暂无帖子</view>
+  </view>
+  <block wx:for='{{articleListNewlittle}}'wx:key='article' wx:for-item='item' wx-if='{{isnot}}'>
+    <messagelittle article='{{item}}' toDetail='{{true}}' isItem='{{true}}'isdelete='{{true}}'iscol='{{true}}' />
+  </block>
+  </view>
+</view>

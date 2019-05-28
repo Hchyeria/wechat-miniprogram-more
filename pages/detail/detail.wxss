@@ -5,3 +5,23 @@
   height:50rpx;
   margin:20rpx;
 }
+.container{
+  background-color: #f9fafc,
+}
+page{
+  background-color: #f9fafc
+}
+.crab{
+  line-height: 50rpx;
+  height:50rpx;
+  margin-left:auto;
+  margin-right:2%;
+}
+.comment-block{
+  background-color:#fff;
+  margin:auto;
+  margin-bottom: 2%;
+  width: 97%;
+  padding:5px;
+  box-sizing:border-box;
+}

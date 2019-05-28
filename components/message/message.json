@@ -1,6 +1,8 @@
 {
   "component": true,
   "usingComponents": {
-    "toggleIcon": "../../utils/toggleIcon/index"
+    "toggleIcon": "../../utils/toggleIcon/index",
+    "model": "/components/model/model",
+    "toast": "/components/toast/toast"
   }
 }

@@ -1,0 +1,70 @@
+.messageList{
+   width: 90%;
+   margin:auto;
+   height: 100%
+}
+page{
+  background-color: #f9fafc;
+}
+.button-not{
+  background-color:#3786c9;
+  box-shadow:1px 1px #ffffff inset, 2px 2px 1px 0.5px #ebe8e8;
+  border:1.2px solid #3786c9;
+}
+.button-all{
+  background-color:#fff;
+  color: #ced3d7;
+  box-shadow:1px 1px #ffffff inset, 2px 2px 1px 0.5px #ebe8e8;
+}
+.buttonMail{
+  height:50%;
+  width:50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.up{
+  margin-left: 5%;
+}
+.name{
+  color:#3786c9;
+font-size:1.8em;
+font-weight:900;
+}
+.button{
+  color: #fff;
+  display: flex;
+  margin-top: 3%;
+  width:65%
+}
+.button-A{
+  margin-right: 5%
+}
+.button-B{
+  margin-left: 5%
+}
+.null{
+  font-size:2em;
+margin:auto;
+letter-spacing:5px;
+font-weight: 900;
+color:#ced3d7
+}
+.message2{
+  display:flex;
+align-items:center;
+justify-content:cneter;
+width: 80%;
+margin: auto;
+margin-top: 60%
+}
+.line{
+  height:100%;
+width:2px;
+background-color:black;
+position:absolute;
+margin-top:4%;
+opacity:0.15;
+
+}

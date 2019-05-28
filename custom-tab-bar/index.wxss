@@ -1,10 +1,12 @@
+@import '../app.wxss';
+
 .tab-bar {
-  --size:40rpx;
+  --size:65rpx;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: white;
+  background: #f9fafc;
   padding-bottom: env(safe-area-inset-bottom);
 }
 
@@ -24,13 +26,10 @@
 }
 
 .tab-bar-item{
-  width: var(--size);
+  width:  var(--size);
   height: var(--size);
   margin:15rpx;
-}
-
-.tab{
-  transition:all .6s;
+  box-sizing: border-box;
 }
 
 .tab-true{

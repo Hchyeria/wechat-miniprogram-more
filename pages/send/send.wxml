@@ -1,0 +1,160 @@
+<!--pages/send.wxml-->
+<view class='top' style='background-color:{{switchColor}}'>
+  <toast isError="{{toastError}}" message="{{toastMessage}}" />
+  <view class='top-contain' style='height:{{topHeight}}'>
+    <view class='top-back' bindtap='onBack'>
+      <image src='../../assets/back.png' mode="aspectFit" />
+    </view>
+    <view class='top-title'>
+      {{title}}
+    </view>
+  </view>
+</view>
+<view class='contain-send' style='margin-top:{{topHeight}};height:{{(isactive[0]||isactive[1])? mainHeight+"px" : mainHeight+"px"}}'>
+  <view id='send-msg' class='{{msgClass}}' bindtap='onTapmsg'>
+    <image src='../../assets/flybird.png' mode="widthFix" />
+  </view>
+  <view id='send-deal' class='{{dealClass}}' bindtap='onTapdeal'>
+    <image src='../../assets/bargain.png' mode="widthFix" />
+  </view>
+  <view class='selct-type {{isselct? "fadeIn":"hide"}}'>
+    <view class='selct-img'>
+      <image src='../../assets/send-select-page.png' mode="widthFix" />
+    </view>
+    <view class='selct-content'>
+      <view bindtap='onTapSelctType'>
+        <block wx:for='{{isactive[0]? tabList : objectList}}' wx:key='tabKey' wx:for-item='item' wx:for-index='i'>
+          <view class='selct-item-list  {{item.style}}' id='selct-type-{{i}}'>
+            <view class='selct-img-ellipse'>
+              <image src='../../assets/ellipse.png' mode="widthFix" />
+            </view>
+            <view class="selct-type-text" data-tid='{{item.type_id}}'>
+              {{item.type_name}}
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class='selct-type-button'>
+        <view class='selct-type-butto-item' hover-class="selct-type-butto-item-active" bindtap='onSureType'>
+          确定
+        </view>
+        <view class='selct-type-butto-item' hover-class="selct-type-butto-item-active" bindtap='onCancelType'>
+          取消
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='{{msgContentStyle}} main-send-msg' style='top:{{seltextTop}}'>
+    <view class='msg-seletext msg-block' bindtap='onShowType'>
+      <view class='send-msg-title'>
+        选择分类
+      </view>
+      <view class='msg-arrow-contain'>
+        <image src='../../assets/arrow.png' mode="aspectFit" class="msg-arrow" />
+      </view>
+    </view>
+    <view class='msg-seletext msg-block'>
+      <view class='send-msg-subtitle'>
+        已选择：
+      </view>
+      <view class='send-msg-subtitle-text'>
+        {{typeText}}
+      </view>
+    </view>
+    <view class='msg-content send-msg-title msg-block'>
+      输入内容
+      <view class='msg-cotent-page  {{isfocus[0]? "fadeIn":"displayHide"}}'>
+        <view class='selct-img'>
+          <image src='../../assets/send-select-page.png' mode="widthFix" />
+        </view>
+        <textarea class='msg-cotent-textarea-{{isfocus[0]}}' value="{{textareaVal}}" focus='{{isfocus[0]}}' bindblur='onSetContextBlur' placeholder='{{isfocus[0]?"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容":""}}' bindinput='onSetContext' bindconfirm='onSetContextConfirm'></textarea>
+      </view>
+      <view class='msg-content-box-1' bindtap='onSetContextTap'>{{content?content:"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容"}}</view>
+    </view>
+    <!-->
+    <view class='msg-content send-msg-title msg-block' data-id='0' bindtap='onSetFocus'>
+      输入内容
+      <input class='msg-content-box-0' maxlength='-1' fixed="true" focus='{{isfocus[0]}}' data-id='0' bindconfirm='onSetContext' bindblur='onSetContextBlur' bindinput='onSetContext'>
+      </input>
+      <view class='msg-content-box-1' bindtap='onSetContextTap'>{{content?content:"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容"}}</view>
+    </view>
+    <-->
+      <view class='msg-seletext msg-block' bindtap='onLocation'>
+        <view class='send-msg-title'>
+          选择地点
+        </view>
+        <view class='msg-arrow-contain'>
+          <image src='../../assets/arrow.png' mode="aspectFit" class="msg-arrow" />
+        </view>
+      </view>
+      <view class='msg-seletext msg-block'>
+        <view class='send-msg-subtitle'>
+          已选择：
+        </view>
+        <view class='send-msg-subtitle-text'>
+          {{name}}
+        </view>
+      </view>
+      <view class='msg-content msg-block' data-id='3' bindtap='onSetFocus'>
+          <view class='send-msg-title'>
+          自定义标签
+          </view>
+          <input class='msg-content-box' bindinput="onLabelInput" bindconfirm="onLabelConfirm" bindblur='onLabelBlur' value='{{labVal}}' data-id='3' focus='{{isfocus[3]}}'/>
+          <view class='send-msg-subtitle'>
+          已添加：(点击删除)
+            <view class='msg-seletext'bindtap="ondelectLab">
+              <block wx:if="{{labelList.length}}" wx:for="{{labelList}}" wx:key='labelListKey' wx:for-item='item' wx:for-index='i'>
+                <view class='label-block msg-seletext' data-lid="{{i}}">
+                  <image class='label' src='../../assets/label-white.png' mode="aspectFit" data-lid="{{i}}"/>
+                  <view class='label-text' data-lid="{{i}}">
+                    {{item}} 
+                  </view>
+                </view>         
+              </block>
+            </view>
+          </view>
+          
+      </view>
+      <view class='{{isactive[1]? "" : "displayHide"}}'>
+        <view class='msg-content send-msg-title msg-block' data-id='1' bindtap='onSetFocus'>
+          预计价格
+          <input class='msg-content-box' bindinput="bindPriceInput" data-id='1' focus='{{isfocus[1]}}' placeholder='请输入大致的价格' />
+        </view>
+        <view class='msg-content send-msg-title msg-block' data-id='2' bindtap='onSetFocus'>
+          联系方式
+          <input class='msg-content-box' bindinput="bindContactInput" data-id='2' focus='{{isfocus[2]}}' placeholder='请以"方式:xxx"的形式输入' />
+        </view>
+      </view>
+
+      <view class='msg-img msg-block'>
+        <view class='msg-img-text'>
+          <view class='msg-img-textb send-msg-title'>
+            上传图片
+          </view>
+          <view class='msg-img-texts'>
+            (可选) (最多三张)
+          </view>
+        </view>
+        <view class="msg-img-box" bindtap='Uploadimg'>
+          <view class='selct-img-show'>
+            <block wx:for='{{imgList.length && imgList}}' wx:key='index' wx:for-item='item' wx:for-index='i'>
+              <view class='selct-img-res'>
+                <image src='{{item}}' mode="widthFix" />
+              </view>
+            </block>
+          </view>
+          <image src='../../assets/add-photo.png' mode="aspectFit" class="msg-img-icon {{imgList.length>2? 'displayHide':''}}" />
+        </view>
+      </view>
+      <view class='msg-block send-buttton'>
+        <view class='selct-type-butto-item' bindtap='onSendMsg'>
+          发布
+        </view>
+      </view>
+  </view>
+  <view class='send-seletext {{(isactive[0]||isactive[1])? "displayHide": (isbackToother? "fadeIndelay":"fadeOut")}}' style='top:{{seltextTop}}'>
+    <view class='send-seletext-text'>
+      请选择一种帖子类型
+    </view>
+  </view>
+</view>

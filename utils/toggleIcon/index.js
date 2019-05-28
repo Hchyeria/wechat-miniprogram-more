@@ -2,16 +2,20 @@
 Component({
   properties: {
     image:String,
-    status:Boolean
+    status:Boolean,
+    ok:Boolean,
+    openType:String,
+    sharence: {
+      type: Object,
+      value: {}
+    }
   },
   methods: {
     toggle(e){
       this.setData({
         status:!this.data.status
       })
-      this.triggerEvent({
-        
-      })
+      this.triggerEvent('toggle', {})
     }
   }
 })

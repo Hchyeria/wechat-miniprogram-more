@@ -12,3 +12,30 @@
 .reply{
   float: right;
 }
+.timestamp{
+margin-left:auto;
+font-size:0.7rem;
+color: #9CA2A5
+}
+.text{
+  font-size: 1.1em;
+  color: #001050
+}
+.s-n{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.school{
+  font-size: 0.6rem;
+  color: #9CA2A5
+}
+.message{
+  margin-top:4%;
+}
+.replay-icon{
+  width:14px;
+}
+.replay-text{
+  font-size:14px;
+}

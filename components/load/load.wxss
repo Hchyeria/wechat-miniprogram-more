@@ -1,0 +1,63 @@
+@keyframes widthupdown{
+  0%{
+    transform: scaleX(1)
+  }
+  20%{
+    transform: scaleX(1.1)
+  }
+  40%{
+    transform: scaleX(0.5)
+  }
+  60%{
+    transform: scaleX(1.2)
+  }
+  80%{
+    transform: scaleX(0.6)
+  }
+  100%{
+    transform: scaleX(1)
+  }
+}
+@keyframes widthupdown2{
+  0%{
+    transform: scaleX(1)
+  }
+  20%{
+    transform: scaleX(0.8)
+  }
+  40%{
+    transform: scaleX(1.05)
+  }
+  60%{
+    transform: scaleX(0.9)
+  }
+  80%{
+    transform: scaleX(1.1)
+  }
+  100%{
+    transform: scaleX(0.95)
+  }
+}
+@keyframes widthupdown3{
+  0%{
+    transform: scaleX(1)
+  }
+  20%{
+    transform: scaleX(1.05)
+  }
+  40%{
+    transform: scaleX(0.98)
+  }
+  60%{
+    transform: scaleX(1.08)
+  }
+  80%{
+    transform: scaleX(0.85)
+  }
+  100%{
+    transform: scaleX(1)
+  }
+}
+.dsvc{
+  animation: widthupdown2 alternate-reverse
+}

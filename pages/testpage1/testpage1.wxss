@@ -1,1 +1,135 @@
 /* pages/testpage1/testpage1.wxss */
+page{
+  overflow-y:hidden;
+  background-color: #f9fafc;
+  color: #384568
+}
+
+.person{
+  font-family:Tahoma;
+}
+.avatar{
+height:5.5rem;
+width:5.5rem;
+margin-top:6%;
+
+}
+.myimage{
+width: 100%;
+height: 125rpx;
+box-shadow:3px 3px 5px #888888;
+-webkit-box-shadow:3px 3px 5px #888888;
+-moz-box-shadow: 3px 3px 5px #888888;
+margin-bottom: 37rpx;
+border-radius:4rpx
+}
+.my{
+width:90%;
+margin:auto;
+margin-top: 11%;
+}
+
+.collection{
+background-color:#e95105
+}
+.post{
+background-color:#537cbc
+}
+.mymessage{
+background-color: #f77b55
+}
+.uptext{
+margin-top:6%;
+margin-left:8%;
+}
+.school{
+color:#dadfe5;
+margin-top:2%;
+letter-spacing:3px;
+font-weight:570;
+font-size: 0.8em;
+}
+.upname{
+
+  font-size:1.3em;
+font-family:Tahoma;
+font-weight:500;
+letter-spacing:2px
+}
+.text{
+  display:flex;
+width:90%;
+margin: auto;
+border-radius:4%;
+height:60px;
+justify-content:center;
+align-items:center;
+background-color: #fff;
+box-shadow:0px 0px 10px #dadfe5;
+}
+.read{
+ display:flex;
+flex-direction:column;
+justify-content:space-between;
+align-items:center;
+width:50%;
+
+}
+.title{
+  font-size:0.8em;
+  letter-spacing:4px;
+  margin-top:5px;
+  font-weight:900;
+  color:#dadfe5;
+
+}
+.num{
+  font-size:1.3em;
+  color:#4f4f55
+}
+.ptext{
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+align-items:center;
+width:50%;
+
+}
+.bg{
+  position: absolute;
+  height: 100%;
+  z-index: -100;
+  opacity: 0.3
+}
+.realava{
+  width:100%;
+height:100%;
+border-radius:10%;
+
+}
+.top{
+  margin-bottom:8%;
+  margin-left:5%;
+  display: flex
+}
+.break{
+  height: 60%;
+  width: 3px;  
+  background-color: #f9fafc;
+  border-radius: 46%;
+}
+.bottom{
+  width:38%;
+margin:auto;
+margin-top:43%;
+display:flex;
+opacity: 0.4;
+font-size: 0.9rem
+}
+.line{
+height:23px;
+width:2px;
+background-color:black;
+margin:2px;
+opacity: 0.4
+}

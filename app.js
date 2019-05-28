@@ -1,15 +1,21 @@
-import { doAuth,login } from './utils/authorize.js'
+import { doAuth, login, userInfo, postCode } from './utils/authorize.js'
+import { request } from './utils/request.js'
+
 App({
   onLaunch(){
-    login(this).then(() => {
-      console.log(this.globalData.openid)
-      console.log(this.globalData.userInfo)
-    })
+      login(this)
+  },
+  onShow(){
+
   },
   globalData: {
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
     system: wx.getSystemInfoSync()['system'].charAt(0),
-    openid:1111,
-    userInfo:{}
+    deviceH: '',
+    deviceW: '',
+    code: ' ',
+    openID:'',
+    userInfo:{},
+    secret_key: ''
   }
 })

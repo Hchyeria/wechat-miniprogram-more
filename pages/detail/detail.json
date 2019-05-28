@@ -2,11 +2,13 @@
   "usingComponents": {
     "message": "/components/message/message",
     "comment": "/components/comment/comment",
-    "reply": "/components/comment/reply"
+    "load": "/components/load/load",
+    "reply": "/components/comment/reply",
+    "toast": "/components/toast/toast"
   },
-  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarBackgroundColor": "#f9fafc",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "详情",
-  "backgroundColor": "#eeeeee",
-  "backgroundTextStyle": "light"
+  "backgroundColor": "#f9fafc",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true
 }

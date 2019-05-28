@@ -5,18 +5,18 @@
   box-sizing: border-box;
   width:100%;
   background: white;
-  border: black solid 5rpx;
+  border: black solid 1px;
   padding:8rpx;
   padding-bottom:env(safe-area-inset-bottom);
-  transition: var(--transition);
+  transition: all 0.2;
 }
 
 .reply-true{
-  opacity: 1;
+  animation: fadeinup 0.2s ease-out;
   height:calc(env(safe-area-inset-bottom)+var(--reply-height));
 }
 
 .reply-false{
+  height: 0;
   opacity: 0;
-  height:0;
 }

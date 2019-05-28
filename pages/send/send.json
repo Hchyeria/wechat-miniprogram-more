@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "toast": "/components/toast/toast"
+  },
+  "navigationBarBackgroundColor": "#adebf6",
+  "navigationBarTextStyle": "white",
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "发布",
+  "backgroundColor": "#adebf6",
+  "backgroundTextStyle": "light",
+  "backgroundColorBottom": "#adebf6"
+}

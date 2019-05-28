@@ -1,0 +1,44 @@
+<view class='messageList'>
+<view class='up'>
+<view class='name'>Message</view>
+<view class='button'>
+<view class = 'buttonMail {{new}} button-A' bindtap = 'turntoup'>NEW</view>
+<view class='buttonMail {{all}} button-B'bindtap = 'turntonext'>ALL</view>
+</view>
+</view>
+
+<view class = 'mailpart' wx-if='{{isNot}}'>
+<view class='message2' wx:if='{{isnnull}}'>
+  <view class='null'>暂无消息</view>
+  </view>
+ <block wx:for='{{mailnotA}}'wx:key='mail' wx:for-item='item'  >
+    <mail mail='{{item}}' toDetail='{{true}}' first='{{true}}'isItem='{{false}}'/>
+  </block>
+  <block wx:for='{{mailnotB}}'wx:key='mail' wx:for-item='item' >
+    <mail mail='{{item}}' toDetail='{{true}}'  first='{{t}}'isItem='{{true}}'/>
+  </block>
+  <block wx:for='{{mailnotC}}'wx:key='mail' wx:for-item='item' >
+    <mail mail='{{item}}' toDetail='{{true}}'  first='{{false}}'isItem='{{false}}'/>
+  </block>
+ <block wx:for='{{mailnotD}}'wx:key='mail' wx:for-item='item'>
+    <mail mail='{{item}}' toDetail='{{true}}'  first='{{false}}'isItem='{{true}}'/>
+  </block>
+  </view>
+  <view class='mailpart' wx-if='{{isnot}}'>
+  <view class='message2' wx:if='{{isanull}}'>
+  <view class='null'>暂无消息</view>
+  </view>
+  <block wx:for='{{mailallA}}'wx:key='mail' wx:for-item='item' >
+    <mail mail='{{item}}' toDetail='{{true}}' first='{{true}}'isItem='{{false}}'/>
+  </block>
+  <block wx:for='{{mailallB}}'wx:key='mail' wx:for-item='item'  >
+    <mail mail='{{item}}' toDetail='{{true}}' first='{{true}}'isItem='{{true}}'/>
+  </block>
+  <block wx:for='{{mailallC}}'wx:key='mail' wx:for-item='item' >
+    <mail mail='{{item}}' toDetail='{{true}}'first='{{false}}'isItem='{{false}}'/>
+  </block>
+  <block wx:for='{{mailallD}}'wx:key='mail' wx:for-item='item'>
+    <mail mail='{{item}}' toDetail='{{true}}' first='{{false}}' isItem='{{true}}'/>
+  </block>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<view class='search'>
+<view class='total'>
+<view class='two'>
+ <view class='inputleft'><image src='../../assets/search.png' class='icon'/></view>
+ <input class='input' bindblur='toggle' confirm-type='search' bindinput='getInput' bindconfirm="search" placeholder='搜索'/>
+ </view>
+ <view class='text'wx:if='{{issearch}}'>历史搜索</view>
+    <view class='hr-view'wx:if='{{issearch}}'>
+      <block wx:for='{{searchList}}' wx:for-key='svKey' wx:for-index='i' wx:for-item='item'>
+        <view class='hr hr-{{status}}' id='hr-{{i}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
+        <view class='history'>{{item.history}}</view>
+        </view>
+      </block>
+    </view>
+
+  <view class='message'wx-if='{{!issearch}}'>
+  <view class='message2' wx:if='{{isnull}}'>
+  <view class='null'>暂无帖子</view>
+  </view>
+  <block wx:for='{{searchlist}}'wx:key='article' wx:for-item='item' >
+    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' />
+  </block>  
+  <block wx:for='{{searchitemlist}}'wx:key='article' wx:for-item='item' >
+    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' />
+  </block>  
+  </view>
+  </view>
+</view>

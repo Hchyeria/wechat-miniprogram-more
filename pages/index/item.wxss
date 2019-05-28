@@ -1,0 +1,4 @@
+@import './protoIndex.wxss';
+page{
+  height: 100%;
+}

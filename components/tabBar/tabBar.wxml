@@ -1,6 +1,9 @@
 <!--components/tabBar/tabBar.wxml-->
-<scroll-view scroll-x class='tabBar'>
+<scroll-view scroll-x class='tabBar' >
   <block wx:for='{{tabList}}' wx:key='tabKey' wx:for-item='item' wx:for-index='i'>
-    <view data-tid='{{item.type_id}}' class="tab tab-{{selected==i?'selected':''}}" id='tab-{{i}}' bindtap='onTap'>{{item.type_name}}</view>
+   
+    <view data-tid='{{item.type_id}}' class="tab tab-{{selected==i?'selected':''}}" id='tab-{{i}}' bindtap='onTap'>
+    {{item.type_name}}
+    </view>
   </block>
 </scroll-view>
