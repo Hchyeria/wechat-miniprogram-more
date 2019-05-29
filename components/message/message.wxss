@@ -275,14 +275,6 @@ margin-left:0;
   width:128px;
  transition: all .2s
 }
-.out{
-  bottom:0;
-left:0;
-position:fixed;
-width:100%;
-height:68px;
-
-}
 .row3{
   width: 30%
 }

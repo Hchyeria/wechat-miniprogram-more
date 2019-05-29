@@ -68,7 +68,7 @@ Page({
   onLoad(option) {
    this.setData({
      type: option.type,
-     out:option.isout
+     out:option.isout === "true" ? "ggg":'' 
    })
     page = 1
     getContent(this, option.Id, option.type)

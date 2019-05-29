@@ -15,7 +15,7 @@ Page({
         id: 1,
         latitude: option.latitude,
         longitude: option.longitude,
-        iconPath: '../../assets/location.png',
+        iconPath: './assets/location.png',
         callout: {
           content: option.address,
           color: "#537cbc",

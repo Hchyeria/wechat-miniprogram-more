@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "mail": "/components/mail/mail"
+    "mail": "./mail"
   },
   "navigationBarBackgroundColor": "#f9fafc",
   "navigationBarTextStyle": "black",

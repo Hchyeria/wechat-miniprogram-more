@@ -10,6 +10,7 @@ const app = getApp()
 
 function sendMsgWithoutimg(type, param, data, that) {
   request(type, param, data, 'POST', 1, 1).then(data => {
+    
     wx.showModal({
       title: '发布成功',
       showCancel: true
@@ -358,7 +359,7 @@ Page({
           openID: app.globalData.openID
         }, data, this) */
         that.setData({
-          toastError: "gg",
+          toastError: "1",
           toastMessage: `至少选择一张图片`
         })
       return;
@@ -379,16 +380,22 @@ Page({
   },
   onLabelBlur(e){
     let val = e.detail.value.trim()
-    if(val === ''){
+    if(val === '') return
+    let { isfocus, labelList } = this.data
+    if (labelList.indexOf(val) !== -1){
+      this.setData({
+        toastError: 'ggg',
+        toastMessage: `自定义标签${val}重复！`,
+        labVal: '',
+      })
       return
     }
-    this.setData({
-      labelList: [...this.data.labelList, val],
-      labVal: ''
-    })
-    let { isfocus } = this.data
     isfocus[3] = 0
-    this.setData({ isfocus })
+    this.setData({
+      labelList: [...labelList, val],
+      labVal: '',
+      isfocus 
+    })
   },
   ondelectLab(e){
     let index = e.target.dataset.lid
