@@ -306,10 +306,6 @@ Page({
       textareaVal: e.detail.value
     })
   },
-  onSetContextConfirm(){
-    this.onSetContext(e)
-    this.onSetContextBlur()
-  },
   onSendMsg: function () {
     let that = this
     let istypeMsg = !!this.data.isactive[0]
@@ -384,20 +380,16 @@ Page({
       }
     })
   },
-  onLabelInput(e){
+  onLabelBlur(e){
+    let val = e.detail.value.trim()
+    if(val === ''){
+      return
+    }
+    console.log('label', val)
     this.setData({
-      labVal: e.detail.value
-    })
-  },
-  onLabelConfirm(e){
-    console.log(e.detail.value.trim())
-    this.setData({
-      labelList: [...this.data.labelList, e.detail.value.trim()],
+      labelList: [...this.data.labelList, val],
       labVal: ''
     })
-    this.onLabelBlur()
-  },
-  onLabelBlur(){
     let { isfocus } = this.data
     isfocus[3] = 0
     this.setData({ isfocus })

@@ -67,7 +67,7 @@
         <view class='selct-img'>
           <image src='../../assets/send-select-page.png' mode="widthFix" />
         </view>
-        <textarea class='msg-cotent-textarea-{{isfocus[0]}}' value="{{textareaVal}}" focus='{{isfocus[0]}}' bindblur='onSetContextBlur' placeholder='{{isfocus[0]?"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容":""}}' bindinput='onSetContext' bindconfirm='onSetContextConfirm'></textarea>
+        <textarea class='msg-cotent-textarea-{{isfocus[0]}}' value="{{textareaVal}}" focus='{{isfocus[0]}}' bindblur='onSetContextBlur' placeholder='{{isfocus[0]?"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容":""}}' bindinput='onSetContext'></textarea>
       </view>
       <view class='msg-content-box-1' bindtap='onSetContextTap'>{{content?content:"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容"}}</view>
     </view>
@@ -99,7 +99,7 @@
           <view class='send-msg-title'>
           自定义标签
           </view>
-          <input class='msg-content-box' bindinput="onLabelInput" bindconfirm="onLabelConfirm" bindblur='onLabelBlur' value='{{labVal}}' data-id='3' focus='{{isfocus[3]}}'/>
+          <input class='msg-content-box' bindblur='onLabelBlur' value='{{labVal}}' data-id='3' focus='{{isfocus[3]}}'/>
           <view class='send-msg-subtitle'>
           已添加：(点击删除)
             <view class='msg-seletext'bindtap="ondelectLab">
