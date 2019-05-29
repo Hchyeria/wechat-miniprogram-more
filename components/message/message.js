@@ -88,7 +88,6 @@ Component({
     isde: Boolean,
     detail: Boolean,
     itemdetail: Boolean,
-    out: Boolean,
     status: {
       type: String,
       value: 'user'

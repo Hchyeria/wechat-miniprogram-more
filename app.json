@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/testpage1/testpage1",
+    "pages/person/person",
     "pages/index/item"
   ],
   "subpackages": [
@@ -66,7 +66,7 @@
         "text": "coin"
       },
       {
-        "pagePath": "pages/testpage1/testpage1",
+        "pagePath": "pages/person/person",
         "text": "user"
       }
     ]

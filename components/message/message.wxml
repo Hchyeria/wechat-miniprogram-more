@@ -129,10 +129,6 @@
     </view>
     <view class='content2'>{{content.contact_way}}</view>
   </view>
-
-  <view class='out' wx:if='{{out}}'>
-    <image src='../../assets/out.png' mode='widthFix'></image>
-  </view>
 </view>
 
 

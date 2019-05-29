@@ -15,7 +15,7 @@ Component({
       iconPath: "/assets/coin-line.png",
       selectedIconPath: "/assets/coin-full.png",
     }, {
-      pagePath: "/pages/testpage1/testpage1",
+      pagePath: "/pages/person/person",
       iconPath: "/assets/user-line.png",
       selectedIconPath: "/assets/user-full.png",
     }]
