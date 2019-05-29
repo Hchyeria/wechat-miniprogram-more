@@ -2,11 +2,16 @@
 page{
   overflow-y:hidden;
   background-color: #f9fafc;
-  color: #384568
+  color: #384568;
+  height: 100%;
+  width: 100%
 }
 
 .person{
   font-family:Tahoma;
+  height: 92%;
+  position: relative;
+  width: 100%
 }
 .avatar{
 height:5.5rem;
@@ -119,12 +124,13 @@ border-radius:10%;
   border-radius: 46%;
 }
 .bottom{
-  width:38%;
+width:100%;
 margin:auto;
-margin-top:43%;
-display:flex;
-opacity: 0.4;
-font-size: 0.9rem
+opacity:0.4;
+font-size:0.9rem;
+position: absolute;
+bottom:0;
+display: flex
 }
 .line{
 height:23px;
@@ -132,4 +138,21 @@ width:2px;
 background-color:black;
 margin:2px;
 opacity: 0.4
+}
+.main{
+  display:flex;
+  width:38%;
+  margin:auto;
+  justify-content: center;
+  align-items: center;
+}
+.book{
+  height:450px;
+background-color:black;
+width:80%;
+margin:0 auto;
+position:absolute;
+top:17%;
+left:10%;
+
 }

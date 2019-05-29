@@ -1,0 +1,17 @@
+<!--pages/contact/contact.wxml-->
+<view class='contact'>
+<toast isError="{{toastError}}" message="{{toastMessage}}" wx:if="{{isToast}}" />
+  <view class='input'>
+    <view class='area'>
+      <view class='text'>想对我们说的话</view>
+        <textarea class='contact-input' value="{{textareaVal}}" bindinput='onText' confirm-type='确认'></textarea>
+    </view>
+    <view class='area'>
+      <view class='text'>联系方式</view>
+      <input class='contact-input contact-way' value="{{contact_way}}" confirm-type='确认'  bindinput='onInput' placeholder='方便我们进行意见反馈'/>
+    </view>  
+  </view>
+  <view class='area'>
+    <view class='sure' bindtap='onSetContext'>确定</view>
+  </view>  
+</view>

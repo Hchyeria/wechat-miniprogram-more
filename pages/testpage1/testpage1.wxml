@@ -31,9 +31,16 @@
   </view>
 
   <view class='bottom'>
-    <view class='user'>用户手册</view>
-    <view class='line'></view>
-    <view class='us'>联系我们</view>
+    <view class='main'>
+      <view class='user' bindtap='userbook'>用户手册</view>
+      <view class='line'></view>
+      <view class='us' bindtap='contact'>联系我们</view>
+    </view>  
   </view >
 </view>
 
+
+<cover-view class='book' wx:if='{{isbook}}'>
+<cover-view>hhhhhhhhhhhhhh</cover-view>
+<cover-view bindtap='exit'>确认</cover-view>
+</cover-view>

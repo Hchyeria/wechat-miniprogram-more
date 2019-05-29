@@ -26,7 +26,8 @@ Page({
     nickName: '',
     post: '',
     reply: '',
-    school: ''
+    school: '',
+    isbook:false
   },
   onShow() {
     loadUser(this)
@@ -50,6 +51,21 @@ Page({
   message() {
     wx.navigateTo({
       url: `../../pages/mymessage/mymessage`,
+    })
+  },
+  contact(){
+    wx.navigateTo({
+      url: `../../pages/contact/contact`,
+    })
+  },
+  userbook(){
+    this.setData({
+      isbook:true
+    })
+  },
+  exit(){
+    this.setData({
+      isbook: false
     })
   }
 })

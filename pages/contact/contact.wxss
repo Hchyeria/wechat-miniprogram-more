@@ -1,0 +1,50 @@
+/* pages/contact/contact.wxss */
+@import '../../app.wxss';
+page{
+  background-color: var(--color-backgroud-often)
+}
+.contact-input{
+  border:var(--color-d) 1.8px solid;
+  background-color: #ffffff;
+  width:auto;
+  outline:none;
+  border-radius:30px;
+  margin-top:30rpx;
+  padding:30rpx
+}
+.text{
+  font-size: 1.1rem;
+  color: var(--color-d);
+  font-weight:600;
+}
+.contact-way{
+  margin-bottom:30rpx;
+  box-sizing:border-box;
+  height:50px;
+}
+.area{
+  margin:30rpx;
+  width:100%;
+  overflow-x:hidden;
+}
+.contact{
+  width:90%
+}
+.sure{
+display:block;
+box-sizing:border-box;
+font-size:38rpx;
+text-align:center;
+text-decoration:none;
+line-height:2;
+color: #ffffff;
+border-radius:15px;
+-webkit-tap-highlight-color:transparent;
+overflow:hidden;
+background-color:var(--color-d);
+font-weight:bold;
+box-shadow:1px 1px #ffffff inset, 2px 2px 0px 1px var(--color-d);
+width:25%;
+margin:10px 0px;
+transition:box-shadow .2s;
+}

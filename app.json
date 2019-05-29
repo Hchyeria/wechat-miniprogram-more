@@ -9,7 +9,8 @@
     "pages/index/item",
     "pages/search/search",
     "pages/send/send",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/contact/contact"
   ],
   "tabBar": {
     "custom": true,

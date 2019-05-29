@@ -114,7 +114,7 @@ margin-top:3%;
 display:flex;
 }
 .line{
-max-height:85px;
+max-height:120px;
 width:10px;
 background-color:#ced3d7;
 opacity:0.5;
@@ -127,7 +127,6 @@ border-radius: 10px
   margin-left:2%;
 }
 .my{
-  display: flex;
   align-items: center;
 }
 .mine{
