@@ -25,3 +25,7 @@ page{
   padding:5px;
   box-sizing:border-box;
 }
+.back{
+  height:var(--icon-size);
+  width: calc(1.2*var(--icon-size))
+}
