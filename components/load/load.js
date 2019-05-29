@@ -7,7 +7,11 @@ const app = getApp()
 
 Component({
   properties: {
-    isShow: Boolean
+    isShow: Boolean,
+    loadClass:{
+      type: String,
+      value: ''
+    }
   },
   data: {
     containHeight: '100px',

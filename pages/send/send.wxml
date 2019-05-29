@@ -1,9 +1,9 @@
 <!--pages/send.wxml-->
+<toast isError="{{toastError}}" message="{{toastMessage}}" />
 <view class='top' style='background-color:{{switchColor}}'>
-  <toast isError="{{toastError}}" message="{{toastMessage}}" />
   <view class='top-contain' style='height:{{topHeight}}'>
     <view class='top-back' bindtap='onBack'>
-      <image src='../../assets/back.png' mode="aspectFit" />
+      <image src='../../assets/back-send.png' mode="aspectFit" />
     </view>
     <view class='top-title'>
       {{title}}
@@ -67,9 +67,9 @@
         <view class='selct-img'>
           <image src='../../assets/send-select-page.png' mode="widthFix" />
         </view>
-        <textarea class='msg-cotent-textarea-{{isfocus[0]}}' value="{{textareaVal}}" focus='{{isfocus[0]}}' bindblur='onSetContextBlur' placeholder='{{isfocus[0]?"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容":""}}' bindinput='onSetContext'></textarea>
+        <textarea class='msg-cotent-textarea-{{isfocus[0]}}' value="{{textareaVal}}" focus='{{isfocus[0]}}' bindblur='onSetContextBlur' placeholder='{{isfocus[0] && isactive[1]?"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容":""}}' bindinput='onSetContext'></textarea>
       </view>
-      <view class='msg-content-box-1' bindtap='onSetContextTap'>{{content?content:"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容"}}</view>
+      <view class='msg-content-box-1' bindtap='onSetContextTap'>{{content?content: isactive[1]? "请对商品进行简洁的描述,例:新旧程度,是否可刀等内容" : ""}}</view>
     </view>
     <!-->
     <view class='msg-content send-msg-title msg-block' data-id='0' bindtap='onSetFocus'>
@@ -101,7 +101,7 @@
           </view>
           <input class='msg-content-box' bindblur='onLabelBlur' value='{{labVal}}' data-id='3' focus='{{isfocus[3]}}'/>
           <view class='send-msg-subtitle'>
-          已添加：(点击删除)
+          已添加：{{labelList.length? "(点击删除)" : ""}}
             <view class='msg-seletext'bindtap="ondelectLab">
               <block wx:if="{{labelList.length}}" wx:for="{{labelList}}" wx:key='labelListKey' wx:for-item='item' wx:for-index='i'>
                 <view class='label-block msg-seletext' data-lid="{{i}}">
@@ -132,7 +132,7 @@
             上传图片
           </view>
           <view class='msg-img-texts'>
-            (可选) (最多三张)
+            {{isactive[1]? "(必选)" : "(可选)"}} (最多三张)
           </view>
         </view>
         <view class="msg-img-box" bindtap='Uploadimg'>

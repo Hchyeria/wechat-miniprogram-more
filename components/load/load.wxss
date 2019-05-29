@@ -1,3 +1,4 @@
+
 @keyframes widthupdown{
   0%{
     transform: scaleX(1)
@@ -58,6 +59,29 @@
     transform: scaleX(1)
   }
 }
-.dsvc{
-  animation: widthupdown2 alternate-reverse
+@keyframes loadslideLeft{
+  0%{
+    transform: translate(100%,0);
+  }
+  to{
+    transform: translate(0,0);
+  }
 }
+
+@keyframes loadslideRight{
+  0%{
+    transform: translate(-100%,0);
+  }
+  to{
+    transform: translate(0,0);
+  }
+}
+.loadslideleft{
+  animation: loadslideLeft .2s forwards;
+}
+
+.loadslideright{
+  animation: loadslideRight .2s forwards;
+}
+
+

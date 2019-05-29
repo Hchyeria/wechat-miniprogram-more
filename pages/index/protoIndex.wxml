@@ -1,31 +1,36 @@
 
 <toast isError="{{toastError}}" message="{{toastMessage}}"  />
-<load isShow="{{isLoad}}" />
-<view class='{{isLoad? "displayHide" : ""}}'>
-  <view class='top {{islogin? "hide" : ""}}'>
+
+
+<view class='top {{islogin? "hide" : ""}}'>
   <topBar searchList='{{searchList}}' bindtap='topBar' type='{{type}}' />
-  <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" />
+  <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" index='{{typeID}}' bindstoreLeng='onStoreLeng'/>
 </view>
-<view wx:if='{{banner}}' class='banner' style='padding-top:{{bannerTop}}'>
+<view bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <load isShow="{{isLoad}}" loadClass="{{isSlide[0]? 'loadslideleft' : isSlide[1]? 'loadslideright' : ''}}"/>
+  <view wx:if='{{banner}}' class='banner' style='padding-top:{{bannerTop}}'>
   <image class='isLoad? "" : "banner-motion"' mode='widthFix' src='https://{{BASE_URL}}/upload/banners/{{banner}}' bindload="onBannerLoad" binderror="onBannerLoad"/>
   <image class='banner-text' wx:if='{{bannerText[typeID-1].url}}' mode='aspectFit' src='https://{{BASE_URL}}/{{bannerText[typeID-1].url}}' binderror="onBannerTexerror"/>
-</view>
-<view class='messageList {{msgListStyle}}'>
-  <view wx:if='{{type==="article"&&isshow}}'>
-    <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
-      <message content='{{item}}' type='{{type}}' toDetail='{{true}}' isde='{{true}}' bindonLoadPictrue="onLoadPictrue"/>
-    </block>
   </view>
-  <view class='left' wx:if='{{type==="item"}}'>
-    <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
-      <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==0}}" bindonLoadPictrue="onLoadPictrue"/>
-    </block>
-  </view>
-  <view wx:if='{{type==="item"}}' class='right'>
-    <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
-      <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==1}}" bindonLoadPictrue="onLoadPictrue"/>
-    </block>
+  <view class='messageList {{msgListStyle}}'>
+    <view wx:if='{{type==="article"&&isshow}}'>
+      <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
+        <message content='{{item}}' type='{{type}}' toDetail='{{true}}' isde='{{true}}' bindonLoadPictrue="onLoadPictrue"/>
+      </block>
+    </view>
+    <view class='left' wx:if='{{type==="item"}}'>
+      <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
+        <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==0}}" bindonLoadPictrue="onLoadPictrue"/>
+      </block>
+    </view>
+    <view wx:if='{{type==="item"}}' class='right'>
+      <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
+        <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==1}}" bindonLoadPictrue="onLoadPictrue"/>
+      </block>
+    </view>
   </view>
 </view>
-</view>
-<cover-image src='../../assets/add.png' class="add head-icon {{islogin? 'hide' : ''}}" bindtap='toSend' />
+
+
+
+<image src='../../assets/add.png' class="add head-icon {{islogin||isLoad? 'hide' : ''}}" bindtap='toSend' />

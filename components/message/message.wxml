@@ -49,6 +49,15 @@
        </view>
     </block>
   </view>
+  <view class='label'>
+    <block wx:if='{{labels}}' wx:for='{{labels}}' wx:key='labelKey' wx:for-item='labelItem' wx:for-index='e'>
+      <view class='label-item'>
+        <image mode='aspectFill' src='../../assets/label-grey.png'
+      class="height label-icon" />
+      {{labelItem}}
+       </view>
+    </block>
+  </view>
 
   <view class='location' bindtap='map' wx:if='{{isadd}}'>
     <image src='../../assets/location-mess.png' class='icon locaimg' mode='aspectFit'></image>
@@ -71,7 +80,7 @@
 
 <view wx:if='{{detail && (type==="item")}}' class='three'>
   <swiper indicator-dots="true" duration="0.5s" indicator-color="white" indicator-active-color='black' class='swiper'>
-    <block wx:for="{{imgUrls}}">
+    <block wx:for="{{imgUrls}}" wx:key='itemImgKey' wx:for-item='item' wx:for-index='j'>
       <swiper-item>
         <image src="{{item}}" class="slide-image" mode="aspectFill" bindtap='preview'/>
       </swiper-item>

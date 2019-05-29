@@ -6,7 +6,6 @@ Component({
       type: String,
       value: '',
       observer(val) {
-        console.log(val)
         let that = this
         if (val) {
           if (this.data.isDisappear){

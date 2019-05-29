@@ -64,7 +64,7 @@ Component({
         }
       }
       request('comments.php', params).then(data => {
-        this.triggerEvent('replySuccess')
+        this.triggerEvent('replySuccess', e.detail.value.trim())
       })
     },
     blur() {

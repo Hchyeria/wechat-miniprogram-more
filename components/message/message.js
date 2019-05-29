@@ -69,6 +69,7 @@ Component({
             timestamp: parseTimeStamp(val.time),
             imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`),
             ID: val.ID,
+            labels: val.labels ? val.labels.split(',') : null,
             sharence: {
               text: val.content,
               url: `/pages/detail/detail?Id=${val.ID}&type=${this.data.type}&from=share`,

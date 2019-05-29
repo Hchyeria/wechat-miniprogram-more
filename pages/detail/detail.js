@@ -4,6 +4,7 @@ import {
 
 import { toCrab } from '../../utils/crab.js'
 import { onShare } from '../../utils/share.js'
+import { getIsoTime } from '../../utils/pick.js'
 
 function getContent(that, Id, type) {
   return new Promise((resolve, reject) => {
@@ -22,23 +23,23 @@ function getContent(that, Id, type) {
   })
 }
 
-function getComments(that) {
+function getComments(that, id, type) {
   return new Promise(resolve => {
     request('comments.php', {
       secondType: 'select_comment_by_pointerID',
-      cType: that.data.type === 'article' ? 1 : 2,
-      pointerID: that.data.Id,
+      cType: type === 'article' ? 1 : 2,
+      pointerID: id,
       page,
       limit
     }).then(data => {
       that.setData({
         list: page === 1 ? data.result : that.data.list.concat(data.result)
       })
-      wx.stopPullDownRefresh()
       resolve(data.result.length)
     })
   })
 }
+
 
 const app = getApp()
 let page = 1
@@ -70,14 +71,13 @@ Page({
      out:option.isout
    })
     page = 1
-    console.log('detail', option.type, option.Id)
-    getContent(this, option.Id, option.type).then(() => getComments(this))
+    getContent(this, option.Id, option.type)
+    getComments(this, option.Id, option.type)
     if (option.from && option.from === 'share') {
       let status = 'stranger';
       if (app.globalData.secret_key !== '') {
         status = 'user'
       }
-      console.log(status)
       this.setData({
         status,
         from: 'outer'
@@ -95,12 +95,12 @@ Page({
   onPullDownRefresh() {
     getContent(this, this.data.Id, this.data.type)
     page = 1
-    getComments(this)
+    getComments(this, this.data.Id, this.data.type)
   },
   onReachBottom() {
     page++
     let that = this
-    getComments(this)
+    getComments(this, this.data.Id, this.data.type)
       .then(length => {
         if (length !== 0)
           that.setData({
@@ -116,12 +116,13 @@ Page({
       cid: e.detail.cid
     })
   },
-  replySuccess() {
+  replySuccess(e) {
     page = 1
-    wx.startPullDownRefresh()
+    let that = this;
     that.setData({
       toastError: '',
-      toastMessage: `回复成功！`
+      toastMessage: `回复成功！`,
+      list: [...that.data.list, { ...app.globalData.userInfo, content: e.detail, time: getIsoTime()}]
     })
   },
   goToCrab() {

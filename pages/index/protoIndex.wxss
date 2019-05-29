@@ -57,3 +57,14 @@ page{
   height:20%;
   z-index: 995;
 }
+.add.head-icon{
+  z-index: 9999;
+}
+
+.slideleft{
+  animation: slideLeft 0.4s ease-in;
+}
+
+.slideright{
+  animation: slideRight 0.4s ease-in;
+}

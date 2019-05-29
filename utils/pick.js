@@ -57,3 +57,20 @@ export function selctType(id, typeNum, typeList, that, id_type = 'type_id', type
     [PickText]: type_text
   })
 }
+export function getIsoTime(){
+  let date = new Date();
+  let y = date.getFullYear();
+  let m = date.getMonth()+1 >= 10 ? m+1 : "0" + (m+1);
+  let d = date.getDate() >= 10 ? d : "0" + d;
+  let h = date.getHours() >= 10 ? h : "0" + h;
+  let min = date.getMinutes() >= 10 ? min : "0" + min;
+  let s = date.getSeconds() >= 10 ? s : "0" + s;
+  return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + s
+}
+
+export function getCurrentPageUrl() {
+  var pages = getCurrentPages()
+  var currentPage = pages[pages.length - 1]
+  var url = currentPage.route
+  return url
+}

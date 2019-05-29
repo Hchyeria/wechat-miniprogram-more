@@ -361,9 +361,9 @@ textarea {
 .label-block{
   border:2px solid #ffffff;
   margin:5px 5px 0 0;
-  padding:5px;
+  padding:8px;
   box-sizing:border-box;
-
+  border-radius:30px;
 }
 .label-text{
   margin-left:5px;

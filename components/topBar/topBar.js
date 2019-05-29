@@ -23,7 +23,7 @@ Component({
   },
   lifetimes: {
     created() {
-      console.log(this.data.type)
+
       },
   },
   pageLifetimes: {
@@ -34,7 +34,6 @@ Component({
           that.height = res.screenHeight
         }
     })
-    console.log(that.height)
       if (that.height > 736) {
         that.setData({
           height:  that.height*10%+'px'
@@ -45,7 +44,6 @@ Component({
 
   methods: {
     getInput() {
-      console.log('b')
       navigateToDetail(this)
     }
   }

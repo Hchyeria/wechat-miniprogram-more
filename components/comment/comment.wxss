@@ -13,13 +13,13 @@
   float: right;
 }
 .timestamp{
-margin-left:auto;
-font-size:0.7rem;
-color: #9CA2A5
+  margin-left:auto;
+  font-size:0.7rem;
+  color: var(--color-a);
 }
 .text{
-  font-size: 1.1em;
-  color: #001050
+  font-size: 1em;
+  color: var(--color-d);
 }
 .s-n{
   display: flex;
@@ -28,7 +28,7 @@ color: #9CA2A5
 }
 .school{
   font-size: 0.6rem;
-  color: #9CA2A5
+  color: var(--color-a);
 }
 .message{
   margin-top:4%;

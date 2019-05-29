@@ -22,19 +22,6 @@ export function doAuth(){
   })
 } 
 
-export function userInfo(app){
-  return new Promise((resolve, reject) => {
-    wx.getUserInfo({
-      success(res){
-        console.log(res)
-        app.globalData.userInfo.nickName = res.nickName
-        app.globalData.userInfo.avatarUrl = res.avatarUrl
-        resolve()
-      }
-    })
-  })
-}
-
 export function login(app) {
   return new Promise((resolve,reject)=>{
     wx.showLoading({

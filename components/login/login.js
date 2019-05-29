@@ -29,6 +29,22 @@ function checkSchool(targetURL, params){
   })
 }
 
+function getUserInfo(secret_key){
+  return new Promise((resolve, reject) => {
+    request('users.php', {
+      secondType: 'get_user_info',
+      secret_key
+    }, {}, 'GET')
+      .then(data => {
+        resolve(data)
+      })
+      .catch(e => {
+        reject(e)
+      })
+  })
+
+}
+
 Component({
   properties: {
   },
@@ -64,6 +80,13 @@ Component({
         this.onGoindex()
         return
       }
+      else{
+        if (JSON.stringify(app.globalData.userInfo) === "{}" ){
+          getUserInfo(app.globalData.secret_key).then(data =>{
+            app.globalData.userInfo = Object.assign({}, app.globalData.userInfo, data.result[0])
+          })
+        }
+      }
       let that = this;
       wx.getSystemInfo({
         success: function (res) {
@@ -94,7 +117,7 @@ Component({
             goindexClass: 'goindex-active'
           })
           that.triggerEvent('Goindex', that)
-        }, 1000)
+        }, 500)
   
       }
       else{
@@ -119,6 +142,9 @@ Component({
             isload: true
           })
           postCode(app).then(data =>{
+            getUserInfo(app.globalData.secret_key).then(data => {
+              app.globalData.userInfo = Object.assign({}, app.globalData.userInfo, data.result[0])
+            })
             let targetURL = 'school.php'
             let params = { 
               action: 'check_school',

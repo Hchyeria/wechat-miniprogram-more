@@ -6,12 +6,18 @@ import {
 } from '../../utils/request.js'
 
 import { onShare } from '../../utils/share.js'
-import { loadContent, loadBanner, loadBannerText  } from './protoIndex.js'
+import { loadContent, loadBanner, loadBannerText, tabChange  } from './protoIndex.js'
 import { loadArticles } from './loadArticles.js'
 
 let page = 1
 let typeID = 1
 const app = getApp()
+let time = 0
+let touchDot = [0, 0]
+let interval = ''
+let maxtypeID = 5
+
+
 
 Page({
   data: {
@@ -27,9 +33,11 @@ Page({
     typeID: 1,
     isshow:false,
     isLoad: true,
+    loadClass: '',
     toastError: 0,
     toastMessage: "",
-    bannerTop: '129px'
+    bannerTop: '129px',
+    isSlide: [0, 0]
   },
   onShareAppMessage(res) {
     return onShare(res)
@@ -80,8 +88,10 @@ Page({
     })
   },
   onShow() {
+    clearInterval(interval)
+    time = 0
     page = 1
-    console.log('index-page run under type:', this.data.type)
+
     forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
     let TabBar = this.getTabBar()
     this.setData({
@@ -121,19 +131,59 @@ Page({
       })
     }
   },
-  tabTap(e) {
+  onStoreLeng(e){
+    maxtypeID = e.detail.len
+  },
+  tabTap(e, that=0) {
     page = 1
     typeID = e.detail.tid
     wx.pageScrollTo({
       scrollTop: 0
     })
-    this.setData({
-      contentList: [],
-      typeID: typeID,
-      isLoad: true
-    })
-    loadContent(this, 2, this.data.type, page, typeID)
-    loadBanner(this, typeID, this.data.type)
+    tabChange(typeID, that ? that : this, page)
+  },
+  touchStart(e) {
+    touchDot[0] = e.touches[0].pageX;
+    touchDot[1] = e.touches[0].clientY;
+    time = 0;
+    interval = setInterval(() => {
+      time++;
+      if (time > 10){
+        clearInterval(interval);
+      }
+    }, 100);
+  },
+  touchEnd(e) {
+    let touchMove = []
+    touchMove[0] = e.changedTouches[0].pageX;
+    touchMove[1] = e.changedTouches[0].clientY;
+    let tempY = touchMove[1] > touchDot[1] ? touchMove[1] - touchDot[1] : touchDot[1] - touchMove[1]
+    if (touchMove[0] - touchDot[0] <= -80 && time < 5 && tempY < 50) {
+      if (typeID > 1){
+          this.tabTap({
+            detail: {
+              tid: --typeID
+            }
+          }, this)
+        this.setData({
+          typeID
+        })
+      }
+    }
+    if (touchMove[0] - touchDot[0] >= 80 && time < 5 && tempY <= 50) {
+      if (typeID < maxtypeID) {
+        this.tabTap({
+          detail: {
+            tid: ++typeID
+          }
+        }, this)
+        this.setData({
+          typeID
+        })
+      } 
+    }
+    clearInterval(interval);
+    time = 0;
   },
   toSend(e) {
     wx.navigateTo({

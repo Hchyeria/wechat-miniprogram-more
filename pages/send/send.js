@@ -61,18 +61,16 @@ function sendMsg(targetURL, data, path, that, tempData = {}) {
       },
       fail: function (e) {
         fail++;
-        wx.showModal({
-          title: '提示',
-          content: '上传失败',
-          showCancel: false
+        that.setData({
+          toastError: 'ggg',
+          toastMessage: `上传失败！`
         })
       },
       complete: function () {
         if (i === path.length) {
-          wx.showModal({
-            title: '提示',
-            content: '成功:' + success + ', 失败:' + fail,
-            showCancel: false
+          that.setData({
+            toastError: '',
+            toastMessage: `发布成功！`
           })
           that.onBack();
         } else {
@@ -290,7 +288,6 @@ Page({
     })
   },
   onSetContextTap(e){
-    console.log("2333")
     let {isfocus} = this.data
     isfocus[0] = isfocus[0] ? 0 : 1
     this.setData({isfocus})
@@ -346,6 +343,7 @@ Page({
         expect_price: this.data.expectPrice,
         contact_way: this.data.contactWay
       }
+    data = { ...data, labels: that.data.labelList.join(",") }
     that.setData({
       toastError: '',
       toastMessage: `正在发布`
@@ -360,7 +358,7 @@ Page({
           openID: app.globalData.openID
         }, data, this) */
         that.setData({
-          toastError: 0,
+          toastError: "gg",
           toastMessage: `至少选择一张图片`
         })
       return;
@@ -371,7 +369,6 @@ Page({
     let that = this
     wx.chooseLocation({
       success: function (res) {
-        console.log(res)
         that.setData({
           name: res.name,
           latitude: res.latitude,
@@ -385,7 +382,6 @@ Page({
     if(val === ''){
       return
     }
-    console.log('label', val)
     this.setData({
       labelList: [...this.data.labelList, val],
       labVal: ''

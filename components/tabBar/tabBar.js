@@ -6,7 +6,18 @@ let params = { secondType: 'get_article_types' }
 //generalized
 Component({
   properties: {
-    type: String
+    type: String,
+    index: {
+      type: Number,
+      value: 0,
+      observer(val){
+        if (val >= 1 && val <= this.data.tabList.length){
+          this.setData({
+            selected: val-1
+          })
+        }
+      }
+    }
   },
   data: {
     tabList: [
@@ -24,16 +35,19 @@ Component({
         this.setData({
           tabList: data.result
         })
-      })
 
-    }
+        this.triggerEvent('storeLeng', { len: data.result.length })
+      })
+      
+    },
+    
   },
   methods: {
     onTap(e) {
       this.setData({
         selected: e.target.id.charAt(4)
       })
-      this.triggerEvent('tabTap', { tid: e.currentTarget.dataset.tid })
+      this.triggerEvent('tabTap', { tid: e.currentTarget.dataset.tid, leng: this.data.tabList.length})
     }
   }
 })
