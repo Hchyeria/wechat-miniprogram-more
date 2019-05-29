@@ -12,21 +12,21 @@
 </view>
 <view class='contain-send' style='margin-top:{{topHeight}};height:{{(isactive[0]||isactive[1])? mainHeight+"px" : mainHeight+"px"}}'>
   <view id='send-msg' class='{{msgClass}}' bindtap='onTapmsg'>
-    <image src='../../assets/flybird.png' mode="widthFix" />
+    <image src='./assets/flybird.png' mode="widthFix" />
   </view>
   <view id='send-deal' class='{{dealClass}}' bindtap='onTapdeal'>
-    <image src='../../assets/bargain.png' mode="widthFix" />
+    <image src='./assets/bargain.png' mode="widthFix" />
   </view>
   <view class='selct-type {{isselct? "fadeIn":"hide"}}'>
     <view class='selct-img'>
-      <image src='../../assets/send-select-page.png' mode="widthFix" />
+      <image src='./assets/send-select-page.png' mode="widthFix" />
     </view>
     <view class='selct-content'>
       <view bindtap='onTapSelctType'>
         <block wx:for='{{isactive[0]? tabList : objectList}}' wx:key='tabKey' wx:for-item='item' wx:for-index='i'>
           <view class='selct-item-list  {{item.style}}' id='selct-type-{{i}}'>
             <view class='selct-img-ellipse'>
-              <image src='../../assets/ellipse.png' mode="widthFix" />
+              <image src='./assets/ellipse.png' mode="widthFix" />
             </view>
             <view class="selct-type-text" data-tid='{{item.type_id}}'>
               {{item.type_name}}
@@ -65,7 +65,7 @@
       输入内容
       <view class='msg-cotent-page  {{isfocus[0]? "fadeIn":"displayHide"}}'>
         <view class='selct-img'>
-          <image src='../../assets/send-select-page.png' mode="widthFix" />
+          <image src='./assets/send-select-page.png' mode="widthFix" />
         </view>
         <textarea class='msg-cotent-textarea-{{isfocus[0]}}' value="{{textareaVal}}" focus='{{isfocus[0]}}' bindblur='onSetContextBlur' placeholder='{{isfocus[0]?"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容":""}}' bindinput='onSetContext'></textarea>
       </view>
@@ -105,7 +105,7 @@
             <view class='msg-seletext'bindtap="ondelectLab">
               <block wx:if="{{labelList.length}}" wx:for="{{labelList}}" wx:key='labelListKey' wx:for-item='item' wx:for-index='i'>
                 <view class='label-block msg-seletext' data-lid="{{i}}">
-                  <image class='label' src='../../assets/label-white.png' mode="aspectFit" data-lid="{{i}}"/>
+                  <image class='label' src='./assets/label-white.png' mode="aspectFit" data-lid="{{i}}"/>
                   <view class='label-text' data-lid="{{i}}">
                     {{item}} 
                   </view>
@@ -143,7 +143,7 @@
               </view>
             </block>
           </view>
-          <image src='../../assets/add-photo.png' mode="aspectFit" class="msg-img-icon {{imgList.length>2? 'displayHide':''}}" />
+          <image src='./assets/add-photo.png' mode="aspectFit" class="msg-img-icon {{imgList.length>2? 'displayHide':''}}" />
         </view>
       </view>
       <view class='msg-block send-buttton'>

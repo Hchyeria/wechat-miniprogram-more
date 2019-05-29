@@ -5,16 +5,16 @@
   <message status='{{status}}' content='{{content}}' toDetail='{{false}}' bind:toReply='toReply' type='{{type}}' detail='{{true}}' out='{{out}}' bindonLoadPictrue="onLoadPictrue"/>
   <view class='comment-block shadowcustom'>
      <view class='row aside'>
-    <image class='title' src='../../assets/comments.png' mode="aspectFit"/>
+    <image class='title' src='./assets/comments.png' mode="aspectFit"/>
     <view wx:if='{{status==="user"}}' class='crab' bindtap='goToCrab'>
-      <image src='../../assets/report.png' class='icon'></image>
+      <image src='./assets/report.png' class='icon'></image>
     </view>
   </view>
   <view class='comments'>
     <block wx:if='{{list.length}}' wx:for='{{list}}' wx:key='comments' wx:for-item='item'>
       <comment comment='{{item}}' bind:toReply='toReply' status='{{status}}' />
     </block>
-    <image wx:if='{{!list.length}}' class='title' src='../../assets/no-comment.png' mode="aspectFit"/>
+    <image wx:if='{{!list.length}}' class='title' src='./assets/no-comment.png' mode="aspectFit"/>
   </view>
   </view>
  

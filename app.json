@@ -2,15 +2,57 @@
   "pages": [
     "pages/index/index",
     "pages/testpage1/testpage1",
-    "pages/detail/detail",
-    "pages/collection/collection",
-    "pages/post/post",
-    "pages/mymessage/mymessage",
-    "pages/index/item",
-    "pages/search/search",
-    "pages/send/send",
-    "pages/map/map",
-    "pages/contact/contact"
+    "pages/index/item"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/send/",
+      "pages": [
+        "send"
+      ]
+    },
+    {
+      "root": "pages/detail/",
+      "pages": [
+        "detail"
+      ]
+    },
+    {
+      "root": "pages/map/",
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "root": "pages/search/",
+      "pages": [
+        "search"
+      ]
+    },
+    {
+      "root": "pages/contact/",
+      "pages": [
+        "contact"
+      ]
+    },
+    {
+      "root": "pages/mymessage/",
+      "pages": [
+        "mymessage"
+      ]
+    },
+    {
+      "root": "pages/collection/",
+      "pages": [
+        "collection"
+      ]
+    },
+    {
+      "root": "pages/post/",
+      "pages": [
+        "post"
+      ]
+    }
   ],
   "tabBar": {
     "custom": true,
