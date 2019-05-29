@@ -360,7 +360,7 @@ Page({
           openID: app.globalData.openID
         }, data, this) */
         that.setData({
-          toastError: 0,
+          toastError: '0',
           toastMessage: `至少选择一张图片`
         })
       return;
@@ -382,17 +382,23 @@ Page({
   },
   onLabelBlur(e){
     let val = e.detail.value.trim()
-    if(val === ''){
+    if(val === '') return
+    let { isfocus, labelList } = this.data
+    if (labelList.indexOf(val) !== -1){
+      this.setData({
+        toastError: 'ggg',
+        toastMessage: `自定义标签${val}重复！`,
+        labVal: '',
+      })
       return
     }
-    console.log('label', val)
-    this.setData({
-      labelList: [...this.data.labelList, val],
-      labVal: ''
-    })
-    let { isfocus } = this.data
+    console.log('add label', val)
     isfocus[3] = 0
-    this.setData({ isfocus })
+    this.setData({
+      labelList: [...labelList, val],
+      labVal: '',
+      isfocus 
+    })
   },
   ondelectLab(e){
     let index = e.target.dataset.lid
