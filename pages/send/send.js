@@ -230,28 +230,16 @@ Page({
       isselct: false
     })
   },
-  onSureType: function () {
-    if (this.data.isactive[0]) {
-      let type = this.data.articleType
-      if (type) {
-        let tempName = this.data.tabList[type - 2].type_name
-        this.setData({
-          isselct: false,
-          typeText: tempName
-        })
-      }
+  onSureType() {
+    let type = this.data[this.data.isactive[0] ? 'articleType' : 'itemType']
+    let list = this.data[this.data.isactive[0] ? 'tabList' :'objectList']
+    if (type) {
+      let tempName = list.filter(it => it.type_id == type)[0].type_name
+      this.setData({
+        isselct: false,
+        typeText: tempName
+      })
     }
-    else {
-      let type = this.data.itemType
-      if (type) {
-        let tempName = this.data.objectList[type - 1].type_name
-        this.setData({
-          isselct: false,
-          typeText: tempName
-        })
-      }
-    }
-
   },
   bindPriceInput(e) {
     this.setData({
@@ -368,13 +356,32 @@ Page({
   },
   onLocation() {
     let that = this
-    wx.chooseLocation({
-      success: function (res) {
-        that.setData({
-          name: res.name,
-          latitude: res.latitude,
-          longitude: res.longitude
-        })
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success() {
+              wx.chooseLocation({
+                success: function (res) {
+                  console.log('LocationSelct Success')
+                  that.setData({
+                    name: res.name,
+                    latitude: res.latitude,
+                    longitude: res.longitude
+                  })
+                },
+              })
+            },
+            fail(res) {
+              console.log(res)
+              that.setData({
+                toastError: 'selct location error',
+                toastMessage: `授权后方可选择地址`
+              })
+            }
+          })
+        }
       }
     })
   },
