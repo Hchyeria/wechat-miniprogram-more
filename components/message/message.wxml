@@ -1,0 +1,162 @@
+<toast isError="{{toastError}}" message="{{toastMessage}}"  wx:if='{{isToast}}' />
+<view class='container shadowcustom container-{{detail}}' wx:if='{{type==="article"}}'>
+  <view class='bar' bindtap='onTap'>
+    <view class='row'>
+      <image src='{{content.avatar}}' class='head-icon' mode="widthFix"/>
+      <view class='column col-middle'>
+        <view class='s-n'>
+          <text class='name'>{{content.username}}</text>
+          <text class='school'>{{content.school_name}}</text>
+        </view>
+        <text class='time'>{{timestamp}}</text>
+      </view>
+    </view>                 
+  </view>
+
+  <view disabled class='message message-{{isde}}' bindtap='onTap'>{{content.content}}
+  </view>
+  <view class='more-text' wx:if='{{!detail && content.content.length > 85}}'>MORE</view>
+  <view wx:if='{{content.pictures[0]}}' class='album row'>
+    <block wx:if='{{content.pictures[2]}}'>
+    <view class='three-img-block'>
+      <view class='three-img1'>
+        <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' bindload='onLoadImage'/>
+      </view>
+      <view class='three-img-other'> 
+        <view class='three-img2'>
+          <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[1].pURL}}' data-index='1' bindtap='preview' />
+        </view>
+        <view class='three-img3'>
+          <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[2].pURL}}' data-index='2' bindtap='preview' />
+        </view>
+      </view>
+    </view>
+    </block>
+
+    <block wx:elif='{{content.pictures[1]}}'>
+      <view class='two-img'>
+        <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' class='two' class='height' />
+      </view>
+      <view class='two-img'>
+        <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[1].pURL}}' data-index='1' bindtap='preview' class='height' />
+      </view>
+    </block>
+
+    <block wx:elif='{{content.pictures[0]}}'>
+      <view class='one-img'>
+        <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' 
+      class="height" />
+       </view>
+    </block>
+  </view>
+  <view class='label'>
+    <block wx:if='{{labels}}' wx:for='{{labels}}' wx:key='labelKey' wx:for-item='labelItem' wx:for-index='e'>
+      <view class='label-item'>
+        <image mode='aspectFill' src='../../assets/label-grey.png'
+      class="height label-icon" />
+      {{labelItem}}
+       </view>
+    </block>
+  </view>
+
+  <view class='location' bindtap='map' wx:if='{{isadd}}'>
+    <image src='../../assets/location-mess.png' class='icon locaimg' mode='aspectFit'></image>
+    <view class='text'>{{content.address}}</view>
+  </view>
+  <view class='bar'>
+    <view class='row'>
+        <toggleIcon wx:if='{{status=="user"}}' image='heart' status='{{content.is_collection}}' class='heart' bindtap='favorite' />
+        <image src='../../assets/comment.png' class='icon toReply' bindtap='toReply' />
+        <text class='col-middle number'>{{content.comment_num}}</text>
+    </view>
+    <view class='depart2' wx:if='{{isdelete}}'>
+        <image src='../../assets/delete.png' mode="aspectFit" class='delete' bindtap='click'></image>
+      </view>
+    <model class='hhh' wx:if='{{isclick}}'  text1='{{text1}}'  ID='{{ID}}' bindtap='isEXIT'  isItem='{{isItem}}'/>
+    <toggleIcon wx:if='{{status==="user"&&detail}}' image='share' status='{{false}}' class='share' openType='share' bindtap='share' sharence='{{sharence}}'/>
+  </view>
+</view>
+
+
+<view wx:if='{{detail && (type==="item")}}' class='three'>
+  <swiper indicator-dots="true" duration="0.5s" indicator-color="white" indicator-active-color='black' class='swiper'>
+    <block wx:for="{{imgUrls}}" wx:key='itemImgKey' wx:for-item='item' wx:for-index='j'>
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" mode="aspectFill" bindtap='preview'/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='up bg shadowcustom padding10'>
+    <view class='price2 price'>
+      <text class='name2'>¥</text>
+      <text class='trueprice trueprice2'>{{content.expect_price}}</text>
+    </view>
+    <view class='row2 row'>
+      <image src='{{content.avatar}}' mode="widthFix" class='head-icon' />
+      <view class='column2 col-middle'>
+        <view class='s-n'>
+          <text class='name2'>{{content.username}}</text>
+          <text class='school'>{{content.school_name}}</text>
+        </view>
+        <text class='time2'>{{timestamp}}</text>
+      </view>
+    </view>
+    <view class='bar'>
+      <view class='row row3'>
+        <toggleIcon image='heart' status='{{collected}}' class='heart3' bindtap='favorite'  wx:if='{{heart}}'/>
+        <image src='../../assets/comment.png' class='icon' bindtap='toReply' />
+        <text class='col-middle number'>{{content.comment_num}}</text>
+      </view>
+      <toggleIcon image='share' status='{{false}}' class='share2' openType='share' bindtap='share'wx:if='{{!isdelete}}'/>
+      <view class='maxmore'wx:if='{{isdelete}}'>
+        <view class='more'>
+          <image src='../../assets/more.png' class='icon minmore' bindtap='more'></image>
+          </view>
+      </view>
+      <view wx:if='{{ismore}}' class='together'>
+        <view class='depart' wx:if='{{isdelete}}'>
+          <image src='../../assets/delete.png' class='delete' bindtap='click'></image>
+        </view>
+        <model class='hhh' wx:if='{{isclick}}'  text1='{{text1}}'  ID='{{ID}}' bindtap='isEXIT'  isItem='{{isItem}}'/>
+        <toggleIcon image='share' status='{{false}}'  openType='share' bindtap='share'/>
+        <image src='../../assets/download.png' class='download icon' wx:if='{{isdelete}}' bindtap='download'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='bg shadowcustom'>
+    <view class='detail'>
+      <image src='../../assets/detail.png' mode="widthFix" class='DETAILS ' ></image>
+    </view>
+    <view class='content2'>{{content.content}}</view>
+  </view>
+
+  <view class='bg shadowcustom'>
+    <view class='lianxi'>
+      <image src='../../assets/contact.png' mode="widthFix" class='DETAILS contact_way'></image>
+    </view>
+    <view class='content2'>{{content.contact_way}}</view>
+  </view>
+</view>
+
+
+
+<view wx:if='{{type==="item"&&(!detail)}}' class='two-con shadowcustom'>
+  <view>
+    <image src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' bindtap='preview' mode="widthFix" class='png' bindtap='onTap' />
+  </view>
+  <view disabled class='message2  message' bindtap='onTap'>{{content.content}}</view>
+
+  <view class='bar'>
+    <view class='row'>
+      <view class='column2 col-middle' >
+        <view class='price' bindtap='onTap'>
+          <text class='name2'>¥</text>
+          <text class='trueprice'>{{content.expect_price}}</text>
+        </view>
+      <toggleIcon image='heart' status='{{collected}}' class='heart2' bindtap='favorite' ok='{{ok}}' />
+      </view>
+    </view>
+  </view>
+</view>
