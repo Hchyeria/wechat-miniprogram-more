@@ -1,9 +1,9 @@
 <view class='messageList'>
-<view class='up'>
-<view class='name'>Message</view>
-<view class='button'>
-<view class = 'buttonMail {{new}} button-A' bindtap = 'turntoup'>NEW</view>
-<view class='buttonMail {{all}} button-B'bindtap = 'turntonext'>ALL</view>
+  <view class='up'>
+   <view class='name'>Message</view>
+    <view class='button'>
+      <view class = 'buttonMail {{new}} button-A' bindtap = 'turntoup'>NEW</view>
+      <view class='buttonMail {{all}} button-B'bindtap = 'turntonext'>ALL</view>
 </view>
 </view>
 

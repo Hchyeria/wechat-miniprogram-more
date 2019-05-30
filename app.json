@@ -2,8 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/person/person",
-    "pages/index/item",
-    "pages/userbook/userbook"
+    "pages/index/item"
   ],
   "subpackages": [
     {
@@ -52,6 +51,12 @@
       "root": "pages/post/",
       "pages": [
         "post"
+      ]
+    },
+    {
+      "root": "pages/userbook/",
+      "pages": [
+        "userbook"
       ]
     }
   ],
