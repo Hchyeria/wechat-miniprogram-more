@@ -298,7 +298,11 @@ Page({
   },
   onSetContextTap(e){
     let {isfocus} = this.data
-    isfocus[0] = isfocus[0] ? 0 : 1
+    if(isfocus[0]){
+      isfocus[0] = 0
+    }else{
+      isfocus = [1,0,0]
+    }
     this.setData({isfocus})
   },
   onSetContextBlur(){
