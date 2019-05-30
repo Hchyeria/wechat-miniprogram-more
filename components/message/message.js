@@ -45,7 +45,6 @@ Component({
       type: Object,
       value: {},
       observer(val) {
-        console.log(val)
         if (val && val.time) {
           if (val.openID == app.globalData.openID) {
             this.setData({

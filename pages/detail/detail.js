@@ -10,7 +10,8 @@ function getContent(that, Id, type) {
   return new Promise((resolve, reject) => {
     let params = {
       secondType: `select_${type}_by_id`,
-      ID: Id
+      ID: Id,
+      secret_key: app.globalData.secret_key
     }
     request(`${type}s.php`, params).then(data => {
       that.setData({
