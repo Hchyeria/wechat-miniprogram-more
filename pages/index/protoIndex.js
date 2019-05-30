@@ -14,12 +14,12 @@ function setLimit() {
       success(res) {
         switch (res.networkType) {
           case 'wifi':
-            resolve(15)
+            resolve(8)
             return
           case '4g':
-            resolve(10)
+            resolve(5)
         }
-        resolve(5)
+        resolve(3)
       },
       fail(res) {
         reject(5)
@@ -176,13 +176,28 @@ export function MPage(type) {
     onReachBottom() {
       page++;
       let that = this;
+      let oldlist = this.data.contentList
       loadContent(this, 2, this.data.type, page, typeID).then(length => {
-        if (length !== 0){
-          console.log(that)
+        console.log(length)
+        if (length !== 0) {
           that.setData({
             toastError: '',
             toastMessage: `已为您加载${length}条内容`
           })
+          if (that.data.contentList !== oldlist)
+            that.setData({
+              toastMessage: that.data.toastMessage + '!'
+            })
+        }
+        else {
+          that.setData({
+            toastError: 'error',
+            toastMessage: `暂无更多`
+          })
+          if (that.data.contentList !== oldlist)
+            that.setData({
+              toastMessage: that.data.toastMessage + '!'
+            })
         }
       })
     },
