@@ -1,4 +1,3 @@
-
 Component({
   properties: {
     isError: Boolean,

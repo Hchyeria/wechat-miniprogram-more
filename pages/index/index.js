@@ -8,6 +8,7 @@ import {
 import { onShare } from '../../utils/share.js'
 import { loadContent, loadBanner, loadBannerText, tabChange  } from './protoIndex.js'
 import { loadArticles } from './loadArticles.js'
+import { showRepeatMsg } from '../../utils/pick.js'
 
 let page = 1
 let typeID = 1
@@ -38,7 +39,8 @@ Page({
     toastError: 0,
     toastMessage: "",
     bannerTop: '129px',
-    isSlide: [0, 0]
+    isSlide: [0, 0],
+    isloadDown: false
   },
   onShareAppMessage(res) {
     return onShare(res)
@@ -122,30 +124,19 @@ Page({
   },
   onReachBottom() {
     let that = this;
-    let oldlist = that.data.contentList
+    that.setData({
+      isloadDown: true
+    })
     if (!that.data.islogin) {
       page++
       loadContent(that, 2, that.data.type, page, typeID).then(length => {
-        console.log(length)
         if (length !== 0){
-          that.setData({
-            toastError: '',
-            toastMessage: `已为您加载${length}条内容`
-          })
-          if (that.data.contentList !== oldlist)
-          that.setData({
-            toastMessage:that.data.toastMessage+'!'
-          })
+          showRepeatMsg(this, '', `已为您加载${length}条内容`, { isloadDown: false})
         }
         else{
           that.setData({
-            toastError: 'error',
-            toastMessage: `暂无更多`
+            isloadDown: false
           })
-          if (that.data.contentList !== oldlist)
-            that.setData({
-              toastMessage: that.data.toastMessage + '!'
-            })
         }
       })
     }

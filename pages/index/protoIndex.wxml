@@ -1,7 +1,6 @@
 
-<toast isError="{{toastError}}" message="{{toastMessage}}"  />
-
-
+<view id="app">
+  <toast isError="{{toastError}}" message="{{toastMessage}}"  />
 <view class='top {{islogin? "hide" : ""}}'>
   <topBar searchList='{{searchList}}' bindtap='topBar' type='{{type}}' />
   <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" index='{{typeID}}' bindstoreLeng='onStoreLeng'/>
@@ -28,9 +27,8 @@
         <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==1}}" bindonLoadPictrue="onLoadPictrue"/>
       </block>
     </view>
+    <view class='sk-spinner-pulse {{isloadDown? "" : "displayHide"}}'> </view>
   </view>
 </view>
-
-
-
 <image src='../../assets/add.png' class="add head-icon {{islogin||isLoad? 'hide' : ''}} {{addIconActive? 'add-icon-active' : ''}} " hover-class="add-icon-active" bindtap='toSend' />
+</view>

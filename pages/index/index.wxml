@@ -1,7 +1,7 @@
 <!--index.wxml-->
-<toast isError="{{toastError}}" message="{{toastMessage}}"  />
+  <toast isError="{{toastError}}" message="{{toastMessage}}"  />
 <view class='index-top'>
   <login bindGoindex="Goindex" bindonLoadIndex="onLoadIndex" class='login'/>
 </view>
-
 <include src='./protoIndex.wxml'  />
+

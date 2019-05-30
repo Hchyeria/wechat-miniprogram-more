@@ -74,3 +74,38 @@ export function getCurrentPageUrl() {
   var url = currentPage.route
   return url
 }
+
+export function showRepeatMsg(that, toastError, toastMessage, otherSetData) {
+  let oldMessage = that.data.toastMessage
+  if (otherSetData){
+    if (toastMessage === oldMessage) {
+      that.setData({
+        toastError,
+        toastMessage: oldMessage + '!',
+        ...otherSetData
+      })
+    }
+    else {
+      that.setData({
+        toastError,
+        toastMessage,
+        ...otherSetData
+      })
+    }
+  }
+  else{
+    if (toastMessage === oldMessage) {
+      that.setData({
+        toastError,
+        toastMessage: oldMessage + '!'
+      })
+    }
+    else {
+      that.setData({
+        toastError,
+        toastMessage
+      })
+    }
+  }
+  
+}
