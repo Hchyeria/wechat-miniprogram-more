@@ -33,6 +33,7 @@ Page({
     typeID: 1,
     isshow:false,
     isLoad: true,
+    addIconActive: false,
     loadClass: '',
     toastError: 0,
     toastMessage: "",
@@ -95,6 +96,7 @@ Page({
     forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
     let TabBar = this.getTabBar()
     this.setData({
+      addIconActive: false,
       TabBar
     })
     if (this.data.islogin) {
@@ -158,7 +160,7 @@ Page({
     touchMove[0] = e.changedTouches[0].pageX;
     touchMove[1] = e.changedTouches[0].clientY;
     let tempY = touchMove[1] > touchDot[1] ? touchMove[1] - touchDot[1] : touchDot[1] - touchMove[1]
-    if (touchMove[0] - touchDot[0] <= -80 && time < 5 && tempY < 50) {
+    if (touchMove[0] - touchDot[0] <= -80 && time < 10 && tempY < 50) {
       if (typeID < maxtypeID) {
         this.tabTap({
           detail: {
@@ -170,7 +172,7 @@ Page({
         })
       } 
     }
-    if (touchMove[0] - touchDot[0] >= 80 && time < 5 && tempY <= 50) {
+    if (touchMove[0] - touchDot[0] >= 80 && time < 10 && tempY <= 50) {
       if (typeID > 1) {
         this.tabTap({
           detail: {
@@ -186,6 +188,9 @@ Page({
     time = 0;
   },
   toSend(e) {
+    this.setData({
+      addIconActive: true
+    })
     wx.navigateTo({
       url: '../send/send'
     })

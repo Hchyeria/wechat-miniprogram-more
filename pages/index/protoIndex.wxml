@@ -33,4 +33,4 @@
 
 
 
-<image src='../../assets/add.png' class="add head-icon {{islogin||isLoad? 'hide' : ''}}" bindtap='toSend' />
+<image src='../../assets/add.png' class="add head-icon {{islogin||isLoad? 'hide' : ''}} {{addIconActive? 'add-icon-active' : ''}} " hover-class="add-icon-active" bindtap='toSend' />

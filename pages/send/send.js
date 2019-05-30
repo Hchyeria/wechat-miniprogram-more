@@ -30,7 +30,6 @@ function chooseLocation(that){
 
 function sendMsgWithoutimg(type, param, data, that) {
   request(type, param, data, 'POST', 1, 1).then(data => {
-    
     wx.showModal({
       title: '发布成功',
       showCancel: true
@@ -59,6 +58,9 @@ function sendMsg(targetURL, data, path, that, tempData = {}) {
     else {
       file_name = 'file' + ++i;
     }
+    if (!isimg && i !==1){
+      return;
+    }
     wx.uploadFile({
       url,
       filePath: path_img,
@@ -67,6 +69,9 @@ function sendMsg(targetURL, data, path, that, tempData = {}) {
       formData: isimg ? img_data : data,
       success: function (res) {
         if (res.data) {
+          console.log(res)
+          console.log(res.data)
+          console.log(JSON.parse(res.data))
           let resData = JSON.parse(res.data)
           if (resData.result.hasOwnProperty('iID')) {
             tempData.iID = resData.result.iID

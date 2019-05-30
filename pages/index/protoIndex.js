@@ -151,6 +151,7 @@ export function MPage(type) {
       searchList: {},
       typeID: 1,
       isLoad: true,
+      addIconActive: false,
       toastError: 0,
       toastMessage: "",
       bannerTop: '',
@@ -166,6 +167,9 @@ export function MPage(type) {
       page = 1
       console.log('index-page run under type:', this.data.type)
       forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
+      this.setData({
+        addIconActive: false
+      })
     },
     onLoad() {
       typeID = 1
@@ -243,7 +247,7 @@ export function MPage(type) {
       touchMove[0] = e.changedTouches[0].pageX;
       touchMove[1] = e.changedTouches[0].clientY;
       let tempY = touchMove[1] > touchDot[1] ? touchMove[1] - touchDot[1] : touchDot[1] - touchMove[1]
-      if (touchMove[0] - touchDot[0] <= -80 && time < 5 && tempY < 40) {
+      if (touchMove[0] - touchDot[0] <= -80 && time < 10 && tempY < 40) {
         if (typeID < maxtypeID) {
           this.tabTap({
             detail: {
@@ -255,7 +259,7 @@ export function MPage(type) {
           })
         } 
       }
-      if (touchMove[0] - touchDot[0] >= 80 && time < 5 && tempY <= 40) {
+      if (touchMove[0] - touchDot[0] >= 80 && time < 10 && tempY <= 40) {
         if (typeID > 1) {
           this.tabTap({
             detail: {
@@ -271,9 +275,15 @@ export function MPage(type) {
       time = 0;
     },
     toSend(e) {
-      wx.navigateTo({
-        url: '../send/send'
+      this.setData({
+        addIconActive: true
       })
+      setTimeout(() =>{
+        wx.navigateTo({
+          url: '../send/send'
+        })
+      }, 500)
+     
     }
   })
 }

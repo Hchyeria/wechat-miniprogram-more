@@ -104,9 +104,10 @@ height:50px;
 
 }
 .album2 {
-width:100%;
-margin-right:5%;
-display: flex
+  width:100%;
+  margin-right:5%;
+  display: flex;
+  height:140rpx;
 }
 .twoimg{
 height:60px;
@@ -119,7 +120,7 @@ margin-left: 8%
 }
 .message2{
   font-size: 0.96rem;
-  margin-top:5%;
+  margin-top: 10px;
   margin-left: 0
 }
 .container2{

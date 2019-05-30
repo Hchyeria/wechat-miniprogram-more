@@ -120,6 +120,14 @@ Page({
   replySuccess(e) {
     page = 1
     let that = this;
+    if (!that.data.list.length){
+      that.setData({
+        toastError: '',
+        toastMessage: `回复成功！`,
+        list: [{ ...app.globalData.userInfo, time: getIsoTime(), content: e.detail}]
+      })
+      return;
+    }
     that.setData({
       toastError: '',
       toastMessage: `回复成功！`,

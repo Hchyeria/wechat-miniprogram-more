@@ -33,6 +33,11 @@ page{
   margin:0;
   padding-bottom: env(safe-area-inset-bottom);
   filter:drop-shadow(1px 2px 4px var(--color-shadow));
+  transition: all .4s;
+}
+.add-icon-active{
+  transform: translate(0,-5px);
+  filter:drop-shadow(2px 5px 10px var(--color-shadow));
 }
 .banner{
   width: 100%;

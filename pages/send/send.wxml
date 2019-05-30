@@ -147,7 +147,7 @@
         </view>
       </view>
       <view class='msg-block send-buttton'>
-        <view class='selct-type-butto-item' bindtap='onSendMsg'>
+        <view class='selct-type-butto-item' hover-class="selct-type-butto-item-active" bindtap='onSendMsg'>
           发布
         </view>
       </view>
