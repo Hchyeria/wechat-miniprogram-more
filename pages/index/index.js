@@ -122,14 +122,31 @@ Page({
   },
   onReachBottom() {
     let that = this;
-    if (!this.data.islogin) {
+    let oldlist = that.data.contentList
+    if (!that.data.islogin) {
       page++
-      loadContent(this, 2, this.data.type, page, typeID).then(length => {
-        if (length !== 0)
+      loadContent(that, 2, that.data.type, page, typeID).then(length => {
+        console.log(length)
+        if (length !== 0){
           that.setData({
             toastError: '',
             toastMessage: `已为您加载${length}条内容`
           })
+          if (that.data.contentList !== oldlist)
+          that.setData({
+            toastMessage:that.data.toastMessage+'!'
+          })
+        }
+        else{
+          that.setData({
+            toastError: 'error',
+            toastMessage: `暂无更多`
+          })
+          if (that.data.contentList !== oldlist)
+            that.setData({
+              toastMessage: that.data.toastMessage + '!'
+            })
+        }
       })
     }
   },

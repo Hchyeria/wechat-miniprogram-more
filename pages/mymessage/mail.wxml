@@ -1,9 +1,9 @@
 <view class='container'>
-<view class='break'></view>
+  <view class='break'></view>
   <view class='bar'>
     <view class='row'>
       <image src='{{mail.author_avatar}}' class='head-icon avatar'/>
-      <view class='author-s'>
+      <view class='author-s' bindtap='onTap'>
         <text class='name'>{{mail.author_username}}</text>
         <text class='time'>{{timestamp}}</text>
       </view>
@@ -13,24 +13,24 @@
       </view>
     </view>
   </view>
-  <view class='comment'>
-  <view class='pinglun'wx:if='{{first}}'>评论了你</view>
-  <view class='pinglun'wx:if='{{!first}}'>回复了你</view>
-  <view disabled class='message' >{{(first&&mail.comment_content)||((!first)&&mail.comment2_content)}}</view>
+  <view class='comment' bindtap='onTap'>
+    <view class='pinglun'wx:if='{{first}}'>评论了你</view>
+    <view class='pinglun'wx:if='{{!first}}'>回复了你</view>
+    <view disabled class='message' >{{(first&&mail.comment_content)||((!first)&&mail.comment2_content)}}</view>
   </view>
- <view class='main'>
- <view class='line'></view>
- <view class='part'>
- <view class='my' wx:if='{{!first}}'>
- <view class='mine'>杨咩咩:</view>
- <view class='message2'>{{mail.comment1_content}}</view>
- </view>
-  <view disabled class='article'bindtap='onTap' >{{mail.article_content}}</view>
+  <view class='main'>
+    <view class='line' bindtap='onTap'></view>
+    <view class='part' bindtap='onTap'>
+      <view class='my' wx:if='{{!first}}'>
+        <view class='mine'>杨咩咩:</view>
+        <view class='message2'>{{mail.comment1_content}}</view>
+      </view>
+      <view disabled class='article'bindtap='onTap' >{{mail.article_content}}</view>
+    </view>
   </view>
+  <view class='depart'>
+    <image src='../../assets/delete.png' class='delete' bindtap='click'></image>
   </view>
-<view class='depart'>
-<image src='../../assets/delete.png' class='delete' bindtap='click'></image>
-</view>
-<model class='hhh' wx:if='{{isclick}}'  text1='{{text1}}'  mID='{{mID}}' bindtap='isEXIT' mail='{{mail}}'/>
+  <model class='hhh' wx:if='{{isclick}}'  text1='{{text1}}'  mID='{{mID}}' bindtap='isEXIT' mail='{{mail}}'/>
 </view>
  

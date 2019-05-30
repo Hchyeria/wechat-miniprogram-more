@@ -1,5 +1,5 @@
 <!--miniprogram/custom-tab-bar/index.wxml-->
-
+<toast isError="{{toastError}}" message="{{toastMessage}}" />
 <cover-view class="model" wx:if='{{isEXIT}}' >
   <cover-view class='box'>
   	

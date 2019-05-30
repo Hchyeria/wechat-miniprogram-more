@@ -1,0 +1,51 @@
+/* pages/userbook/userbook.wxss */
+@import '../../app.wxss';
+page{
+  height: 100%;
+  background-color: var(--color-backgroud-often)
+}
+.book{
+  height:900rpx;
+width:87%;
+margin:0 auto;
+left:10%;
+border-radius: 30rpx;
+}
+.booktitle{
+  width:100%;
+display:flex;
+justify-content:center;
+margin-bottom:4%;
+}
+.bookmain{
+  padding:30rpx;
+word-break:break-all;
+text-overflow:ellipsis;
+margin:20rpx;
+font-size:0.92em;
+line-height:2;
+}
+.confirm{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center
+}
+.button-sure{
+  display:block;
+box-sizing:border-box;
+font-size:38rpx;
+text-align:center;
+text-decoration:none;
+line-height:2;
+color: #ffffff;
+border-radius:15px;
+-webkit-tap-highlight-color:transparent;
+overflow:hidden;
+background-color:var(--color-d);
+font-weight:bold;
+box-shadow:1px 1px #ffffff inset, 2px 2px 0px 1px var(--color-d);
+width:25%;
+margin:10px 0px;
+transition:box-shadow .2s;
+}

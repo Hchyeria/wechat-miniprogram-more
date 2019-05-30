@@ -23,9 +23,6 @@ export function loadNOTAMail(that) {
         isnnull: that.data.isnnull &&false,
       })
     }
-    setTimeout(()=>{
-      console.log(that.data.isnnull)
-    })
   })
 }
 export function loadNOTBMail(that) {
@@ -50,9 +47,7 @@ export function loadNOTBMail(that) {
       that.setData({
         isnnull: that.data.isnnull &&false,
       })
-    } setTimeout(() => {
-      console.log(that.data.isnnull)
-    })
+    }
   })
 }
 
@@ -78,9 +73,7 @@ export function loadALLAMail(that) {
       that.setData({
         isanull: that.data.isanull &&false,
       })
-    } setTimeout(() => {
-      console.log(that.data.isanull)
-    })
+    }
   })
 }
 
@@ -106,9 +99,7 @@ export function loadALLBMail(that) {
       that.setData({
         isanull: that.data.isanull &&false,
       })
-    } setTimeout(() => {
-      console.log(that.data.isanull)
-    })
+    }
   })
 }
 export function loadALLCMail(that) {
@@ -133,9 +124,7 @@ export function loadALLCMail(that) {
       that.setData({
         isanull: that.data.isanull &&false,
       })
-    } setTimeout(() => {
-      console.log(that.data.isanull)
-    })
+    }
   })
 }
 export function loadALLDMail(that) {
@@ -160,9 +149,7 @@ export function loadALLDMail(that) {
       that.setData({
         isanull: that.data.isanull &&false,
       })
-    } setTimeout(() => {
-      console.log(that.data.isanull)
-    })
+    }
   })
 }
 export function loadNOTCMail(that) {
@@ -188,9 +175,6 @@ export function loadNOTCMail(that) {
         isnnull: that.data.isnnull &&false,
       })
     } 
-    setTimeout(() => {
-      console.log(that.data.isnnull)
-    })
   })
 }
 export function loadNOTDMail(that) {
@@ -215,9 +199,7 @@ export function loadNOTDMail(that) {
       that.setData({
         isnnull:that.data.isnnull&&false,
       })
-    } setTimeout(() => {
-      console.log(that.data.isnnull)
-    })
+    }
   })
 }
 const app = getApp()
