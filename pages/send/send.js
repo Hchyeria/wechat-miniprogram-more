@@ -8,6 +8,26 @@ import { getType, selctType } from '../../utils/pick.js'
 
 const app = getApp()
 
+function chooseLocation(that){
+  wx.chooseLocation({
+    success: function (res) {
+      console.log('LocationSelct Success')
+      that.setData({
+        name: res.name,
+        latitude: res.latitude,
+        longitude: res.longitude
+      })
+    },
+    fail(res) {
+      console.log(res)
+      that.setData({
+        toastError: 'selct location error',
+        toastMessage: `emm,unknown error`
+      })
+    }
+  })
+}
+
 function sendMsgWithoutimg(type, param, data, that) {
   request(type, param, data, 'POST', 1, 1).then(data => {
     
@@ -362,16 +382,7 @@ Page({
           wx.authorize({
             scope: 'scope.userLocation',
             success() {
-              wx.chooseLocation({
-                success: function (res) {
-                  console.log('LocationSelct Success')
-                  that.setData({
-                    name: res.name,
-                    latitude: res.latitude,
-                    longitude: res.longitude
-                  })
-                },
-              })
+              chooseLocation(that)
             },
             fail(res) {
               console.log(res)
@@ -381,6 +392,8 @@ Page({
               })
             }
           })
+        }else{
+          chooseLocation(that)
         }
       }
     })
