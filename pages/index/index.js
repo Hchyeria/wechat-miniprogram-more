@@ -71,6 +71,7 @@ Page({
     }
   },
   Goindex(login) {
+    loadContent(this, 2, this.data.type, page, typeID)
     this.setData({
       islogin: !login.detail.data.islogin,
       msgListStyle: 'messageList-motion',
@@ -112,7 +113,6 @@ Page({
     })
     typeID = 1
     loadBanner(this, typeID, this.data.type)
-    loadContent(this, 2, this.data.type, page, typeID)
     loadBannerText(this, this.data.type)
   },
   onReady(){
@@ -211,5 +211,8 @@ Page({
     wx.navigateTo({
       url: '../send/send'
     })
+  },
+  onDelete(){
+    this.onPullDownRefresh()
   }
 })

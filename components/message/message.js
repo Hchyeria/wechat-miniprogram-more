@@ -174,6 +174,7 @@ Component({
         isclick: !this.data.isclick,
         heart: !this.data.heart
       })
+      this.triggerEvent('delete')
     },
     download() {
       let that = this
