@@ -97,12 +97,13 @@ Page({
     page = 1
     getComments(this, this.data.Id, this.data.type)
   },
-  onReachBottom() {
+  onReachBottom(e, noToast=0) {
     page++
     let that = this
+    console.log(noToast)
     getComments(this, this.data.Id, this.data.type)
       .then(length => {
-        if (length !== 0)
+        if (length !== 0 && !noToast)
           that.setData({
             toastError: '',
             toastMessage: `已为您加载${length}条内容`
@@ -122,8 +123,8 @@ Page({
     that.setData({
       toastError: '',
       toastMessage: `回复成功！`,
-      list: [...that.data.list, { ...app.globalData.userInfo, content: e.detail, time: getIsoTime()}]
     })
+    that.onReachBottom(e, 1);
   },
   goToCrab() {
     toCrab({
