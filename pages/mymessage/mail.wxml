@@ -8,7 +8,7 @@
         <text class='time'>{{timestamp}}</text>
       </view>
       <view class='add' bindtap='toReply'>
-      <image src='../../assets/reply.png' class='icon' />
+      <image src='../../assets/reply.png' class='replay-icon' />
       <view class='huifu'>回复</view>
       </view>
     </view>

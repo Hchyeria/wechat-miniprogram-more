@@ -7,7 +7,6 @@ import {
 
 import { onShare } from '../../utils/share.js'
 import { loadContent, loadBanner, loadBannerText, tabChange  } from './protoIndex.js'
-import { loadArticles } from './loadArticles.js'
 import { showRepeatMsg } from '../../utils/pick.js'
 
 let page = 1
@@ -83,6 +82,7 @@ Page({
       isshow: true,
     })
     let that = this
+    
     var query = wx.createSelectorQuery();
     query.select('.top').boundingClientRect()
     query.exec(function (res) {
