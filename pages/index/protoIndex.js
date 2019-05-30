@@ -34,23 +34,17 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0) {
       .then(limit => {
         let params;
         if (type[0] === 'a') {
-          if (typeID == 4 || typeID==2)
           params = {
             secondType: `select_${type}_by_type`,
             typeID, mode, limit, page,
             secret_key: app.globalData.secret_key
           }
-          else{
-            params = {
-              secondType: `select_${type}_by_type`,
-              typeID, mode, limit, page,
-            }
-          }
         } else {
           params = {
             secondType: `select_${type}_by_type`,
             type: typeID,
-            limit, page
+            limit, page,
+            secret_key: app.globalData.secret_key
           }
         }
         return request(`${type}s.php`, params)

@@ -16,15 +16,6 @@ function navigateToMap(that) {
   })
 }
 
-function isCollected(that) {
-  return request('collections.php', {
-    secondType: 'is_collection',
-    secret_key: app.globalData.secret_key,
-    type: that.data.type[0] === 'a' ? 1 : 2,
-    id: that.data.ID
-  })
-}
-
 function item(that, icon) {
   return request('items.php', {
     secondType: 'update_status',
@@ -69,17 +60,13 @@ Component({
             timestamp: parseTimeStamp(val.time),
             imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`),
             ID: val.ID,
+            collected:val.is_collection,
             labels: val.labels ? val.labels.split(',') : null,
             sharence: {
               text: val.content,
               url: `/pages/detail/detail?Id=${val.ID}&type=${this.data.type}&from=share`,
               imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`)
             }
-          })
-          isCollected(this).then(data => {
-            this.setData({
-              collected: data.result
-            })
           })
         }
       }
