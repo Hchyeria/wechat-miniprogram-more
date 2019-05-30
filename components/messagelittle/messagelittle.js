@@ -1,5 +1,7 @@
 import { BASE_URL, parseTimeStamp,request } from '../../utils/request.js'
 
+const app = getApp()
+
 function navigateToDetail(that) {
   wx.navigateTo({
     url: `../../pages/detail/detail?Id=${that.data.article.ID || that.data.article.aID || that.data.article.iID}&type=${that.data.type}&isout=${that.data.isout}`,
@@ -8,7 +10,8 @@ function navigateToDetail(that) {
 function searchart(that,php,secondType){
   return request(php, {
     secondType: secondType ,
-    ID: that.data.ID
+    ID: that.data.ID,
+    secret_key:app.globalData.secret_key
   }).then(data=>{
     console.log(data.result[0])
     that.setData({
