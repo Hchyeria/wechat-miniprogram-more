@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/person/person",
-    "pages/index/item"
+    "pages/index/item",
+    "pages/userbook/userbook"
   ],
   "subpackages": [
     {
@@ -72,9 +73,9 @@
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "permission":{
-    "scope.userLocation":{
-      "desc":"用以显示消息的地址"
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用以显示消息的地址"
     }
   }
 }

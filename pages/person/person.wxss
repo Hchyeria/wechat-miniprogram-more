@@ -1,7 +1,8 @@
 /* pages/testpage1/testpage1.wxss */
+@import '../../app.wxss';
 page{
   overflow-y:hidden;
-  background-color: #f9fafc;
+  background-color: var(--color-backgroud-often);
   color: #384568;
   height: 100%;
   width: 100%
@@ -120,7 +121,7 @@ border-radius:10%;
 .break{
   height: 60%;
   width: 3px;  
-  background-color: #f9fafc;
+  background-color: var(--color-backgroud-often);
   border-radius: 46%;
 }
 .bottom{
@@ -146,14 +147,4 @@ opacity: 0.4
   margin:auto;
   justify-content: center;
   align-items: center;
-}
-.book{
-  height:450px;
-background-color:black;
-width:80%;
-margin:0 auto;
-position:absolute;
-top:17%;
-left:10%;
-
 }

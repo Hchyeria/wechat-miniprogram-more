@@ -150,8 +150,8 @@
 
   <view class='bar'>
     <view class='row'>
-      <view class='column2 col-middle' bindtap='onTap'>
-        <view class='price'>
+      <view class='column2 col-middle' >
+        <view class='price' bindtap='onTap'>
           <text class='name2'>¥</text>
           <text class='trueprice'>{{content.expect_price}}</text>
         </view>

@@ -27,7 +27,6 @@ Page({
     post: '',
     reply: '',
     school: '',
-    isbook:false
   },
   onShow() {
     loadUser(this)
@@ -59,13 +58,8 @@ Page({
     })
   },
   userbook(){
-    this.setData({
-      isbook:true
+    wx.navigateTo({
+      url: `../../pages/userbook/userbook`,
     })
   },
-  exit(){
-    this.setData({
-      isbook: false
-    })
-  }
 })
