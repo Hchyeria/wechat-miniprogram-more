@@ -1,5 +1,6 @@
 import { request } from '../../utils/request.js'
 
+const app = getApp();
 const targetURL = 'articles.php'
 export function loadArticles(that, tid, mode, limit = 15, page = 1) {
   request(targetURL, {
@@ -7,7 +8,7 @@ export function loadArticles(that, tid, mode, limit = 15, page = 1) {
     typeID: tid,
     mode: mode,
     limit: limit,
-    page: page
+    page: page,
   }).then(data => {
     that.setData({
       contentList: data.result
