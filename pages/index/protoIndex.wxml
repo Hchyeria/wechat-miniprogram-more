@@ -7,7 +7,7 @@
   <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" index='{{typeID}}' bindstoreLeng='onStoreLeng'/>
 </view>
 <view bindtouchstart="touchStart" bindtouchend="touchEnd">
-    <load isShow="{{isLoad}}" loadClass="{{isSlide[0]? 'loadslideleft' : isSlide[1]? 'loadslideright' : ''}}"/>
+    <load isShow="{{isLoad}}" loadClass="{{isSlide[0]? 'loadslideright' : isSlide[1]? 'loadslideleft' : ''}}"/>
   <view wx:if='{{banner}}' class='banner' style='padding-top:{{bannerTop}}'>
   <image class='isLoad? "" : "banner-motion"' mode='widthFix' src='https://{{BASE_URL}}/upload/banners/{{banner}}' bindload="onBannerLoad" binderror="onBannerLoad"/>
   <image class='banner-text' wx:if='{{bannerText[typeID-1].url}}' mode='aspectFit' src='https://{{BASE_URL}}/{{bannerText[typeID-1].url}}' binderror="onBannerTexerror"/>

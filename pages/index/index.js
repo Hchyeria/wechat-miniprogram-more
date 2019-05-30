@@ -159,18 +159,6 @@ Page({
     touchMove[1] = e.changedTouches[0].clientY;
     let tempY = touchMove[1] > touchDot[1] ? touchMove[1] - touchDot[1] : touchDot[1] - touchMove[1]
     if (touchMove[0] - touchDot[0] <= -80 && time < 5 && tempY < 50) {
-      if (typeID > 1){
-          this.tabTap({
-            detail: {
-              tid: --typeID
-            }
-          }, this)
-        this.setData({
-          typeID
-        })
-      }
-    }
-    if (touchMove[0] - touchDot[0] >= 80 && time < 5 && tempY <= 50) {
       if (typeID < maxtypeID) {
         this.tabTap({
           detail: {
@@ -181,6 +169,18 @@ Page({
           typeID
         })
       } 
+    }
+    if (touchMove[0] - touchDot[0] >= 80 && time < 5 && tempY <= 50) {
+      if (typeID > 1) {
+        this.tabTap({
+          detail: {
+            tid: --typeID
+          }
+        }, this)
+        this.setData({
+          typeID
+        })
+      }
     }
     clearInterval(interval);
     time = 0;

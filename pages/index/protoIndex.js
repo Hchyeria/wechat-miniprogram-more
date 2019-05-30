@@ -244,22 +244,22 @@ export function MPage(type) {
       touchMove[1] = e.changedTouches[0].clientY;
       let tempY = touchMove[1] > touchDot[1] ? touchMove[1] - touchDot[1] : touchDot[1] - touchMove[1]
       if (touchMove[0] - touchDot[0] <= -80 && time < 5 && tempY < 40) {
-        if (typeID > 1) {
+        if (typeID < maxtypeID) {
           this.tabTap({
             detail: {
-              tid: --typeID
+              tid: ++typeID
             }
           }, this)
           this.setData({
             typeID
           })
-        }
+        } 
       }
       if (touchMove[0] - touchDot[0] >= 80 && time < 5 && tempY <= 40) {
-        if (typeID < maxtypeID) {
+        if (typeID > 1) {
           this.tabTap({
             detail: {
-              tid: ++typeID
+              tid: --typeID
             }
           }, this)
           this.setData({
