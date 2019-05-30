@@ -22,7 +22,7 @@
   min-height:300rpx;
 }
 .name{
-  font-size: 1.4rem;
+  font-size: 1rem;
   color:#001050;
 }
 .time{
@@ -92,7 +92,9 @@ margin-top:4%;
 }
 .school{
   font-size: 0.7rem;
-  color: #9CA2A5
+  color: #9CA2A5;
+  margin-top:5px;
+
 }
 .row {
 width:100%;

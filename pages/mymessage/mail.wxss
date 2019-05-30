@@ -46,14 +46,14 @@ margin-top: 2%
   border-radius: 100%;
 }
 .delete{
-height:30px;
-width:30px;
-opacity:0.4;
+  height:40rpx;
+  width:40rpx;
+  opacity:0.4;
 }
 .depart{
 padding-top: 0%;
 padding-left: 85%;
-margin-top:3%
+margin-top:15px
 }
 .bgfoucs{
 width:40px;
@@ -104,10 +104,16 @@ opacity: 0.4
   width: 100%
 }
 .huifu{
-  margin-top:11%;
-font-size: 0.8em;
-color:#545454;
+  font-size: 0.8em;
+  color:#545454;
 }
+.replay-icon{
+  width:30rpx;
+  height:30rpx;
+  margin-right:10px;
+
+}
+
 .main{
 margin-left:7%;
 margin-top:3%;

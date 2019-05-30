@@ -65,7 +65,7 @@
   </view>
   <view class='bar'>
     <view class='row'>
-        <toggleIcon wx:if='{{status=="user"}}' image='heart' status='{{collected}}' class='heart' bindtap='favorite' />
+        <toggleIcon wx:if='{{status=="user"}}' image='heart' status='{{content.is_collection}}' class='heart' bindtap='favorite' />
         <image src='../../assets/comment.png' class='icon toReply' bindtap='toReply' />
         <text class='col-middle number'>{{content.comment_num}}</text>
     </view>

@@ -82,6 +82,7 @@ Page({
       isshow: true,
     })
     let that = this
+    
     var query = wx.createSelectorQuery();
     query.select('.top').boundingClientRect()
     query.exec(function (res) {
@@ -113,8 +114,8 @@ Page({
       isLoad: true
     })
     typeID = 1
-    loadBanner(this, typeID, this.data.type)
     loadContent(this, 2, this.data.type, page, typeID)
+    loadBanner(this, typeID, this.data.type)
     loadBannerText(this, this.data.type)
   },
   onReady(){
