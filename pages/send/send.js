@@ -3,8 +3,7 @@ import {
   request, BASE_URL, API_URL
 } from '../../utils/request.js'
 
-import { getType, selctType } from '../../utils/pick.js'
-
+import { getType, selctType, showRepeatMsg } from '../../utils/pick.js'
 
 const app = getApp()
 
@@ -30,10 +29,7 @@ function chooseLocation(that){
 
 function sendMsgWithoutimg(type, param, data, that) {
   request(type, param, data, 'POST', 1, 1).then(data => {
-    wx.showModal({
-      title: '发布成功',
-      showCancel: true
-    })
+    showRepeatMsg(that, '', '发布成功')
     that.onBack();
   })
 }
@@ -87,17 +83,11 @@ function sendMsg(targetURL, data, path, that, tempData = {}) {
       },
       fail: function (e) {
         fail++;
-        that.setData({
-          toastError: 'ggg',
-          toastMessage: `上传失败！`
-        })
+        showRepeatMsg(that, 'gg', '上传失败')
       },
       complete: function () {
         if (i === path.length) {
-          that.setData({
-            toastError: '',
-            toastMessage: `发布成功！`
-          })
+          showRepeatMsg(that, '', '发布成功')
           that.onBack();
         } else {
           tempData.i = i;
@@ -111,6 +101,10 @@ function sendMsg(targetURL, data, path, that, tempData = {}) {
     })
   })
 }
+let time = 0
+let touchDot = 0
+let touchMove = 0
+let interval = ''
 
 Page({
 
@@ -176,6 +170,10 @@ Page({
     getType(targetURL, params, 'tabList', this)
     params.secondType = 'get_item_types'
     getType(targetURL, params, 'objectList', this, 1, 0)
+  },
+  onShow(){
+    clearInterval(interval)
+    time = 0
   },
   onBack: function () {
     let that = this;
@@ -325,17 +323,11 @@ Page({
     let that = this
     let istypeMsg = !!this.data.isactive[0]
     if (!this.data.content || !this.data.typeText) {
-      that.setData({
-        toastError: 'ggg',
-        toastMessage: `请填写完整！`
-      })
+      showRepeatMsg(that, 'ggg', '请填写完整！')
       return;
     }
     if (istypeMsg ? !this.data.articleType : !this.data.itemType) {
-      that.setData({
-        toastError: 'ggg',
-        toastMessage: `请填写完整！`
-      })
+      showRepeatMsg(that, 'ggg', '请填写完整！')
       return;
     }
     let msgtargetURL = 'articles.php?secondType=insert_article&openID=' + app.globalData.openID
@@ -362,10 +354,7 @@ Page({
         contact_way: this.data.contactWay
       }
     data = { ...data, labels: that.data.labelList.join(",") }
-    that.setData({
-      toastError: '',
-      toastMessage: `正在发布`
-    })
+    showRepeatMsg(that, '', '正在发布')
     if (!path.length) {
       istypeMsg ? sendMsgWithoutimg('articles.php', {
         secondType: 'insert_article',
@@ -375,10 +364,7 @@ Page({
           secondType: 'insert_item',
           openID: app.globalData.openID
         }, data, this) */
-        that.setData({
-          toastError: "1",
-          toastMessage: `至少选择一张图片`
-        })
+        showRepeatMsg(that, '1', '至少选择一张图片')
       return;
     }
     istypeMsg ? sendMsg(msgtargetURL, data, path, this) : sendMsg(dealtargetURL, data, path, this)
@@ -394,11 +380,7 @@ Page({
               chooseLocation(that)
             },
             fail(res) {
-              console.log(res)
-              that.setData({
-                toastError: 'selct location error',
-                toastMessage: `授权后方可选择地址`
-              })
+              showRepeatMsg(that , 'selct location error', '授权后方可选择地址')
             }
           })
         }else{
@@ -412,11 +394,7 @@ Page({
     if(val === '') return
     let { isfocus, labelList } = this.data
     if (labelList.indexOf(val) !== -1){
-      this.setData({
-        toastError: 'ggg',
-        toastMessage: `自定义标签${val}重复！`,
-        labVal: '',
-      })
+      showRepeatMsg(this, 'ggg', `自定义标签${val}重复`, { labVal: ''})
       return
     }
     isfocus[3] = 0
@@ -433,5 +411,30 @@ Page({
         labelList: [...this.data.labelList.slice(0,index),...this.data.labelList.slice(index+1)]
       })
     }
+  },
+  touchStart(e) {
+    if (!this.data.isactive[0] && !this.data.isactive[1]) {
+      touchDot = e.touches[0].clientY;
+      time = 0;
+      interval = setInterval(() => {
+        time++;
+        if (time > 10) {
+          clearInterval(interval);
+        }
+      }, 100);
+    }
+  },
+  touchEnd(e) {
+    if (!this.data.isactive[0] && !this.data.isactive[1]){
+      touchMove = e.changedTouches[0].clientY;
+      if (touchMove - touchDot <= -80 && time < 10) {
+        this.onTapdeal()
+      }
+      if (touchMove - touchDot >= 80 && time < 10) {
+        this.onTapmsg()
+      }
+    }
+    clearInterval(interval);
+    time = 0;
   }
 })

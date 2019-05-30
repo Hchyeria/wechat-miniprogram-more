@@ -75,7 +75,8 @@
         "pagePath": "pages/person/person",
         "text": "user"
       }
-    ]
+    ],
+    "position": "bottom"
   },
   "sitemapLocation": "sitemap.json",
   "permission": {

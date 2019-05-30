@@ -4,7 +4,7 @@ import {
 
 import { toCrab } from '../../utils/crab.js'
 import { onShare } from '../../utils/share.js'
-import { getIsoTime } from '../../utils/pick.js'
+import { getIsoTime, showRepeatMsg } from '../../utils/pick.js'
 
 function getContent(that, Id, type) {
   return new Promise((resolve, reject) => {
@@ -60,7 +60,8 @@ Page({
     from: 'inner',
     isLoad: true,
     toastError: 0,
-    toastMessage: ""
+    toastMessage: "",
+    isloadDown: false
   },
   onShareAppMessage(res) {
     return onShare(res)
@@ -100,14 +101,20 @@ Page({
   onReachBottom(e, noToast=0) {
     page++
     let that = this
-    console.log(noToast)
+    that.setData({
+      isloadDown: true
+    })
     getComments(this, this.data.Id, this.data.type)
       .then(length => {
-        if (length !== 0 && !noToast)
+        if (length !== 0 && !noToast){
+          showRepeatMsg(that, '', `已为您加载${length}条内容`, { isloadDown: false })
+        }
+        else{
+          page--
           that.setData({
-            toastError: '',
-            toastMessage: `已为您加载${length}条内容`
+            isloadDown: false
           })
+        } 
       })
   },
   toReply(e) {
@@ -118,21 +125,14 @@ Page({
     })
   },
   replySuccess(e) {
-    page = 1
     let that = this;
-    if (!that.data.list.length){
-      that.setData({
-        toastError: '',
-        toastMessage: `回复成功！`,
-        list: [{ ...app.globalData.userInfo, time: getIsoTime(), content: e.detail}]
-      })
+    console.log(that.data.list.length)
+    if (that.data.list.length % limit !== 0){
+      showRepeatMsg(that, '', `回复成功！`, { list: [...that.data.list,{ ...app.globalData.userInfo, time: getIsoTime(), content: e.detail }]})
+      console.log("233")
       return;
     }
-    that.setData({
-      toastError: '',
-      toastMessage: `回复成功！`,
-    })
-    that.onReachBottom(e, 1);
+    showRepeatMsg(that, '', `回复成功！`)
   },
   goToCrab() {
     toCrab({

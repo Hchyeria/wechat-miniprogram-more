@@ -10,7 +10,7 @@
     </view>
   </view>
 </view>
-<view class='contain-send' style='margin-top:{{topHeight}};height:{{(isactive[0]||isactive[1])? mainHeight+"px" : mainHeight+"px"}}'>
+<view class='contain-send' style='margin-top:{{topHeight}};height:{{(isactive[0]||isactive[1])? mainHeight+"px" : mainHeight+"px"}}' bindtouchstart="touchStart" bindtouchend="touchEnd">
   <view id='send-msg' class='{{msgClass}}' bindtap='onTapmsg'>
     <image src='./assets/flybird.png' mode="widthFix" />
   </view>

@@ -3,25 +3,25 @@
   --margin-tab:30rpx;
   margin-top:var(--margin-bar);
   white-space: nowrap; 
-text-align:center;
-display:flex;
-justify-content:center;
-align-items:center;
-color:#b5bcc4;
-height:25px;
-padding:4px 15px 10px 6px;
-box-shadow: 0px 0px rgba(0,0,0,0.04) inset, 0px 4px 5px 0px rgba(0,0,0,0.1);
-transition:all .1s;
-overflow: hidden
+  text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#b5bcc4;
+  height:25px;
+  padding:4px 15px 10px 6px;
+  box-shadow: 0px 0px rgba(0,0,0,0.04) inset, 0px 4px 5px 0px rgba(0,0,0,0.1);
+  transition:all .1s;
+  overflow: hidden
 }
 .tab{
-transition:all .1s;
-margin:0 10px 4px;
-display:inline-block;
-font-size:0.86em;
-color: #000000;
-line-height:28px;
-letter-spacing:5px;
+  transition:all .1s;
+  margin:0 10px 4px;
+  display:inline-block;
+  font-size:0.86em;
+  color: #000000;
+  line-height:28px;
+  letter-spacing:5px;
 }
 .bg-0{
    border:1.2px solid #347fbf;
@@ -80,7 +80,7 @@ background-color:#f56c28;
 color:#fff;  
 }
 .tab-selected-1{
-transition:  all .2s ;
-background-color:#e95205;
-color:#fff;
+  transition:  all .2s ;
+  background-color:#e95205;
+  color:#fff;
 }

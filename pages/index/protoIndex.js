@@ -6,6 +6,7 @@ import {
   forTabBar
 } from '../../custom-tab-bar/switchTab.js'
 import { onShare } from '../../utils/share.js'
+import { showRepeatMsg } from '../../utils/pick.js'
 
 const app = getApp()
 function setLimit() {
@@ -155,7 +156,8 @@ export function MPage(type) {
       toastError: 0,
       toastMessage: "",
       bannerTop: '',
-      isSlide: [0, 0]
+      isSlide: [0, 0],
+      isloadDown: false
     },
     onShareAppMessage(res) {
       return onShare(res)
@@ -167,7 +169,7 @@ export function MPage(type) {
       page = 1
       console.log('index-page run under type:', this.data.type)
       forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
-      this.setData({
+      this.data.addIconActive &&  this.setData({
         addIconActive: false
       })
     },
@@ -180,28 +182,17 @@ export function MPage(type) {
     onReachBottom() {
       page++;
       let that = this;
-      let oldlist = this.data.contentList
+      that.setData({
+        isloadDown: true
+      })
       loadContent(this, 2, this.data.type, page, typeID).then(length => {
-        console.log(length)
         if (length !== 0) {
-          that.setData({
-            toastError: '',
-            toastMessage: `已为您加载${length}条内容`
-          })
-          if (that.data.contentList !== oldlist)
-            that.setData({
-              toastMessage: that.data.toastMessage + '!'
-            })
+          showRepeatMsg(this, '', `已为您加载${length}条内容`, { isloadDown: false })
         }
         else {
           that.setData({
-            toastError: 'error',
-            toastMessage: `暂无更多`
+            isloadDown: false
           })
-          if (that.data.contentList !== oldlist)
-            that.setData({
-              toastMessage: that.data.toastMessage + '!'
-            })
         }
       })
     },
