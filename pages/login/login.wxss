@@ -72,7 +72,7 @@
   width:80%;
   text-align:center;
   color:var(--color-yellow);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight:bold;
   display:flex;
   justify-content:center;
@@ -91,7 +91,7 @@
   width: 20rpx;
 }
 .selct-type-text{
-  width: 40%;
+  width: 45%;
   border-bottom: 2px #ffffff solid;
   padding: 15rpx;
   margin: 10rpx;
@@ -171,7 +171,7 @@
   position:absulute;
   top:0;
   text-align:center;
-  color:var(--color-yellow);
+  color: #333333;
   z-index:9999;
   background-color:#cfc6c1;
   display:flex;

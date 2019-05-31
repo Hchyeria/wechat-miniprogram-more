@@ -86,12 +86,12 @@ image{
           animation: sk-pulseScaleOut 1s infinite ease-in-out; 
 }
 
-.sk-spinner-pulse-yellow {
+.sk-spinner-pulse {
   box-sizing: border-box;
   width: 60px;
   height: 60px;
   margin: 60px auto;
-  background-color: var(--color-yellow);
+  background-color: #333333;
   border-radius: 100%;
   -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
           animation: sk-pulseScaleOut 1s infinite ease-in-out; 
