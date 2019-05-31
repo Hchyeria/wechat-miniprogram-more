@@ -4,10 +4,13 @@
   display: flex;
   transition: all 0.4s;
 }
-
+.contain{
+  width: 100%;
+  overflow-x: hidden;
+}
 .login-block{
   width: 25%;
-  flex: 1
+  flex: 0.25
 }
 .signup-button{
   opacity: 0;

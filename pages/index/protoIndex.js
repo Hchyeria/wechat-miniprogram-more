@@ -140,7 +140,6 @@ return new Promise((resolve, reject) =>{
             let { nickName, avatarUrl } = res.userInfo
             app.globalData.userInfo.nickName = nickName
             app.globalData.userInfo.avatarUrl = avatarUrl
-            console.log(res.userInfo)
             postCode(app).then(data =>{
               getUserInfo(app).then(data => {
                 app.globalData.userInfo = Object.assign({}, app.globalData.userInfo, data.result[0])
