@@ -1,7 +1,3 @@
-import {
-  request
-} from './request.js'
-
 export function onShare(res) {
   console.log(res)
   let {
@@ -13,6 +9,6 @@ export function onShare(res) {
     path: sharence.url
   } : {
     title: '一个超酷的APP',
-    path: '/pages/index/index'
+    path: '/pages/login/login'
   }
 }
