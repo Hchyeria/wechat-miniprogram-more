@@ -3,7 +3,8 @@
   <view class='sk-spinner-pulse-yellow'></view>
   <view class='load-text'>正在准备中... </view>
 </view>
-<view id="login" style="transform:translate({{slideClass}},0)" bindtouchstart="touchStart" bindtouchend="touchEnd">
+<view class='contain'>
+  <view id="login" style="transform:translate({{slideClass}},0)" bindtouchstart="touchStart" bindtouchend="touchEnd">
   <view id="login1" class='login-block'>
     <image src='https://{{BASE_URL}}/upload/login/index.png' mode="widthFix" data-index="0" bindload="onLoadImg"/>
       <view class='index-button {{islogin? "hide" : ""}}' hover-class="button-hover">
@@ -77,5 +78,7 @@
       </view>
   </view>
 </view>
+</view>
+
 
 <image src='./assets/play-button.png' mode="aspectFit" class='play-button {{islogin? "" : "hide"}} {{playButtonClass? "" : "hide"}} {{!isload[0] || !isload[1] || !isload[2] || !isload[3]? "hide" : ""}}' hover-class='play-button-hover' bindtap='onTapPlay'/>
