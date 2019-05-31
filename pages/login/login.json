@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "toast": "/components/toast/toast"
+  },
+  "navigationBarBackgroundColor": "#cfc6c1",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#cfc6c1",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

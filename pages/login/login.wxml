@@ -1,0 +1,81 @@
+<toast isError="{{toastError}}" message="{{toastMessage}}" />
+<view id="loading" class='{{!isload[0] || !isload[1] || !isload[2] || !isload[3]? "" : "displayHide" }}' style='height:{{maxHeight}};'>
+  <view class='sk-spinner-pulse-yellow'></view>
+  <view class='load-text'>正在准备中... </view>
+</view>
+<view id="login" style="transform:translate({{slideClass}},0)" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <view id="login1" class='login-block'>
+    <image src='https://{{BASE_URL}}/upload/login/index.png' mode="widthFix" data-index="0" bindload="onLoadImg"/>
+      <view class='index-button {{islogin? "hide" : ""}}' hover-class="button-hover">
+        <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='signup-button'>
+        </button>
+        <view class='button-class'> 进入社区</view>
+      </view>
+  </view>
+  <view id="login2" class='login-block'>
+    <image src='https://{{BASE_URL}}/upload/login/msg.png' mode="widthFix" data-index="1" bindload="onLoadImg" />
+  </view>
+  <view id="login3" class='login-block'>
+    <image src='https://{{BASE_URL}}/upload/login/deal.png' mode="widthFix" data-index="2" bindload="onLoadImg" />
+  </view>
+  <view id="login4" class='login-block' bindtap='onBlurSelect'>
+    <image src='https://{{BASE_URL}}/upload/login/final.png' mode="widthFix" data-index="3" bindload="onLoadImg" />  
+     <view class='section {{issure? "fadeIn":"displayHide"}}'>
+        <view class="spinner {{isloadSpan? '' : 'hide'}}"></view>
+        <view class="section-block" catchtap='onShowSlectLocation'>
+          <view class="section-title">
+            <view>
+                {{locationId? "已选择":"请选择省份"}}
+            </view>
+            <view class='msg-arrow-contain'>
+              <image src='../../assets/arrow.png' mode="aspectFit" class="msg-arrow" />
+            </view>
+          </view>
+          <view class="selct-text-contain">
+              <view class="{{locationId? 'selct-type-text':'hide'}}">{{locationPickText}}</view>
+          </view>
+          <view class='pick-shcool-position {{isshowselct[0]? "fadeIn":"hide"}}'>
+            <view class="pick-shcool" catchtap='onSlectlocation'>
+              <view class='pick-shcool-contain' data-blur='1'>
+                <block wx:for='{{objectlocationArray}}' wx:key='locationKey' wx:for-item='item' wx:for-index='i' >
+                  <view class='selct-item-list  {{item.style}}' id='selct-type-{{i}}'>
+                    <view class="selct-type-text" data-lid='{{item.location_id}}'>
+                    {{item.location_name}}
+                    </view>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='section-block' catchtap='onShowSlectSchool'>
+            <view class="section-title">
+              <view>
+                  {{schoolPickText? "已选择":"请选择学校"}}
+              </view>
+              <view class='msg-arrow-contain'>
+                <image src='../../assets/arrow.png' mode="aspectFit" class="msg-arrow" />
+              </view>
+            </view>
+            <view class="selct-text-contain">
+                <view class="{{schoolPickText? 'selct-type-text':'hide'}}">{{schoolPickText}}</view>
+            </view>
+            <view class='pick-shcool-position {{isshowselct[1]? "fadeIn":"hide"}}'>
+              <view class="pick-shcool" catchtap='onSlectSchool'>
+                <view class='pick-shcool-contain' data-blur='1'>
+                  <block wx:for='{{objectschoolArray}}' wx:key='schoolKey' wx:for-item='item' wx:for-index='i' >
+                    <view class='selct-item-list  {{item.style}}' id='selct-type-{{i}}'>
+                      <view class="selct-type-text" data-sid='{{item.sID}}'>
+                      {{item.school_name}}
+                      </view>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </view>
+        </view>
+      </view>
+  </view>
+</view>
+
+<image src='./assets/play-button.png' mode="aspectFit" class='play-button {{islogin? "" : "hide"}} {{playButtonClass? "" : "hide"}} {{!isload[0] || !isload[1] || !isload[2] || !isload[3]? "hide" : ""}}' hover-class='play-button-hover' bindtap='onTapPlay'/>

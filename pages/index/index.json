@@ -3,7 +3,6 @@
     "topBar": "/components/topBar/topBar",
     "tabBar": "/components/tabBar/tabBar",
     "message":"/components/message/message",
-    "login": "/components/login/login",
     "load": "/components/load/load",
     "toast": "/components/toast/toast"
   },

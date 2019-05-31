@@ -6,6 +6,12 @@
   ],
   "subpackages": [
     {
+      "root": "pages/login/",
+      "pages": [
+        "login"
+      ]
+    },
+    {
       "root": "pages/send/",
       "pages": [
         "send"

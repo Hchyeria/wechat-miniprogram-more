@@ -12,4 +12,5 @@ page{
   --color-send-black: #484F59;
   --color-shadow: #ababab;
   --color-backgroud-often:#f9fafc;
+  --color-yellow: #ffc033;
 }

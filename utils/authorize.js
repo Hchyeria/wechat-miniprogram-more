@@ -51,5 +51,20 @@ export function postCode(app){
       resolve(data)
     })
   })
+}
+
+export function getUserInfo(app) {
+  return new Promise((resolve, reject) => {
+    request('users.php', {
+      secondType: 'get_user_info',
+      secret_key: app.globalData.secret_key
+    }, {}, 'GET')
+      .then(data => {
+        resolve(data)
+      })
+      .catch(e => {
+        reject(e)
+      })
+  })
 
 }
