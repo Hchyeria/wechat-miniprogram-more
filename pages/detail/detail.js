@@ -76,6 +76,7 @@ Page({
     getContent(this, option.Id, option.type)
     getComments(this, option.Id, option.type)
     if (option.from && option.from === 'share') {
+      console.log('outer')
       let status = 'stranger';
       if (app.globalData.secret_key !== '') {
         status = 'user'
@@ -149,7 +150,6 @@ Page({
     })
   },
   goBack() {
-    let url = this.data.status === 'user' ? '/pages/index/item' : '/pages/index/index'
-    wx.switchTab({ url })
+    this.data.status === 'user' ? wx.switchTab({ url: '/pages/index/index' }) : wx.navigateTo({ url: '/pages/login/login'  })
   }
 })

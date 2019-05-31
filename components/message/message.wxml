@@ -108,7 +108,7 @@
         <image src='../../assets/comment.png' class='icon' bindtap='toReply' />
         <text class='col-middle number'>{{content.comment_num}}</text>
       </view>
-      <toggleIcon image='share' status='{{false}}' class='share2' openType='share' bindtap='share'wx:if='{{!isdelete}}'/>
+      <toggleIcon image='share' status='{{false}}' class='share2' openType='share' bindtap='share'wx:if='{{!isdelete}}' sharence='{{sharence}}'/>
       <view class='maxmore'wx:if='{{isdelete}}'>
         <view class='more'>
           <image src='../../assets/more.png' class='icon minmore' bindtap='more'></image>
@@ -119,7 +119,7 @@
           <image src='../../assets/delete.png' class='delete' bindtap='click'></image>
         </view>
         <model class='hhh' wx:if='{{isclick}}'  text1='{{text1}}'  ID='{{ID}}' bindtap='isEXIT'  isItem='{{isItem}}'/>
-        <toggleIcon image='share' status='{{false}}'  openType='share' bindtap='share'/>
+        <toggleIcon image='share' status='{{false}}'  openType='share' bindtap='share' sharence='{{sharence}}'/>
         <image src='../../assets/download.png' class='download icon' wx:if='{{isdelete}}' bindtap='download'></image>
       </view>
     </view>
