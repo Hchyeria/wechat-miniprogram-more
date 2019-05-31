@@ -46,11 +46,9 @@ Component({
       value: {},
       observer(val) {
         if (val && val.time) {
-          if (val.openID == app.globalData.openID) {
-            this.setData({
-              isdelete: true
-            })
-          }
+          this.setData({
+            isdelete: val.openID == app.globalData.openID
+          })
           if (val.address !== 'hhh') {
             this.setData({
               isadd: true
@@ -158,6 +156,7 @@ Component({
         isclick: !this.data.isclick,
         heart: !this.data.heart
       })
+      app[`refresher_${this.data.type}`]()
       this.triggerEvent('delete')
     },
     download() {

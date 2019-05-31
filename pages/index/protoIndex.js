@@ -9,6 +9,7 @@ import { onShare } from '../../utils/share.js'
 import { showRepeatMsg } from '../../utils/pick.js'
 
 const app = getApp()
+
 function setLimit() {
   return new Promise((resolve, reject) => {
     wx.getNetworkType({
@@ -126,10 +127,16 @@ export function tabChange(typeID, that, page) {
   loadBanner(that, typeID, that.data.type)
 }
 
+function attachRefresher(that,type){
+  app[`refresher_${type}`] = () => {
+    console.log(`refresh_${type}`)
+    that.onPullDownRefresh()
+  }
+}
+
 export function MPage(type) {
   let page = 1
   let typeID = 1
-  const app = getApp()
 
   let time = 0
   let touchDot = [0, 0]
@@ -169,6 +176,7 @@ export function MPage(type) {
     },
     onLoad() {
       typeID = 1
+      attachRefresher(this,type)
       loadBannerText(this, this.data.type)
       loadContent(this, 2, this.data.type, page, typeID)
       loadBanner(this, typeID, this.data.type)

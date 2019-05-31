@@ -7,7 +7,7 @@ import { onShare } from '../../utils/share.js'
 import { getIsoTime, showRepeatMsg } from '../../utils/pick.js'
 
 function getContent(that, Id, type) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     let params = {
       secondType: `select_${type}_by_id`,
       ID: Id,
@@ -151,5 +151,8 @@ Page({
   },
   goBack() {
     this.data.status === 'user' ? wx.switchTab({ url: '/pages/index/index' }) : wx.navigateTo({ url: '/pages/login/login' })
+  },
+  onDelete(){
+    wx.navigateBack()
   }
 })

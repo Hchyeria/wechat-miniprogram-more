@@ -71,14 +71,6 @@
       </view>
       <view class='msg-content-box-1' bindtap='onSetContextTap'>{{content?content: isactive[1]? "请对商品进行简洁的描述,例:新旧程度,是否可刀等内容" : ""}}</view>
     </view>
-    <!-->
-    <view class='msg-content send-msg-title msg-block' data-id='0' bindtap='onSetFocus'>
-      输入内容
-      <input class='msg-content-box-0' maxlength='-1' fixed="true" focus='{{isfocus[0]}}' data-id='0' bindconfirm='onSetContext' bindblur='onSetContextBlur' bindinput='onSetContext'>
-      </input>
-      <view class='msg-content-box-1' bindtap='onSetContextTap'>{{content?content:"请对商品进行简洁的描述,例:新旧程度,是否可刀等内容"}}</view>
-    </view>
-    <-->
       <view class='msg-seletext msg-block' bindtap='onLocation'>
         <view class='send-msg-title'>
           选择地点
