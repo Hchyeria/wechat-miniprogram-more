@@ -351,10 +351,6 @@ Page({
         secondType: 'insert_article',
         openID: app.globalData.openID
       }, data, this) :
-        /* sendMsgWithoutimg('items.php', {
-          secondType: 'insert_item',
-          openID: app.globalData.openID
-        }, data, this) */
         showRepeatMsg(that, '1', '至少选择一张图片')
       return;
     }
