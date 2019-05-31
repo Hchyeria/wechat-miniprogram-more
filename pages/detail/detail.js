@@ -76,6 +76,7 @@ Page({
     getContent(this, option.Id, option.type)
     getComments(this, option.Id, option.type)
     if (option.from && option.from === 'share') {
+      console.log('outer')
       let status = 'stranger';
       if (app.globalData.secret_key !== '') {
         status = 'user'
