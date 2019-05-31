@@ -7,7 +7,7 @@ Component({
       observer(val) {
         let that = this
         if (val) {
-          if (this.data.isDisappear){
+          if (this.data.isDisappear) {
             this.setData({
               isDisappear: 0
             })
@@ -27,7 +27,7 @@ Component({
     isDisappear: 1
   },
   pageLifetimes: {
-  
+
   },
   lifetimes: {
     attached() {
@@ -37,6 +37,6 @@ Component({
     },
   },
   methods: {
-    
+
   }
 })

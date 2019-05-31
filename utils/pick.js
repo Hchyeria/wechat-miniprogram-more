@@ -57,10 +57,10 @@ export function selctType(id, typeNum, typeList, that, id_type = 'type_id', type
     [PickText]: type_text
   })
 }
-export function getIsoTime(){
+export function getIsoTime() {
   let date = new Date();
   let y = date.getFullYear();
-  let m = date.getMonth()+1 >= 10 ? m+1 : "0" + (m+1);
+  let m = date.getMonth() + 1 >= 10 ? m + 1 : "0" + (m + 1);
   let d = date.getDate() >= 10 ? d : "0" + d;
   let h = date.getHours() >= 10 ? h : "0" + h;
   let min = date.getMinutes() >= 10 ? min : "0" + min;
@@ -77,7 +77,7 @@ export function getCurrentPageUrl() {
 
 export function showRepeatMsg(that, toastError, toastMessage, otherSetData) {
   let oldMessage = that.data.toastMessage
-  if (otherSetData){
+  if (otherSetData) {
     if (toastMessage === oldMessage) {
       that.setData({
         toastError,
@@ -93,7 +93,7 @@ export function showRepeatMsg(that, toastError, toastMessage, otherSetData) {
       })
     }
   }
-  else{
+  else {
     if (toastMessage === oldMessage) {
       that.setData({
         toastError,
@@ -107,5 +107,5 @@ export function showRepeatMsg(that, toastError, toastMessage, otherSetData) {
       })
     }
   }
-  
+
 }

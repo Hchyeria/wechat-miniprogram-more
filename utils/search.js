@@ -10,6 +10,6 @@ function getKeys(str) {
 
 export function search(type, page, limit, str) {
   return request('search.php', {
-    type,keys: getKeys(str),page,limit
+    type, keys: getKeys(str), page, limit
   })
 }

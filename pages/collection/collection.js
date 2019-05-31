@@ -5,18 +5,18 @@ export function loadNewCollection(that) {
     secondType: 'select_item_collection',
     secret_key: app.globalData.secret_key,
   }).then(data => {
-    console.log(data)
+
     that.setData({
       articleListNewlittle: data.result
     })
     if (0 == data.result.length) {
-      console.log('a')
+
       that.setData({
         isinull: true,
       })
     }
     else {
-      console.log('n')
+
       that.setData({
         isinull: false,
       })
@@ -30,23 +30,23 @@ export function loadCollection(that) {
     secondType: 'select_article_collection',
     secret_key: app.globalData.secret_key,
   }).then(data => {
-    console.log(data)
+
     that.setData({
       articleListlittle: data.result
     })
     if (0 == data.result.length) {
-      console.log('a')
+
       that.setData({
         isanull: true,
       })
     }
     else {
-      console.log('n')
+
       that.setData({
         isanull: false,
       })
     }
-    })
+  })
 }
 
 const app = getApp()
@@ -57,18 +57,18 @@ Page({
     articleListNewlittle: {},
     isNot: true,
     isnot: false,
-    new:String,
-    all:String,
+    new: String,
+    all: String,
     isanull: false,
-    isinull:false
+    isinull: false
   },
   onLoad(option) {
     loadCollection(this),
-    loadNewCollection(this),
-    this.setData({
-      new: "button-not",
-      all: "button-all"
-    })
+      loadNewCollection(this),
+      this.setData({
+        new: "button-not",
+        all: "button-all"
+      })
   },
   turntoup() {
     this.setData({

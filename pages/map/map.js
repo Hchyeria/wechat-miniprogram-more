@@ -4,7 +4,7 @@ Page({
     longitude: '',
     markers: [],
     address: '',
-    callout:[]
+    callout: []
   },
   onLoad(option) {
     this.setData({
@@ -24,11 +24,11 @@ Page({
           bgColor: "#ffffff",
           padding: "30",
           display: "ALWAYS"
-         }
+        }
       }]
     })
   },
-  onReady: function (e) {
+  onReady() {
     this.mapCtx = wx.createMapContext('myMap')
   },
 })

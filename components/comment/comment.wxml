@@ -2,10 +2,10 @@
   <image src='{{comment.avatar}}' class='left head-icon' />
   <view class='right'>
     <view class='tag column'>
-    <view class='s-n'>
-      <text class='text'>{{comment.username}}</text>
-      <text class='school'>{{comment.school_name}}</text>
-    </view>
+      <view class='s-n'>
+        <text class='text'>{{comment.username}}</text>
+        <text class='school'>{{comment.school_name}}</text>
+      </view>
       <text class='timestamp'>{{timestamp}}</text>
     </view>
     <view class='message'>{{comment.content}}</view>

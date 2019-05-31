@@ -1,38 +1,38 @@
 import { request } from '../../utils/request.js'
 
- function deleteart(that,ID,icon) {
+function deleteart(that, ID) {
   request('articles.php', {
     secondType: 'delete_article',
     secret_key: app.globalData.secret_key,
-    ID:ID
+    ID: ID
   }).then(data => {
-    if (data.result === "delete success!") that.setData({ toastError: ''});
-    else that.setData({ toastError: 'ggg'})
+    if (data.result === "delete success!") that.setData({ toastError: '' });
+    else that.setData({ toastError: 'ggg' })
     that.setData({
       toastMessage: `data.result！`
     })
-    })
+  })
 }
-function deleteitem(that, ID, icon) {
+function deleteitem(that, ID) {
   request('items.php', {
     secondType: 'delete_item',
     secret_key: app.globalData.secret_key,
     ID: ID
   }).then(data => {
     if (data.result === "delete success!") that.setData({ toastError: '' });
-    else that.setData({ toastError: 'ggg'})
+    else that.setData({ toastError: 'ggg' })
     that.setData({
       toastMessage: data.result
     })
   })
 }
-function deletemail(that,mID,icon) {
+function deletemail(that, mID) {
   request('message.php', {
     secondType: 'delete_message',
     secret_key: app.globalData.secret_key,
     mID: mID
   }).then(data => {
-    if (data.result === "delete success!") that.setData({ toastError: ''});
+    if (data.result === "delete success!") that.setData({ toastError: '' });
     else that.setData({ toastError: 'ggg' })
     that.setData({
       toastError: 0,
@@ -43,38 +43,38 @@ function deletemail(that,mID,icon) {
 const app = getApp()
 Component({
   properties: {
-    text1:String,
+    text1: String,
     isclick: Boolean,
-    mID:String,
-    ID:String,
-    mail:String,
-    iscol:Boolean,
-    isItem:Boolean
+    mID: String,
+    ID: String,
+    mail: String,
+    iscol: Boolean,
+    isItem: Boolean
   },
 
   data: {
-   isEXIT:true,
-   icon: String,
+    isEXIT: true,
+    icon: String,
   },
   methods: {
-    delete(){
-      if(!this.data.iscol){
+    delete() {
+      if (!this.data.iscol) {
         if (this.data.isItem) {
           deleteitem(this, this.data.ID, this.data.icon)
         }
-        else{
-          if(this.data.mID)deletemail(this, this.data.mID, this.data.icon)
-          else deleteart(this,this.data.ID,this.data.icon)
-          }
+        else {
+          if (this.data.mID) deletemail(this, this.data.mID, this.data.icon)
+          else deleteart(this, this.data.ID, this.data.icon)
+        }
       }
-      else{
-          request('collections.php', {
-            secondType: 'insert_collection',
-            secret_key: app.globalData.secret_key,
-            type: this.data.isItem ? 2 : 1,
-            id: this.data.ID
-          })
-        
+      else {
+        request('collections.php', {
+          secondType: 'insert_collection',
+          secret_key: app.globalData.secret_key,
+          type: this.data.isItem ? 2 : 1,
+          id: this.data.ID
+        })
+
       }
     }
   }

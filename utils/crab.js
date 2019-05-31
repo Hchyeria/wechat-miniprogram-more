@@ -21,7 +21,7 @@ function chooseACrab(crabData) {
     itemList,
     success(res) {
       crabData.reason = itemList[res.tapIndex]
-      console.log('crab reason', crabData.reason)
+      
       crabIt(crabData)
     }
   })

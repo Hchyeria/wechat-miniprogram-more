@@ -1,4 +1,4 @@
-export function forTabBar(target,pageIndex){
+export function forTabBar(target, pageIndex) {
   if (typeof target.getTabBar === 'function' &&
     target.getTabBar()) {
     target.getTabBar().setData({

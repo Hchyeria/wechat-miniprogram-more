@@ -1,2 +1,2 @@
-<input class='reply reply-{{isShow}}' value='{{input}}' bindfocus='focus' bindblur='blur' placeholder='回复' focus='{{isShow}}' bindconfirm='submit'  confirm-type='send'/>
-
+<input class='reply reply-{{isShow}}' value='{{input}}' bindfocus='focus' bindblur='blur' placeholder='回复'
+  focus='{{isShow}}' bindconfirm='submit' confirm-type='send' />

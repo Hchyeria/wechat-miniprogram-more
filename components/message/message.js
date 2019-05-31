@@ -16,7 +16,7 @@ function navigateToMap(that) {
   })
 }
 
-function item(that, icon) {
+function item(that) {
   return request('items.php', {
     secondType: 'update_status',
     secret_key: app.globalData.secret_key,
@@ -51,16 +51,16 @@ Component({
               isdelete: true
             })
           }
-          if(val.address!=='hhh'){
+          if (val.address !== 'hhh') {
             this.setData({
-              isadd:true
+              isadd: true
             })
           }
           this.setData({
             timestamp: parseTimeStamp(val.time),
             imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`),
             ID: val.ID,
-            collected:val.is_collection,
+            collected: val.is_collection,
             labels: val.labels ? val.labels.split(',') : null,
             sharence: {
               text: val.content,
@@ -96,11 +96,11 @@ Component({
     show: false,
     icon: '',
     sharence: {},
-    ismore:false,
+    ismore: false,
     isadd: false,
     toastError: 0,
     toastMessage: "",
-    isToast:false
+    isToast: false
   },
   methods: {
     onTap() {
@@ -108,7 +108,6 @@ Component({
         return
       }
       navigateToDetail(this)
-      console.log(this.data.detail)
     },
     toReply() {
       if (!this.data.toDetail) {
@@ -121,12 +120,10 @@ Component({
       navigateToDetail(this)
     },
     preview(e) {
-      console.log(this.data.out)
       let {
         index
       } = e.currentTarget.dataset
       let urls = this.data.content.pictures.map(e => `https://${BASE_URL}${e.pURL}`)
-      console.log('Image Preview', index, urls)
       wx.previewImage({
         current: urls[index],
         urls
@@ -172,17 +169,17 @@ Component({
         }
       })
     },
-    more(){
+    more() {
       this.setData({
-        ismore:!this.data.ismore
+        ismore: !this.data.ismore
       })
     },
-    onLoadImage(){
+    onLoadImage() {
       this.triggerEvent('onLoadPictrue', this)
-      },
+    },
     map() {
       navigateToMap(this)
     }
-  }, 
+  },
 
 })

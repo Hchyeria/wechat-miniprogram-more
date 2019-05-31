@@ -1,11 +1,11 @@
 import {
-  request, BASE_URL
+  request
 } from '../../utils/request.js'
 
 const app = getApp()
 
 function loadSearch(that) {
-  return new Promise((resolve, reject) => {
+  return new Promise(() => {
     request('search.php', {
       secondType: 'history',
       secret_key: app.globalData.secret_key,
@@ -30,13 +30,13 @@ function searchitem(that, type, searchTarget) {
       length: data.result.length
     })
     if (0 == data.result.length) {
-      console.log('a')
+
       that.setData({
         isnull: true,
       })
     }
     else {
-      console.log('n')
+
       that.setData({
         isnull: false,
       })
@@ -56,10 +56,6 @@ Page({
     article: "article",
     item: "item"
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(option) {
     loadSearch(this),
       this.setData({

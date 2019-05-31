@@ -11,7 +11,7 @@ const app = getApp()
 
 Component({
   properties: {
-    type:String,
+    type: String,
   },
   data: {
     searchTarget: '',
@@ -19,12 +19,12 @@ Component({
     statusBarHeight: app.globalData.statusBarHeight,
     system: app.globalData.system,
     searchlist: {},
-    height:''
+    height: ''
   },
   lifetimes: {
     created() {
 
-      },
+    },
   },
   pageLifetimes: {
     show() {
@@ -33,10 +33,10 @@ Component({
         success: function (res) {
           that.height = res.screenHeight
         }
-    })
+      })
       if (that.height > 736) {
         that.setData({
-          height:  that.height*10%+'px'
+          height: that.height * 10 % +'px'
         })
       }
     }

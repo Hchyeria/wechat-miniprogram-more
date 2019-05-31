@@ -3,10 +3,6 @@ import {
 } from '../../utils/request.js'
 
 import {
-  postCode, getUserInfo
-} from '../../utils/authorize'
-
-import {
   forTabBar
 } from '../../custom-tab-bar/switchTab.js'
 import { onShare } from '../../utils/share.js'
@@ -165,7 +161,7 @@ export function MPage(type) {
     },
     onShow() {
       page = 1
-      console.log('index-page run under type:', this.data.type)
+      
       forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
       this.data.addIconActive &&  this.setData({
         addIconActive: false
@@ -173,15 +169,9 @@ export function MPage(type) {
     },
     onLoad() {
       typeID = 1
-      let that = this;
       loadBannerText(this, this.data.type)
       loadContent(this, 2, this.data.type, page, typeID)
       loadBanner(this, typeID, this.data.type)
-      /*if (JSON.stringify(app.globalData.userInfo) === "{}" ){
-        getUserInfo(app).then(data =>{
-          app.globalData.userInfo = Object.assign({}, app.globalData.userInfo, data.result[0])
-        })
-      }*/
     },
     onReachBottom() {
       page++;

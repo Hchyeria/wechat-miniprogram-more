@@ -1,13 +1,12 @@
-// pages/send.js
 import {
-  request, BASE_URL, API_URL
+  request, API_URL
 } from '../../utils/request.js'
 
 import { getType, selctType, showRepeatMsg } from '../../utils/pick.js'
 
 const app = getApp()
 
-function chooseLocation(that){
+function chooseLocation(that) {
   wx.chooseLocation({
     success: function (res) {
       console.log('LocationSelct Success')
@@ -36,7 +35,7 @@ function sendMsgWithoutimg(type, param, data, that) {
 
 function sendMsg(targetURL, data, path, that, tempData = {}) {
   let url = `${API_URL}/${targetURL}`
-  return new Promise((resolve, reject) => {
+  return new Promise(() => {
     let i = tempData.i ? tempData.i : 0,
       success = tempData.success ? tempData.success : 0,
       fail = tempData.fail ? tempData.fail : 0,
@@ -54,7 +53,7 @@ function sendMsg(targetURL, data, path, that, tempData = {}) {
     else {
       file_name = 'file' + ++i;
     }
-    if (!isimg && i !==1){
+    if (!isimg && i !== 1) {
       return;
     }
     wx.uploadFile({
@@ -107,10 +106,6 @@ let touchMove = 0
 let interval = ''
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     mainHeight: '',
     topHeight: '64px',
@@ -140,16 +135,12 @@ Page({
     name: '',
     latitude: '',
     longitude: '',
-    ta:false,
+    ta: false,
     labelList: [],
     labVal: ''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    let that = this;
+  onLoad: function () {
+    let that = this
     wx.getSystemInfo({
       success: function (res) {
         that.mainHeight = res.windowHeight
@@ -171,7 +162,7 @@ Page({
     params.secondType = 'get_item_types'
     getType(targetURL, params, 'objectList', this, 1, 0)
   },
-  onShow(){
+  onShow() {
     clearInterval(interval)
     time = 0
   },
@@ -255,7 +246,7 @@ Page({
   },
   onSureType() {
     let type = this.data[this.data.isactive[0] ? 'articleType' : 'itemType']
-    let list = this.data[this.data.isactive[0] ? 'tabList' :'objectList']
+    let list = this.data[this.data.isactive[0] ? 'tabList' : 'objectList']
     if (type) {
       let tempName = list.filter(it => it.type_id == type)[0].type_name
       this.setData({
@@ -299,19 +290,19 @@ Page({
       isfocus: temp
     })
   },
-  onSetContextTap(e){
-    let {isfocus} = this.data
-    if(isfocus[0]){
+  onSetContextTap(e) {
+    let { isfocus } = this.data
+    if (isfocus[0]) {
       isfocus[0] = 0
-    }else{
-      isfocus = [1,0,0]
+    } else {
+      isfocus = [1, 0, 0]
     }
-    this.setData({isfocus})
+    this.setData({ isfocus })
   },
-  onSetContextBlur(){
+  onSetContextBlur() {
     let { isfocus } = this.data
     isfocus[0] = 0
-    this.setData({ isfocus})
+    this.setData({ isfocus })
   },
   onSetContext: function (e) {
     this.setData({
@@ -380,35 +371,35 @@ Page({
               chooseLocation(that)
             },
             fail(res) {
-              showRepeatMsg(that , 'selct location error', '授权后方可选择地址')
+              showRepeatMsg(that, 'selct location error', '授权后方可选择地址')
             }
           })
-        }else{
+        } else {
           chooseLocation(that)
         }
       }
     })
   },
-  onLabelBlur(e){
+  onLabelBlur(e) {
     let val = e.detail.value.trim()
-    if(val === '') return
+    if (val === '') return
     let { isfocus, labelList } = this.data
-    if (labelList.indexOf(val) !== -1){
-      showRepeatMsg(this, 'ggg', `自定义标签${val}重复`, { labVal: ''})
+    if (labelList.indexOf(val) !== -1) {
+      showRepeatMsg(this, 'ggg', `自定义标签${val}重复`, { labVal: '' })
       return
     }
     isfocus[3] = 0
     this.setData({
       labelList: [...labelList, val],
       labVal: '',
-      isfocus 
+      isfocus
     })
   },
-  ondelectLab(e){
+  ondelectLab(e) {
     let index = e.target.dataset.lid
-    if (index !== undefined){
+    if (index !== undefined) {
       this.setData({
-        labelList: [...this.data.labelList.slice(0,index),...this.data.labelList.slice(index+1)]
+        labelList: [...this.data.labelList.slice(0, index), ...this.data.labelList.slice(index + 1)]
       })
     }
   },
@@ -425,7 +416,7 @@ Page({
     }
   },
   touchEnd(e) {
-    if (!this.data.isactive[0] && !this.data.isactive[1]){
+    if (!this.data.isactive[0] && !this.data.isactive[1]) {
       touchMove = e.changedTouches[0].clientY;
       if (touchMove - touchDot <= -80 && time < 10) {
         this.onTapdeal()

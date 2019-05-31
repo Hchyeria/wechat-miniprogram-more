@@ -1,10 +1,10 @@
 import { forTabBar } from '../../custom-tab-bar/switchTab.js'
 import {
-  request, BASE_URL, API_URL
+  request
 } from '../../utils/request.js'
 
 function loadUser(that) {
-  return new Promise((resolve, reject) => {
+  return new Promise(() => {
     request('users.php', {
       secondType: 'get_user_info',
       secret_key: app.globalData.secret_key,
@@ -52,12 +52,12 @@ Page({
       url: `../../pages/mymessage/mymessage`,
     })
   },
-  contact(){
+  contact() {
     wx.navigateTo({
       url: `../../pages/contact/contact`,
     })
   },
-  userbook(){
+  userbook() {
     wx.navigateTo({
       url: `../../pages/userbook/userbook`,
     })

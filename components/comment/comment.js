@@ -1,6 +1,6 @@
 //generalized
 
-import {parseTimeStamp } from '../../utils/request.js'
+import { parseTimeStamp } from '../../utils/request.js'
 Component({
   properties: {
     comment: {

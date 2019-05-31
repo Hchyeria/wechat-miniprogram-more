@@ -1,4 +1,4 @@
-import { request, parseTimeStamp } from '../../utils/request.js'
+import { request } from '../../utils/request.js'
 const app = getApp()
 //generalizing
 Component({
@@ -7,7 +7,7 @@ Component({
     isShow: Boolean,
     type: String,
     Id: Number,
-    mID:String,
+    mID: String,
     attention: {
       type: String,
       value: '',
@@ -44,7 +44,6 @@ Component({
       })
       let params;
       if (this.data.cid !== -1) {
-        console.log('reply to', this.data.type, this.data.Id, 'comment', this.data.cid)
         params = {
           secondType: 'insert_comment_secondType',
           cType: this.data.type[0] === 'a' ? 3 : 4,
@@ -54,7 +53,6 @@ Component({
           content: e.detail.value,
         }
       } else {
-        console.log('reply to', this.data.type, this.data.Id)
         params = {
           secondType: 'insert_comment',
           cType: this.data.type[0] === 'a' ? 1 : 2,

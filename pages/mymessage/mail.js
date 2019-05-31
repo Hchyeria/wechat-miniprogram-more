@@ -1,4 +1,4 @@
-import { BASE_URL, parseTimeStamp,request } from '../../utils/request.js'
+import { BASE_URL, parseTimeStamp, request } from '../../utils/request.js'
 function navigateToDetail(that) {
   wx.navigateTo({
     url: `../../pages/detail/detail?Id=${that.data.mail.article_ID}&type=${that.data.type}`,
@@ -7,7 +7,7 @@ function navigateToDetail(that) {
 Component({
   properties: {
     toDetail: Boolean,
-    first:Boolean,
+    first: Boolean,
     isItem: Boolean,
     mail: {
       type: Object,
@@ -26,7 +26,7 @@ Component({
     BASE_URL,
     isclick: false,
     text1: "Delete Your Message",
-    mail:"mail",
+    mail: "mail",
     type: undefined,
   },
   methods: {
@@ -53,18 +53,18 @@ Component({
       navigateToDetail(this)
     },
     click() {
-      console.log(this.data.mail.mID)
+
       this.setData({
         isclick: !this.data.isclick,
         mID: this.data.mail.mID
       })
 
     },
-    isEXIT(e) {
+    isEXIT() {
       this.setData({
         isclick: !this.data.isclick
       })
     },
-    
+
   }
 })

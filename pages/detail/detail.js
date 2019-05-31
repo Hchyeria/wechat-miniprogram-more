@@ -54,8 +54,8 @@ Page({
     isReply: false,
     Id: 0,
     secret_key: app.globalData.secret_key,
-    type:'',
-    out:'',
+    type: '',
+    out: '',
     article: "article",
     status: 'user',
     from: 'inner',
@@ -68,15 +68,15 @@ Page({
     return onShare(res)
   },
   onLoad(option) {
-   this.setData({
-     type: option.type,
-     out:option.isout === "true" ? "ggg":'' 
-   })
+    this.setData({
+      type: option.type,
+      out: option.isout === "true" ? "ggg" : ''
+    })
     page = 1
     getContent(this, option.Id, option.type)
     getComments(this, option.Id, option.type)
     if (option.from && option.from === 'share') {
-      console.log('outer')
+
       let status = 'stranger';
       if (app.globalData.secret_key !== '') {
         status = 'user'
@@ -87,20 +87,20 @@ Page({
       })
     }
   },
-  onShow(){
+  onShow() {
     this.setData({
       isLoad: ''
     })
   },
   onReady() {
-    
+
   },
   onPullDownRefresh() {
     getContent(this, this.data.Id, this.data.type)
     page = 1
     getComments(this, this.data.Id, this.data.type)
   },
-  onReachBottom(e, noToast=0) {
+  onReachBottom(e, noToast = 0) {
     page++
     let that = this
     that.setData({
@@ -108,15 +108,15 @@ Page({
     })
     getComments(this, this.data.Id, this.data.type)
       .then(length => {
-        if (length !== 0 && !noToast){
+        if (length !== 0 && !noToast) {
           showRepeatMsg(that, '', `已为您加载${length}条内容`, { isloadDown: false })
         }
-        else{
+        else {
           page--
           that.setData({
             isloadDown: false
           })
-        } 
+        }
       })
   },
   toReply(e) {
@@ -128,10 +128,10 @@ Page({
   },
   replySuccess(e) {
     let that = this;
-    console.log(that.data.list.length)
-    if (that.data.list.length % limit !== 0){
-      showRepeatMsg(that, '', `回复成功！`, { list: [...that.data.list,{ ...app.globalData.userInfo, time: getIsoTime(), content: e.detail }]})
-      console.log("233")
+
+    if (that.data.list.length % limit !== 0) {
+      showRepeatMsg(that, '', `回复成功！`, { list: [...that.data.list, { ...app.globalData.userInfo, time: getIsoTime(), content: e.detail }] })
+
       return;
     }
     showRepeatMsg(that, '', `回复成功！`)
@@ -150,6 +150,6 @@ Page({
     })
   },
   goBack() {
-    this.data.status === 'user' ? wx.switchTab({ url: '/pages/index/index' }) : wx.navigateTo({ url: '/pages/login/login'  })
+    this.data.status === 'user' ? wx.switchTab({ url: '/pages/index/index' }) : wx.navigateTo({ url: '/pages/login/login' })
   }
 })

@@ -269,7 +269,7 @@ Page({
       let that = this;
       let id = this.data.schoolPickid
       let targetURL = 'school.php'
-      console.log(app.globalData.secret_key)
+      
       let params = {
         action: 'set_school',
         secret_key: app.globalData.secret_key
@@ -278,7 +278,7 @@ Page({
         school_id: +id
       }
       setSchool(targetURL, params, data).then(data => {
-        console.log(data)
+        
         if (data.state) {
           wx.switchTab({
             url: '/pages/index/index'

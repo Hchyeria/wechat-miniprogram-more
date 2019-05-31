@@ -9,7 +9,7 @@ export function loadNOTAMail(that) {
     mode:2,//新
     typeID: 1//对文章的评论
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       mailnotA: data.result
     })
@@ -34,7 +34,7 @@ export function loadNOTBMail(that) {
     mode: 2,//新
     typeID: 2//对商品的评论
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       mailnotB: data.result
     })
@@ -60,7 +60,7 @@ export function loadALLAMail(that) {
     mode: 1,//新
     typeID: 1//对商品的评论
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       mailallA: data.result
     })
@@ -86,7 +86,7 @@ export function loadALLBMail(that) {
     mode: 1,//新
     typeID: 2//对商品的评论
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       mailallB: data.result
     })
@@ -111,7 +111,7 @@ export function loadALLCMail(that) {
     mode: 1,//新
     typeID: 3//对商品的评论
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       mailallC: data.result
     })
@@ -136,7 +136,7 @@ export function loadALLDMail(that) {
     mode: 1,//新
     typeID: 4//对商品的评论
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       mailallD: data.result
     })
@@ -161,7 +161,7 @@ export function loadNOTCMail(that) {
     mode: 2,//新
     typeID: 3//对商品的评论
   }).then(data => {
-    console.log(data.result.length)
+    
     that.setData({
       mailnotC: data.result
     })
@@ -186,7 +186,7 @@ export function loadNOTDMail(that) {
     mode: 2,
     typeID: 4
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       mailallD: data.result,
     })

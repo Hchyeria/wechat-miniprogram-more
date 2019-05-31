@@ -28,13 +28,13 @@ Component({
       let pages = getCurrentPages()
       let currentPage = pages[pages.length - 1]
       let url = currentPage.route
-      if (path.slice(1) === url){
+      if (path.slice(1) === url) {
         wx.pageScrollTo({
           scrollTop: 0
         })
         pages[0].onPullDownRefresh();
       }
-      else{
+      else {
         wx.switchTab({ url: path })
       }
     }

@@ -9,7 +9,7 @@ export function loadPost(that) {
     limit: 5,
     page: 1,
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       articleListlittle: data.result
     })
@@ -35,7 +35,7 @@ export function loadItemPost(that) {
     limit: 5,
     page: 1,
   }).then(data => {
-    console.log(data)
+    
     that.setData({
       articleListNewlittle: data.result
     })
@@ -64,7 +64,7 @@ Page({
     isinull: false,
     isanull: false,
   },
-  onLoad(option) {
+  onLoad() {
     loadPost(this),
     loadItemPost(this),
       this.setData({

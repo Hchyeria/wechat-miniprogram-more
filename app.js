@@ -1,11 +1,10 @@
-import { doAuth, login, userInfo, postCode } from './utils/authorize.js'
-import { request } from './utils/request.js'
+import { login } from './utils/authorize.js'
 
 App({
-  onLaunch(){
-      login(this)
+  onLaunch() {
+    login(this)
   },
-  onShow(){
+  onShow() {
 
   },
   globalData: {
@@ -14,8 +13,8 @@ App({
     deviceH: '',
     deviceW: '',
     code: ' ',
-    openID:'',
-    userInfo:{},
+    openID: '',
+    userInfo: {},
     secret_key: ''
   }
 })

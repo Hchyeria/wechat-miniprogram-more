@@ -28,12 +28,12 @@ export function request(targetURL, paramdata = undefined, postdata = {}, method 
       method,
       data: method == 'POST' ? postdata : {},
       header: {
-        'Content-Type': isfromdata ? 
-        'application/x-www-form-urlencoded' : 
-        'application/json'
+        'Content-Type': isfromdata ?
+          'application/x-www-form-urlencoded' :
+          'application/json'
       },
       success(res) {
-        let {data} = res
+        let { data } = res
         if (data === undefined) {
           let err = new Error(`返回数据异常`)
           err.res = res
