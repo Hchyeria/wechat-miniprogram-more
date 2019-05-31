@@ -130,59 +130,6 @@ export function tabChange(typeID, that, page) {
   loadBanner(that, typeID, that.data.type)
 }
 
-export function onGetUserInfo(that) {
-return new Promise((resolve, reject) =>{
-  wx.getSetting({
-    success (res){
-      if (res.authSetting['scope.userInfo']) {
-        wx.getUserInfo({
-          success: function(res) {
-            let { nickName, avatarUrl } = res.userInfo
-            app.globalData.userInfo.nickName = nickName
-            app.globalData.userInfo.avatarUrl = avatarUrl
-            console.log(res.userInfo)
-            postCode(app).then(data =>{
-              getUserInfo(app).then(data => {
-                app.globalData.userInfo = Object.assign({}, app.globalData.userInfo, data.result[0])
-              })
-              let targetURL = 'school.php'
-              let params = { 
-                action: 'check_school',
-                secret_key: app.globalData.secret_key
-              }
-              checkSchool(targetURL, params).then(data =>{
-                if (!data.state){
-                  that.goLogin()
-                }
-              })
-              resolve(data)
-            })
-          },
-          fail: function(e){
-            showRepeatMsg(that, '', '获取个人信息失败，请稍后再试')
-          }
-        })
-      }
-      else{
-        that.goLogin()
-      }
-    }
-  })
-})
-}
-
-export function checkSchool(targetURL, params){
-  return new Promise((resolve, reject) => {
-    request(targetURL, params, {}, 'GET', 0, 1)
-      .then(data => {
-        resolve(data)
-      })
-      .catch(e => {
-        reject(e)
-      })
-  })
-}
-
 export function MPage(type) {
   let page = 1
   let typeID = 1
@@ -227,23 +174,14 @@ export function MPage(type) {
     onLoad() {
       typeID = 1
       let that = this;
-      if(!app.globalData.secret_key){
-        onGetUserInfo(this).then(() => {
-          loadBannerText(this, this.data.type)
-          loadContent(this, 2, this.data.type, page, typeID)
-          loadBanner(this, typeID, this.data.type)
-        })
-      }
-      else{
-        loadBannerText(this, this.data.type)
-        loadContent(this, 2, this.data.type, page, typeID)
-        loadBanner(this, typeID, this.data.type)
-      }
-      if (JSON.stringify(app.globalData.userInfo) === "{}" ){
+      loadBannerText(this, this.data.type)
+      loadContent(this, 2, this.data.type, page, typeID)
+      loadBanner(this, typeID, this.data.type)
+      /*if (JSON.stringify(app.globalData.userInfo) === "{}" ){
         getUserInfo(app).then(data =>{
           app.globalData.userInfo = Object.assign({}, app.globalData.userInfo, data.result[0])
         })
-      }
+      }*/
     },
     onReachBottom() {
       page++;
@@ -355,11 +293,6 @@ export function MPage(type) {
         })
       }, 500)
      
-    },
-    goLogin(){
-      wx.navigateTo({
-        url: '../login/login'
-      })
     }
   })
 }

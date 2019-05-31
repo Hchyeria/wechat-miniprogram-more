@@ -1,8 +1,16 @@
+import {
+  request,
+  BASE_URL
+} from '../../utils/request.js'
+import {
+  postCode
+} from '../../utils/authorize.js'
 
-import { request, BASE_URL } from '../../utils/request.js'
-import { postCode } from '../../utils/authorize.js'
-
-import { getType, selctType, showRepeatMsg } from '../../utils/pick.js'
+import {
+  getType,
+  selctType,
+  showRepeatMsg
+} from '../../utils/pick.js'
 
 const app = getApp()
 
@@ -33,9 +41,9 @@ function checkSchool(targetURL, params) {
 function getUserInfo(secret_key) {
   return new Promise((resolve, reject) => {
     request('users.php', {
-      secondType: 'get_user_info',
-      secret_key
-    }, {}, 'GET')
+        secondType: 'get_user_info',
+        secret_key
+      }, {}, 'GET')
       .then(data => {
         resolve(data)
       })
@@ -62,7 +70,7 @@ Page({
     islogin: false,
     issure: false,
     isshool: false,
-    isload: [0,0,0,0],
+    isload: [0, 0, 0, 0],
     isloadSpan: false,
     playButtonClass: true,
     locationId: 0,
@@ -73,8 +81,10 @@ Page({
     objectschoolArray: [],
     maxHeight: ''
   },
-  onLoadImg(e){
-    let { index } = e.target.dataset
+  onLoadImg(e) {
+    let {
+      index
+    } = e.target.dataset
     let temp = this.data.isload
     temp[index] = 1
     this.setData({
@@ -82,65 +92,70 @@ Page({
     })
 
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.mainHeight = res.windowHeight
         that.setData({
           maxHeight: res.windowHeight + 'px'
         })
       }
     })
-    if(app.globalData.secret_key){
-      wx.switchTab({ url: '/pages/index/index' })
-    }
+    if (app.globalData.secret_key) 
+      wx.switchTab({ url: '../index/index' })
   },
   onShow() {
     index = 0;
   },
   onGotUserInfo(e) {
-    let that = this;
+    let that = this
     let res = e.detail.userInfo
     showRepeatMsg(that, '', "正在登陆")
     if (res) {
       app.globalData.userInfo.nickName = res.nickName
       app.globalData.userInfo.avatarUrl = res.avatarUrl
       postCode(app).then(data => {
-        showRepeatMsg(that, '', "登陆成功", { islogin: true})
+        showRepeatMsg(that, '', "登陆成功", {
+          islogin: true
+        })
         getUserInfo(app.globalData.secret_key).then(data => {
           app.globalData.userInfo = Object.assign({}, app.globalData.userInfo, data.result[0])
         })
-        let targetURL = 'school.php'
-        let params = {
-          action: 'get_location'
-        }
-        getType(targetURL, params, 'objectlocationArray', this, 0, 0).then(data => {
-            that.setData({
-              isloadSpan: false
+        request('school.php', {
+          action: 'check_school',
+          secret_key: app.globalData.secret_key
+        }, {}, 'GET', 0, 1)
+          .then(data => {
+            if (data.state) {
+              wx.switchTab({ url: '../index/index' })
+              return
+            }
+            getType('school.php', { action: 'get_location' }, 'objectlocationArray', this, 0, 0).then(data => {
+              that.setData({
+                isloadSpan: false
+              })
             })
-        })
+          })
       })
     }
   },
-  onTapPlay(){
+  onTapPlay() {
     if (index < maxindex) {
       index++;
-      if (index == maxindex){
+      if (index == maxindex) {
         this.setData({
           slideClass: '-' + (25 * index) + '%',
           playButtonClass: false,
           issure: true
         })
-      }
-      else{
+      } else {
         this.setData({
           slideClass: '-' + (25 * index) + '%',
           issure: false
         })
       }
-    }
-    else{
+    } else {
       this.onGoIndex()
     }
   },
@@ -154,9 +169,9 @@ Page({
       isshowselct: [0, 1]
     })
   },
-  onBlurSelect(e){
+  onBlurSelect(e) {
     let that = this;
-    if (that.data.isshowselct[0] || that.data.isshowselct[1]){
+    if (that.data.isshowselct[0] || that.data.isshowselct[1]) {
       that.setData({
         isshowselct: [0, 0]
       })
@@ -214,14 +229,13 @@ Page({
     if (touchMove[0] - touchDot[0] <= -80 && time < 10 && tempY < 50) {
       if (index < maxindex && this.data.islogin) {
         index++;
-        if (index === maxindex){
+        if (index === maxindex) {
           this.setData({
             slideClass: '-' + (25 * index) + '%',
             playButtonClass: false,
             issure: true
           })
-        }
-        else{
+        } else {
           this.setData({
             slideClass: '-' + (25 * index) + '%',
             issure: false
@@ -232,30 +246,30 @@ Page({
     if (touchMove[0] - touchDot[0] >= 80 && time < 10 && tempY <= 50) {
       if (index >= 1) {
         index--;
-        if(!this.data.playButtonClass){
+        if (!this.data.playButtonClass) {
           this.setData({
             slideClass: index == 0 ? 0 : '-' + (25 * index) + '%',
             playButtonClass: true,
             issure: false
           })
-        }
-        else{
+        } else {
           this.setData({
             slideClass: index == 0 ? 0 : '-' + (25 * index) + '%',
             issure: false
           })
         }
-        
+
       }
     }
     clearInterval(interval);
     time = 0;
   },
-  onGoIndex(){
+  onGoIndex() {
     if (this.data.isschool) {
       let that = this;
       let id = this.data.schoolPickid
       let targetURL = 'school.php'
+      console.log(app.globalData.secret_key)
       let params = {
         action: 'set_school',
         secret_key: app.globalData.secret_key
@@ -265,13 +279,14 @@ Page({
       }
       setSchool(targetURL, params, data).then(data => {
         console.log(data)
-        if (data.state){
-          wx.switchTab({ url: '/pages/index/index' })
-        }
-        else{
+        if (data.state) {
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
+        } else {
           showRepeatMsg(that, 'gg', "网络出了问题＞﹏＜")
         }
-        
+
       })
     }
   }
