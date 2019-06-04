@@ -1,4 +1,6 @@
-import { request } from '../../utils/request.js'
+import {
+  request
+} from '../../utils/request.js'
 
 function deleteart(that, ID) {
   request('articles.php', {
@@ -6,34 +8,48 @@ function deleteart(that, ID) {
     secret_key: app.globalData.secret_key,
     ID: ID
   }).then(data => {
-    if (data.result === "delete success!") that.setData({ toastError: '' });
-    else that.setData({ toastError: 'ggg' })
+    if (data.result === "delete success!") that.setData({
+      toastError: ''
+    });
+    else that.setData({
+      toastError: 'ggg'
+    })
     that.setData({
       toastMessage: `data.result！`
     })
   })
 }
+
 function deleteitem(that, ID) {
   request('items.php', {
     secondType: 'delete_item',
     secret_key: app.globalData.secret_key,
     ID: ID
   }).then(data => {
-    if (data.result === "delete success!") that.setData({ toastError: '' });
-    else that.setData({ toastError: 'ggg' })
+    if (data.result === "delete success!") that.setData({
+      toastError: ''
+    });
+    else that.setData({
+      toastError: 'ggg'
+    })
     that.setData({
       toastMessage: data.result
     })
   })
 }
+
 function deletemail(that, mID) {
   request('message.php', {
     secondType: 'delete_message',
     secret_key: app.globalData.secret_key,
     mID: mID
   }).then(data => {
-    if (data.result === "delete success!") that.setData({ toastError: '' });
-    else that.setData({ toastError: 'ggg' })
+    if (data.result === "delete success!") that.setData({
+      toastError: ''
+    });
+    else that.setData({
+      toastError: 'ggg'
+    })
     that.setData({
       toastError: 0,
       toastMessage: data.result
@@ -61,13 +77,18 @@ Component({
       if (!this.data.iscol) {
         if (this.data.isItem) {
           deleteitem(this, this.data.ID, this.data.icon)
-        }
-        else {
+        } else {
           if (this.data.mID) deletemail(this, this.data.mID, this.data.icon)
           else deleteart(this, this.data.ID, this.data.icon)
         }
-      }
-      else {
+        try {
+          app[`refresher_article`]()
+        } catch (e) {}
+        try {
+          app[`refresher_item`]()
+        } catch (e) {}
+        wx.navigateBack()
+      } else {
         request('collections.php', {
           secondType: 'insert_collection',
           secret_key: app.globalData.secret_key,

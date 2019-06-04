@@ -2,7 +2,7 @@
 <toast isError="{{toastError}}" message="{{toastMessage}}"  />
 <view class='container {{isLoad? "displayHide" : ""}}'>
   <image wx:if='{{from==="outer"}}' mode='aspectFit' class='back' bindtap='goBack' src='../../assets/back.png'/>
-  <message status='{{status}}' content='{{content}}' toDetail='{{false}}' bind:toReply='toReply' type='{{type}}' detail='{{true}}' bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
+  <message status='{{status}}' content='{{content}}' toDetail='{{false}}' bind:toReply='toReply' type='{{type}}' detail='{{true}}' bindonLoadPictrue="onLoadPictrue"/>
   
   <view class='comment-block shadowcustom'>
      <view class='row aside'>

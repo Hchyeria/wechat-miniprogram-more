@@ -156,8 +156,6 @@ Component({
         isclick: !this.data.isclick,
         heart: !this.data.heart
       })
-      app[`refresher_${this.data.type}`]()
-      this.triggerEvent('delete')
     },
     download() {
       let that = this

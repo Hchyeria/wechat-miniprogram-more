@@ -92,9 +92,6 @@ Page({
       isLoad: ''
     })
   },
-  onReady() {
-
-  },
   onPullDownRefresh() {
     getContent(this, this.data.Id, this.data.type)
     page = 1
@@ -152,7 +149,4 @@ Page({
   goBack() {
     this.data.status === 'user' ? wx.switchTab({ url: '/pages/index/index' }) : wx.navigateTo({ url: '/pages/login/login' })
   },
-  onDelete(){
-    wx.navigateBack()
-  }
 })
