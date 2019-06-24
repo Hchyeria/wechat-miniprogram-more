@@ -218,8 +218,8 @@ Page({
     isnot:false,
     new: String,
     all: String,
-    isanull: false,
-    isnnull: false,
+    isanull: true,
+    isnnull: true,
   },
   onLoad(option) {
     loadNOTDMail(this),
