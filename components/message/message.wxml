@@ -8,7 +8,12 @@
           <text class='name'>{{content.username && content.username!=='undefined'? content.username : '暂无昵称' }}</text>
           <text class='school'>{{content.school_name && content.school_name!=='undefined'? content.school_name : '暂无学校'}}</text>
         </view>
+        <view class='time-hot'>
         <text class='time'>{{timestamp}}</text>
+        <view class='hot-fire' wx:if='{{isfire}}'>
+          <image src='../../assets/fire.png' class='icon fire'/>
+        </view>
+        </view>
       </view>
     </view>                 
   </view>
@@ -102,6 +107,10 @@
         <text class='time2'>{{timestamp}}</text>
       </view>
     </view>
+     <view class='location' bindtap='map' wx:if='{{isadd}}'>
+    <image src='../../assets/location-mess.png' class='icon locaimg' mode='aspectFit'></image>
+    <view class='text'>{{content.address}}</view>
+  </view>
     <view class='bar'>
       <view class='row row3'>
         <toggleIcon image='heart' status='{{collected}}' class='heart3' bindtap='favorite'  wx:if='{{heart}}'/>

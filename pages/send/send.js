@@ -342,7 +342,10 @@ Page({
         'item_type': this.data.itemType,
         item_info: this.data.content,
         expect_price: this.data.expectPrice,
-        contact_way: this.data.contactWay
+        contact_way: this.data.contactWay,
+        address: this.data.name,
+        longitude: this.data.longitude,
+        latitude: this.data.latitude
       }
     data = { ...data, labels: that.data.labelList.join(",") }
     showRepeatMsg(that, '', '正在发布')

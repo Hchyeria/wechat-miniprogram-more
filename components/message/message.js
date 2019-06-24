@@ -54,6 +54,11 @@ Component({
               isadd: true
             })
           }
+          if(val.hot>=30){
+            this.setData({
+              isfire: true
+            })
+          }
           this.setData({
             timestamp: parseTimeStamp(val.time),
             imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`),
@@ -98,7 +103,8 @@ Component({
     isadd: false,
     toastError: 0,
     toastMessage: "",
-    isToast: false
+    isToast: false,
+    isfire:false
   },
   methods: {
     onTap() {
