@@ -29,17 +29,36 @@ function setLimit() {
     })
   })
 }
-export function loadContent(that, mode, type, page, typeID, isRefsh = 0) {
+export function loadContent(that, mode, type, page, typeID, isRefsh = 0,isrecent = 0) {
   return new Promise((resolve, reject) => {
     setLimit()
       .then(limit => {
+        console.log(isrecent)
         let params;
+        if (isrecent === 1 && type[0] === 'a'){
+          console.log('a')
+          params = {
+            secondType: `recent_similar`,
+            secret_key: app.globalData.secret_key
+          }
+          return request( `users.php`, params)
+        }
+        else{
         if (type[0] === 'a') {
           if(mode != 3){
-          params = {
-            secondType: `select_${type}_by_type`,
-            typeID, mode, limit, page,
-            secret_key: app.globalData.secret_key
+          if(mode === '4'){
+            params = {
+              secondType: `select_${type}_by_type`,
+              typeID, mode:2, limit, page,only_school:1,
+              secret_key: app.globalData.secret_key
+            }
+          }
+          else{
+            params = {
+              secondType: `select_${type}_by_type`,
+              typeID, mode, limit, page,
+              secret_key: app.globalData.secret_key
+            }
           }
           }
           else {
@@ -71,7 +90,8 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0) {
             }
           }
         }
-        return request(`${type}s.php`, params)
+          return request(`${type}s.php`, params)
+        }
       })
       .then(data => {
         if (isRefsh){
@@ -146,7 +166,7 @@ export function tabChange(typeID, that, page) {
       })
     }, 400)
   }
-  loadContent(that, that.data.mode, that.data.type, page, typeID)
+  loadContent(that, that.data.mode, that.data.type, page, typeID,0,0)
   loadBanner(that, typeID, that.data.type)
 }
 
@@ -190,7 +210,7 @@ export function MPage(type) {
       return onShare(res)
     },
     onPullDownRefresh() {
-      loadContent(this, that.data.mode, this.data.type, 1, this.data.typeID, 1).then(data => wx.stopPullDownRefresh());
+      loadContent(this, that.data.mode, this.data.type, 1, this.data.typeID, 1,0).then(data => wx.stopPullDownRefresh());
     },
     onShow() {
       page = 1
@@ -209,7 +229,9 @@ export function MPage(type) {
       typeID = 1
       attachRefresher(this,type)
       loadBannerText(this, this.data.type)
-      loadContent(this, this.data.mode, this.data.type, page, typeID)
+      if (type[0] === 'a')
+      loadContent(this, this.data.mode, this.data.type, page, typeID,0,1)
+      loadContent(this, this.data.mode, this.data.type, page, typeID,0,0)
       loadBanner(this, typeID, this.data.type)
     },
     onReachBottom() {
@@ -218,7 +240,7 @@ export function MPage(type) {
       that.setData({
         isloadDown: true
       })
-      loadContent(this, this.data.mode, this.data.type, page, typeID).then(length => {
+      loadContent(this, this.data.mode, this.data.type, page, typeID,0,0).then(length => {
         if (length !== 0) {
           showRepeatMsg(this, '', `已为您加载${length}条内容`, { isloadDown: false })
         }
@@ -327,10 +349,7 @@ export function MPage(type) {
       this.setData({
         contentList: []
       })
-      if(e.target.id === '4')
-      loadContent(this, 2, this.data.type, page, 2)
-      else 
-      loadContent(this, e.target.id, this.data.type, page, typeID)
+      loadContent(this, e.target.id, this.data.type, page, typeID,0,0)
       this.setData({
         mode: e.target.id
       })
