@@ -36,6 +36,13 @@ export function login(app) {
         resolve()
       }
     })
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        app.globalData.latitude = res.latitude
+        app.globalData.longitude = res.longitude
+      }
+    })
   })
 }
 

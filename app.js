@@ -5,7 +5,6 @@ App({
     login(this)
   },
   onShow() {
-
   },
   globalData: {
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
@@ -15,6 +14,8 @@ App({
     code: ' ',
     openID: '',
     userInfo: {},
-    secret_key: ''
+    secret_key: '',
+    latitude:'',
+    longitude:''
   }
 })
