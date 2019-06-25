@@ -1,5 +1,5 @@
 <view id="app">
-<view class='mode' id='4' bindtap='choosemode'>本校</view>
+<view class='mode' id='4' bindtap='choosemode' wx:if='{{type[0]==="a"?true:false}}'>本校</view>
 <view class='mode'id = '3' bindtap='choosemode'>就近</view>
 <view class='mode' id='2' bindtap='choosemode'>时间</view> 
 <view class='mode' id='1' bindtap='choosemode'>热度</view> 
