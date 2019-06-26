@@ -127,11 +127,13 @@ Page({
         art: "item"
       })
     }
-    searchitem(this, this.data.type, e._relatedInfo.anchorTargetText)
+    let {history} = e.currentTarget.dataset
+    console.log(history)
     this.setData({
       issearch: false,
-      searchTarget: e._relatedInfo.anchorTargetText,
-      keywords: e._relatedInfo.anchorTargetText.split(',')
+      searchTarget: history,
+      keywords: history.split(',')
     })
+    searchitem(this, this.data.type, history)
   }
 })

@@ -7,8 +7,8 @@
  <view class='text'wx:if='{{issearch}}'>历史搜索</view>
     <view class='hr-view'wx:if='{{issearch}}'>
       <block wx:for='{{searchList}}' wx:for-key='svKey' wx:for-index='i' wx:for-item='item'>
-        <view class='hr hr-{{status}}' id='hr-{{i}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
-        <view class='history'>{{item.history}}</view>
+        <view class='hr hr-{{status}}' data-history='{{item.history}}' id='hr-{{i}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
+          <view class='history'>{{item.history}}</view>
         </view>
       </block>
     </view>
