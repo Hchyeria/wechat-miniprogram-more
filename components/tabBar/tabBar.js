@@ -101,14 +101,14 @@ Component({
       if(+sid){
         this.setData({
           sortSectionClass: isOpen ? "slide-up" : "slide-down",
-          isSelect: [false, !this.data.isSelect[1]]
+          isSelect: this.data.isSelect[0] ? [false, false] : [false, !this.data.isSelect[1]]
         })
         !flag && this.triggerEvent('changeOverlay', { isOverlay: this.data.isSelect[1] })
       }
       else{
         this.setData({
           sortSectionClass: isOpen ? "slide-up" : "slide-down",
-          isSelect: [!this.data.isSelect[0], false]
+          isSelect: this.data.isSelect[1] ? [false, false] : [!this.data.isSelect[0], false]
         })
         !flag && this.triggerEvent('changeOverlay', { isOverlay: this.data.isSelect[0] })
       }

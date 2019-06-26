@@ -186,7 +186,7 @@ export function MPage(type) {
 
   return Page({
     data: {
-      overlayHeight: app.globalData.deviceH + "px",
+      overlayHeight: app.globalData.deviceH+20 + "px",
       isOverlay:false,
       contentList: [],
       BASE_URL,
