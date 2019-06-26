@@ -36,7 +36,7 @@ page{
   transition: all .4s;
 }
 .add-icon-active{
-  transform: translate(0,-5px);
+  transform: translate(0,-5px) scale(1.1);
   filter:drop-shadow(2px 5px 10px var(--color-shadow));
 }
 .banner{

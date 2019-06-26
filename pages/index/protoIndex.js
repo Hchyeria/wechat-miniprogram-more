@@ -164,7 +164,7 @@ export function tabChange(typeID, that, page) {
       })
     }, 400)
   }
-  loadContent(that, that.data.mode, that.data.type, page, typeID,0,0)
+  loadContent(that, that.data.mode, that.data.type, page, typeID, 0, 0, that.data.isOnlySchool)
   loadBanner(that, typeID, that.data.type)
 }
 
@@ -202,7 +202,7 @@ export function MPage(type) {
       bannerTop: '',
       isSlide: [0, 0],
       isloadDown: false,
-      mode:3,
+      mode: 1,
       isOnlySchool: 0,
       latitude:'',
       longitude:''
@@ -230,9 +230,12 @@ export function MPage(type) {
       typeID = 1
       attachRefresher(this,type)
       loadBannerText(this, this.data.type)
-      if (type[0] === 'a')
-      loadContent(this, this.data.mode, this.data.type, page, typeID,0,1)
-      loadContent(this, this.data.mode, this.data.type, page, typeID,0,0)
+      if (type[0] === 'a'){
+        loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 1, this.data.isOnlySchool)
+      }
+      else{
+        loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
+      }
       loadBanner(this, typeID, this.data.type)
     },
     onReachBottom() {
@@ -351,12 +354,12 @@ export function MPage(type) {
       let { id, isOnlySchool } = e.detail
       this.setData({
         contentList: [],
-        mode: 2,
+        mode: id,
         isOnlySchool,
         isloadDown: true
       })
       page = 1
-      loadContent(this, id || 2, this.data.type, page, typeID, 0, 0, isOnlySchool).then(() =>{
+      loadContent(this, id, this.data.type, page, typeID, 0, 0, isOnlySchool).then(() =>{
         that.setData({
           isloadDown: false
         })

@@ -1,8 +1,9 @@
 /* pages/search/search.wxss */
+@import '../../app.wxss';
 page{
   height: 100%;
-background-color:#f9fafc;
-transition: all 0.2s ease-out;
+  background-color:#f9fafc;
+  transition: all 0.2s ease-out;
 }
 .search{
   height: 100%;
@@ -19,27 +20,26 @@ transition: all 0.2s ease-out;
   justify-content: center;
   background-color: #fff;
   margin-top:9%;
-height:35px;
-border-radius:10%;
-width: 90%;
-margin:auto;
+  height:35px;
+  border-radius:10%;
+  width: 90%;
+  margin:auto;
 }
 .hr{
   height:27px;
   color:var(--color-a);
   display:flex;
-  justify-content:center;
-  align-items:center;
-  flex: 0 0 45%;
-  border-radius: 4%;
   margin-top: 2%;
   margin-right: 5%;
-  border-bottom:1px solid #ababab;
-
+  width: 100%;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.bottom-line{
+    border-bottom:1px solid #ababab;
 }
 .history{
-  padding:6px;
-  border-radius:10%;
+  margin-left:6px;
 }
 .hr-view{
   margin-top:8%;
@@ -48,6 +48,29 @@ margin:auto;
   display: flex;
   flex-flow: column wrap;
   align-content: flex-start;
+}
+.label-view{
+  margin-top:8%;
+  width:90%;
+  margin:auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+.label{
+  height:27px;
+  color:var(--color-a);
+  display:flex;
+  margin-top: 2%;
+  margin-right: 5%;
+  border-bottom:1px solid #ababab;
+  flex: 0 0 20%;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.remove-history{
+  margin-left: auto;
+  margin-right: 10px;
 }
 .text{
   margin-left:5%;
@@ -59,18 +82,18 @@ margin:auto;
 }
 .null{
   font-size:2em;
-margin:auto;
-letter-spacing:5px;
-font-weight: 900;
-color:#ced3d7
+  margin:auto;
+  letter-spacing:5px;
+  font-weight: 900;
+  color:#ced3d7;
 }
 .message2{
   display:flex;
-align-items:center;
-justify-content:cneter;
-width: 80%;
-margin: auto;
-margin-top: 60%
+  align-items:center;
+  justify-content:cneter;
+  width: 80%;
+  margin: auto;
+  margin-top: 60%
 }
 .two{
   display: flex;
@@ -81,4 +104,8 @@ margin-top: 60%
 }
 .icon{
   opacity: 0.6
+}
+.history-icon{
+  width: 35rpx;
+  height: 35rpx;
 }

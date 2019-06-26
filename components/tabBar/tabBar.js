@@ -45,7 +45,7 @@ Component({
         "type_name": "搜索结果"
       }
     ],
-    sortMode: 1,
+    sortMode: '',
     sortList: ['热度', '时间', '就近'],
     selected: 0,
     isSelect: [false, false],
@@ -75,13 +75,13 @@ Component({
     switchChange(e){
       let { value } = e.detail
       if (value){
-        this.triggerEvent('chooseMode', { id: '2', isOnlySchool: 1 })
+        this.triggerEvent('chooseMode', { id: this.data.sortMode, isOnlySchool: 1 })
         this.setData({
           isOnlySchool: 1
         })
       }
       else {
-        this.triggerEvent('chooseMode', { id: '2', isOnlySchool: 0 })
+        this.triggerEvent('chooseMode', { id: this.data.sortMode, isOnlySchool: 0 })
         this.setData({
           isOnlySchool: 0
         })

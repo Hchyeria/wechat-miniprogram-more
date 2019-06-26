@@ -38,7 +38,6 @@ function searchitem(that, type, searchTarget) {
       searchitemlist: [...that.data.searchitemlist,...data.result],
       length: that.data.length + data.result.length
     })
-    console.log(that.data.searchitemlist, that.data.length)
     if (0 == data.result.length) {
       that.setData({
         isnull: true,
@@ -52,11 +51,36 @@ function searchitem(that, type, searchTarget) {
   })
 }
 
+function fetchLabels(that){
+  return new Promise(() => {
+    request('users.php', {
+      secondType: 'recent_labels',
+      secret_key: app.globalData.secret_key
+    }).then(data => {
+      that.setData({
+        labelList: data.result
+      })
+    })
+  })
+}
+
+function deleteLabels(id){
+  return new Promise((resolve, reject) => {
+    request('search.php', {
+      secondType: 'delete',
+      hID: id,
+      secret_key: app.globalData.secret_key
+    }).then(data => {
+      resolve()
+    })
+  })
+}
+
 Page({
   data: {
     type: undefined,
     searchList: Object,
-    searchlist: Object,
+    labelList: [],
     issearch: true,
     isnull: false,
     length: 0,
@@ -70,6 +94,8 @@ Page({
     searchitem(this, this.data.type, this.data.searchTarget)
   },
   onLoad(option) {
+    console.log(option)
+    fetchLabels(this)
     loadSearch(this),
       this.setData({
         type: option.type
@@ -99,16 +125,19 @@ Page({
         art: "item"
       })
     }
-    if (this.data.searchTarget != null) {
-      searchitem(this, this.data.type, this.data.searchTarget)
-      this.setData({
-        keywords: this.data.searchTarget.split(' '),
-        issearch: false
-      })
+    if (!this.data.searchTarget.trim()){
+      return;
     }
+    searchitem(this, this.data.type, this.data.searchTarget)
+    this.setData({
+      keywords: this.data.searchTarget.split(' '),
+      issearch: false
+    })
+ 
   },
   history(e) {
     page = 0
+    
     this.setData({
       searchitemlist: [],
       length: 0
@@ -133,5 +162,16 @@ Page({
       searchTarget: e._relatedInfo.anchorTargetText,
       keywords: e._relatedInfo.anchorTargetText.split(',')
     })
+  },
+  removeHistory(e){
+    let that = this;
+    let { id } = e.currentTarget
+    let { index } = e.currentTarget.dataset
+    deleteLabels(id).then(() => {
+      that.setData({
+        searchList: [...that.data.searchList.slice(0, index), ...that.data.searchList.slice(index + 1)]
+      })
+    })
+
   }
 })

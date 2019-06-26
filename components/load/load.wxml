@@ -1,5 +1,5 @@
 <view class='load {{loadClass}}' wx:if="{{isShow}}" style='height:{{containHeight}};z-index:5299;overflow:hidden;position:absolute;width:100%;background-color:#f9fafc;'>
-  <view style="position: fixed;width: 750rpx;background: #f9fafc;z-index: 5300;height:160rpx;"></view>
+  <view style="position: fixed;width: 850rpx;background: #f9fafc;z-index: 5300;height:160rpx;"></view>
   <view style="height: 280px;margin: auto;margin-top:3%;border-radius: 2%;width: 100%;background-color: #eeeeee"></view>
   <view style="transition: all 0.2s ease-out;z-index: 5200;background-color: #f9fafc;width:96%;margin:auto;displaty:flex;flex-direction:column;align-items:flex-start;">
     <block wx:for='{{contentList}}' wx:key='{{index}}' wx:for-item='item'>

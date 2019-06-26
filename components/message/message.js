@@ -127,7 +127,7 @@ Component({
       let {
         index
       } = e.currentTarget.dataset
-      let urls = this.data.content.pictures.map(e => `https://${BASE_URL}${e.pURL}`)
+      let urls = this.data.content.pictures && this.data.content.pictures.map(e => `https://${BASE_URL}${e.pURL}`)
       wx.previewImage({
         current: urls[index],
         urls
