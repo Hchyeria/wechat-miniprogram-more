@@ -1,20 +1,20 @@
-<view id="app">
-<view class='mode' id='4' bindtap='choosemode' wx:if='{{type[0]==="a"?true:false}}'>本校</view>
-<view class='mode'id = '3' bindtap='choosemode'>就近</view>
-<view class='mode' id='2' bindtap='choosemode'>时间</view> 
-<view class='mode' id='1' bindtap='choosemode'>热度</view> 
+<view id="app" class='scroll-disable' >
   <toast isError="{{toastError}}" message="{{toastMessage}}"  />
+   <view class='overlay-section {{isOverlay? "" : "displayHide"}}'style="height:{{overlayHeight}};top:{{bannerTop}}" bindtap='onCloseOverlay'>
+    </view >
 <view class='top {{islogin? "hide" : ""}}'>
   <topBar searchList='{{searchList}}' bindtap='topBar' type='{{type}}' />
-  <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" index='{{typeID}}' bindstoreLeng='onStoreLeng'/>
+  <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" index='{{typeID}}' isRenderS='{{type[0]==="a"?true:false}}' bindstoreLeng='onStoreLeng' isOverlay='{{isOverlay}}'  bindchooseMode='onChooseMode' bindchangeOverlay='onOverlay'/>
 </view>
 <view bindtouchstart="touchStart" bindtouchend="touchEnd">
+ 
   <load isShow="{{isLoad}}" loadClass="{{isSlide[0]? 'loadslideright' : isSlide[1]? 'loadslideleft' : ''}}"/>
-  <view wx:if='{{banner}}' class='banner' style='padding-top:{{bannerTop}}'>
-  <image class='isLoad? "" : "banner-motion"' mode='widthFix' src='https://{{BASE_URL}}/upload/banners/{{banner}}' bindload="onBannerLoad" binderror="onBannerLoad"/>
-  <image class='banner-text' wx:if='{{bannerText[typeID-1].url||bannerText[10].url}}' mode='aspectFit' src='https://{{BASE_URL}}/{{bannerText[typeID-1].url}}' binderror="onBannerTexerror"/>
-  </view>
-  <view class='messageList'>
+    <view wx:if='{{banner}}' class='banner' style='padding-top:{{bannerTop}}'>
+    <image class='isLoad? "" : "banner-motion"' mode='widthFix' src='https://{{BASE_URL}}/upload/banners/{{banner}}' bindload="onBannerLoad" binderror="onBannerLoad"/>
+    <image class='banner-text' wx:if='{{bannerText[typeID-1].url||bannerText[10].url}}' mode='aspectFit' src='https://{{BASE_URL}}/{{bannerText[typeID-1].url}}' binderror="onBannerTexerror"/>
+    </view>
+    
+    <view class='messageList'>
     <view wx:if='{{type ==="article"}}'>
       <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
         <message content='{{item}}' type='{{type}}' toDetail='{{true}}' isde='{{true}}' bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
@@ -31,7 +31,10 @@
       </block>
     </view>
     <view class='sk-spinner-pulse {{isloadDown? "" : "displayHide"}}'> </view>
+ 
   </view>
+  
+  
 </view>
 <image src='../../assets/add.png' class="add head-icon {{islogin||isLoad? 'hide' : ''}} {{addIconActive? 'add-icon-active' : ''}} " hover-class="add-icon-active" bindtap='toSend' />
 </view>

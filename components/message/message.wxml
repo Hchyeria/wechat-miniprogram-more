@@ -1,73 +1,77 @@
 <toast isError="{{toastError}}" message="{{toastMessage}}"  wx:if='{{isToast}}' />
 <view class='container shadowcustom container-{{detail}}' wx:if='{{type==="article"}}'>
-  <view class='bar' bindtap='onTap'>
-    <view class='row'>
-      <image src='{{!content.avatar || content.avatar==="undefined" ? "https://wx.qlogo.cn/mmopen/vi_32/Oqlx3vdfzd27c4iaY8RsDJ6CKD5iataIibZqV2NpGqGLMkTj7k70Cb5zsK1eRzdnr7DYrZXkJ2mf9a5icsibwUPffibw/132" : content.avatar }}' class='head-icon' mode="widthFix"/>
-      <view class='column col-middle'>
-        <view class='s-n'>
-          <text class='name'>{{content.username && content.username!=='undefined'? content.username : '暂无昵称' }}</text>
-          <text class='school'>{{content.school_name && content.school_name!=='undefined'? content.school_name : '暂无学校'}}</text>
+    <view class='hot-fire' wx:if='{{isfire}}'>
+      <image src='../../assets/fire.png' class='icon fire'/>
+    </view>
+    <view class='bar' bindtap='onTap'>
+      <view class='row'>
+        <image src='{{!content.avatar || content.avatar==="undefined" ? "https://wx.qlogo.cn/mmopen/vi_32/Oqlx3vdfzd27c4iaY8RsDJ6CKD5iataIibZqV2NpGqGLMkTj7k70Cb5zsK1eRzdnr7DYrZXkJ2mf9a5icsibwUPffibw/132" : content.avatar }}' class='head-icon' mode="widthFix"/>
+        <view class='column col-middle'>
+          <view class='s-n'>
+            <text class='name'>{{content.username && content.username!=='undefined'? content.username : '暂无昵称' }}</text>
+            <text class='school'>{{content.school_name && content.school_name!=='undefined'? content.school_name : '暂无学校'}}</text>
+          </view>
+          <view class='time-hot'>
+          <text class='time'>{{timestamp}}</text>
+          </view>
         </view>
-        <view class='time-hot'>
-        <text class='time'>{{timestamp}}</text>
-        <view class='hot-fire' wx:if='{{isfire}}'>
-          <image src='../../assets/fire.png' class='icon fire'/>
-        </view>
-        </view>
-      </view>
-    </view>                 
-  </view>
+      </view>                 
+    </view>
 
-  <view disabled class='message message-{{isde}}' bindtap='onTap'>{{content.content}}
-  </view>
-  <view class='more-text' wx:if='{{!detail && content.content.length > 85}}'>MORE</view>
-  <view wx:if='{{content.pictures[0]}}' class='album row'>
-    <block wx:if='{{content.pictures[2]}}'>
-    <view class='three-img-block'>
-      <view class='three-img1'>
-        <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' bindload='onLoadImage'/>
+    <view disabled class='message message-{{isde}}' bindtap='onTap'>{{content.content}}
+    </view>
+    <view class='more-text' wx:if='{{!detail && content.content.length > 85}}'>MORE</view>
+    <view wx:if='{{content.pictures[0]}}' class='album row'>
+      <block wx:if='{{content.pictures[2]}}'>
+      <view class='three-img-block'>
+        <view class='three-img1'>
+          <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' bindload='onLoadImage'/>
+        </view>
+        <view class='three-img-other'> 
+          <view class='three-img2'>
+            <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[1].pURL}}' data-index='1' bindtap='preview' />
+          </view>
+          <view class='three-img3'>
+            <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[2].pURL}}' data-index='2' bindtap='preview' />
+          </view>
+        </view>
       </view>
-      <view class='three-img-other'> 
-        <view class='three-img2'>
-          <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[1].pURL}}' data-index='1' bindtap='preview' />
+      </block>
+
+      <block wx:elif='{{content.pictures[1]}}'>
+        <view class='two-img'>
+          <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' class='two' class='height' />
         </view>
-        <view class='three-img3'>
-          <image  mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[2].pURL}}' data-index='2' bindtap='preview' />
+        <view class='two-img'>
+          <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[1].pURL}}' data-index='1' bindtap='preview' class='height' />
         </view>
+      </block>
+
+      <block wx:elif='{{content.pictures[0]}}'>
+        <view class='one-img'>
+          <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' 
+        class="height" />
+        </view>
+      </block>
+    </view>
+    <view class='label' wx:if='{{labels}}'>
+      <block wx:key='labelKey' wx:for='{{labels}}' wx:for-item='labelItem' wx:for-index='e'>
+        <view class='label-item'>
+          <image mode='aspectFill' src='../../assets/label-grey.png'
+        class="height label-icon" />
+        {{labelItem}}
+        </view>
+      </block>
+    </view>
+    <view class="flexrow {{!labels? 'margintop3' : ''}}">
+      <view class='location' bindtap='map' wx:if='{{isadd}}'>
+        <image src='../../assets/location-mess.png' class='icon locaimg' mode='aspectFit'></image>
+        <view class='text'>{{content.address}}</view>
+      </view>
+      <view class="hot">
+        浏览 {{content.hot}}
       </view>
     </view>
-    </block>
-
-    <block wx:elif='{{content.pictures[1]}}'>
-      <view class='two-img'>
-        <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' class='two' class='height' />
-      </view>
-      <view class='two-img'>
-        <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[1].pURL}}' data-index='1' bindtap='preview' class='height' />
-      </view>
-    </block>
-
-    <block wx:elif='{{content.pictures[0]}}'>
-      <view class='one-img'>
-        <image mode='aspectFill' src='https://{{BASE_URL}}{{content.pictures[0].pURL}}' data-index='0' bindtap='preview' 
-      class="height" />
-       </view>
-    </block>
-  </view>
-  <view class='label'>
-    <block wx:if='{{labels}}' wx:for='{{labels}}' wx:key='labelKey' wx:for-item='labelItem' wx:for-index='e'>
-      <view class='label-item'>
-        <image mode='aspectFill' src='../../assets/label-grey.png'
-      class="height label-icon" />
-      {{labelItem}}
-       </view>
-    </block>
-  </view>
-
-  <view class='location' bindtap='map' wx:if='{{isadd}}'>
-    <image src='../../assets/location-mess.png' class='icon locaimg' mode='aspectFit'></image>
-    <view class='text'>{{content.address}}</view>
-  </view>
   <view class='bar'>
     <view class='row'>
         <toggleIcon wx:if='{{status=="user"}}' image='heart' status='{{content.is_collection}}' class='heart' bindtap='favorite' />
@@ -76,10 +80,11 @@
     </view>
     <view class='depart2' wx:if='{{isdelete}}'>
         <image src='../../assets/delete.png' mode="aspectFit" class='delete' bindtap='click'></image>
-      </view>
+    </view>
     <model class='hhh' wx:if='{{isclick}}'  text1='{{text1}}'  ID='{{ID}}' bindtap='isEXIT'  isItem='{{isItem}}'/>
     <toggleIcon wx:if='{{status==="user"&&detail}}' image='share' status='{{false}}' class='share' openType='share' bindtap='share' sharence='{{sharence}}'/>
   </view>
+
 </view>
 
 

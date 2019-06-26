@@ -1,9 +1,39 @@
 <!--components/tabBar/tabBar.wxml-->
-<scroll-view scroll-x class='tabBar' >
+<view class='tabBar-app'>
+  <view class='tabBar'>
+  <scroll-view scroll-x >
   <block wx:for='{{tabList}}' wx:key='tabKey' wx:for-item='item' wx:for-index='i'>
-   
     <view data-tid='{{item.type_id}}' class="tab tab-{{selected==i?'selected':''}}" id='tab-{{i}}' bindtap='onTap'>
     {{item.type_name}}
     </view>
   </block>
-</scroll-view>
+  </scroll-view>
+  
+  <view class='row choose-box' bindtap='chooseSelect'>
+    <view class='row align-center' data-sid='0'>
+      <view class='sort-block choose-box-text}' data-sid='0'>
+        智能排序
+      </view>
+      <view class='arrow-contain' data-sid='0'>
+        <image src='../../assets/arrow-grey.png' mode="aspectFit" class="choose-arrow {{isSelect[0]? 'choose-arrow-avtive' : ''}}" />
+      </view>
+    </view>
+    <view class='choose-box-text' data-sid='1'  wx:if='{{isRenderS}}'>只看本校</view>
+  </view>
+  </view>
+ <view class='sort-section {{sortSectionClass}}'>
+  <view bindtap='chooseMode' class='sort-section'>
+      <block wx:if='{{isSelect[0]}}' wx:for='{{sortList}}' wx:key='sortKey' wx:for-item='item' wx:for-index='i'>
+        <view  class="mode {{sortMode==i+1?'mode-active':''}}" data-id='{{i+1}}' >
+        {{item}}
+        </view>
+      </block>
+  </view>
+    <block wx:if='{{!isSelect[0]}}'>
+       <switch class='switch-shool' bindchange="switchChange" color="#3786c9" />
+    </block>
+   
+  </view>
+</view>
+
+

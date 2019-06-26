@@ -74,3 +74,10 @@ page{
 .slideright{
   animation: slideRight 0.4s ease-in;
 }
+.overlay-section{
+  background-color: #000000;
+  opacity:0.85;
+  z-index:5300;
+  width: 100%;
+  position: fixed;
+}

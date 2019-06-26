@@ -9,8 +9,7 @@ App({
   globalData: {
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
     system: wx.getSystemInfoSync()['system'].charAt(0),
-    deviceH: '',
-    deviceW: '',
+    deviceH: wx.getSystemInfoSync()['windowHeight'],
     code: ' ',
     openID: '',
     userInfo: {},

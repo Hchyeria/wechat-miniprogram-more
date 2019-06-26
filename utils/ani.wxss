@@ -167,5 +167,12 @@
     transform: translate(50%,0);
   }
 }
-
+@keyframes slideDown{
+  0%{
+    transform: translate(0, -100%)
+  }
+  100%{
+    transform: translate(0, 0)
+  }
+}
 

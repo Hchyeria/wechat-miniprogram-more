@@ -60,6 +60,13 @@ image{
 .noHeight{
   height: 0px;
 }
+.align-center{
+  align-items: center;
+}
+.scroll-disable{
+  display: hidden;
+  height: 100%;
+}
 
 .spinner {
   box-sizing: border-box;

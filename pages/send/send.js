@@ -145,6 +145,7 @@ Page({
       success: function (res) {
         that.mainHeight = res.windowHeight
         that.setData({
+          mainHeight: res.windowHeight,
           topHeight: res.windowHeight * (64 / 568) + 'px'
         })
       }
