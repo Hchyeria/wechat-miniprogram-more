@@ -20,11 +20,16 @@ function loadSearch(that) {
 
 let page  = 0
 
+function formatKey(text){
+  let arr = [...new Set(text.split(' '))]
+  return arr.filter(item => item !== '').join(',')
+}
+
 function searchitem(that, type, searchTarget) {
   page++
   request('search.php', {
     type: type,
-    keys: searchTarget,
+    keys: formatKey(searchTarget),
     page,
     limit: 5,
     secret_key: app.globalData.secret_key,
@@ -58,6 +63,7 @@ Page({
     art: String,
     article: "article",
     item: "item",
+    keywords:[]
   },
   onReachBottom(){
     console.log('search refresh')
@@ -96,6 +102,7 @@ Page({
     if (this.data.searchTarget != null) {
       searchitem(this, this.data.type, this.data.searchTarget)
       this.setData({
+        keywords: this.data.searchTarget.split(' '),
         issearch: false
       })
     }
@@ -123,7 +130,8 @@ Page({
     searchitem(this, this.data.type, e._relatedInfo.anchorTargetText)
     this.setData({
       issearch: false,
-      searchTarget: e._relatedInfo.anchorTargetText
+      searchTarget: e._relatedInfo.anchorTargetText,
+      keywords: e._relatedInfo.anchorTargetText.split(',')
     })
   }
 })

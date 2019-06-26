@@ -1,0 +1,5 @@
+<wxs module="slicer" src="./searchText.wxs"></wxs>
+
+<view class='container'>
+  <text wx:for='{{content}}' wx:for-item='item' class="text-{{item[0] === '='}}">{{item[0] === '='?slicer.slice(item):item}}</text>
+</view>

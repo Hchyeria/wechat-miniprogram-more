@@ -5,14 +5,20 @@
       <image src='{{article.avatar}}' class='head-icon avatar'/>
       <view class='author-s'>
         <view class='s-n'>
-        <text class='name'>{{article.username}}</text>
-        <text class='school'>{{article.school_name}}</text>
+        <view class='name'>
+         <searchText innerText='{{article.username}}' keywords='{{keywords}}'/>
+        </view>
+        <view class='school'>
+         <searchText innerText='{{article.school_name}}' keywords='{{keywords}}'/>
+        </view>
         </view>
         <text class='time'>{{timestamp}}</text>
       </view>
     </view>
   </view>
-  <view disabled class='message'bindtap='onTap' >{{article.content||article.item_info}}</view>
+  <view disabled class='message'bindtap='onTap'>
+    <searchText innerText='{{article.content||article.item_info}}' keywords='{{keywords}}'/>
+  </view>
   <view class='depart' wx:if='{{isdelete}}'>
     <image src='../../assets/delete.png' class='delete' bindtap='click'></image>
   </view>

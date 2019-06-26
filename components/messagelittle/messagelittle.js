@@ -36,9 +36,12 @@ Component({
         })
       }
     },
+    keywords:{
+      type:Array,
+      value:[]
+    },
     post: Boolean,
   },
-
   data: {
     BASE_URL,
     isclick: false,
@@ -59,7 +62,6 @@ Component({
         searchart(that, 'items.php', 'select_item_by_id')
       else
         searchart(that, 'articles.php', 'select_article_by_id')
-
     }
   },
   methods: {
