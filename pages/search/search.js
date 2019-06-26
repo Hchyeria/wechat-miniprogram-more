@@ -17,26 +17,29 @@ function loadSearch(that) {
     })
   })
 }
+
+let page  = 0
+
 function searchitem(that, type, searchTarget) {
+  page++
   request('search.php', {
     type: type,
     keys: searchTarget,
-    page: 1,
+    page,
     limit: 5,
     secret_key: app.globalData.secret_key,
   }).then(data => {
     that.setData({
-      searchitemlist: data.result,
-      length: data.result.length
+      searchitemlist: [...that.data.searchitemlist,...data.result],
+      length: that.data.length + data.result.length
     })
+    console.log(that.data.searchitemlist, that.data.length)
     if (0 == data.result.length) {
-
       that.setData({
         isnull: true,
       })
     }
     else {
-
       that.setData({
         isnull: false,
       })
@@ -54,7 +57,11 @@ Page({
     length: 0,
     art: String,
     article: "article",
-    item: "item"
+    item: "item",
+  },
+  onReachBottom(){
+    console.log('search refresh')
+    searchitem(this, this.data.type, this.data.searchTarget)
   },
   onLoad(option) {
     loadSearch(this),
@@ -68,42 +75,55 @@ Page({
     })
   },
   search() {
-    if (this.data.type == "article") {
+    page = 0
+    this.setData({
+      searchitemlist: [],
+      length: 0
+    })
+    let type = 1
+    if (this.data.type == "article" || this.data.type == 1) {
       this.setData({
-        type: 1,
+        type,
         art: "article"
       })
-    }
-    else {
+    } else {
+      type  = 2
       this.setData({
-        type: 2,
+        type,
         art: "item"
       })
     }
     if (this.data.searchTarget != null) {
-      searchitem(this, this.data.type, this.data.searchTarget);
+      searchitem(this, this.data.type, this.data.searchTarget)
       this.setData({
         issearch: false
       })
     }
-
   },
   history(e) {
+    page = 0
+    this.setData({
+      searchitemlist: [],
+      length: 0
+    })
+    let type = 1
     if (this.data.type == "article") {
       this.setData({
-        type: 1,
+        type,
         art: "article"
       })
     }
     else {
+      type = 2
       this.setData({
-        type: 2,
+        type,
         art: "item"
       })
     }
     searchitem(this, this.data.type, e._relatedInfo.anchorTargetText)
     this.setData({
-      issearch: false
+      issearch: false,
+      searchTarget: e._relatedInfo.anchorTargetText
     })
   }
 })
