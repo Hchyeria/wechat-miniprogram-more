@@ -38,16 +38,20 @@ function searchitem(that, type, searchTarget) {
       searchitemlist: [...that.data.searchitemlist,...data.result],
       length: that.data.length + data.result.length
     })
-    if (0 == data.result.length) {
+    if (!that.data.length) {
       that.setData({
         isnull: true,
       })
+      return
     }
-    else {
+    if (!data.result.length) {
+      wx.showToast({
+        title: '暂无更多',
+      })
+    }
       that.setData({
         isnull: false,
       })
-    }
   })
 }
 
@@ -87,7 +91,8 @@ Page({
     art: String,
     article: "article",
     item: "item",
-    keywords:[]
+    keywords:[],
+    searchTarget:''
   },
   onReachBottom(){
     console.log('search refresh')
@@ -126,14 +131,16 @@ Page({
       })
     }
     if (!this.data.searchTarget.trim()){
-      return;
+      x.showToast({
+        title: '请输入内容'
+      })
+      return
     }
     searchitem(this, this.data.type, this.data.searchTarget)
     this.setData({
       keywords: this.data.searchTarget.split(' '),
       issearch: false
     })
- 
   },
   history(e) {
     page = 0
@@ -156,12 +163,13 @@ Page({
         art: "item"
       })
     }
-    searchitem(this, this.data.type, e._relatedInfo.anchorTargetText)
+    let {history} = e.currentTarget.dataset
     this.setData({
       issearch: false,
-      searchTarget: e._relatedInfo.anchorTargetText,
-      keywords: e._relatedInfo.anchorTargetText.split(',')
+      searchTarget: history,
+      keywords: history.split(',')
     })
+    searchitem(this, this.data.type, history)
   },
   removeHistory(e){
     let that = this;
@@ -172,6 +180,5 @@ Page({
         searchList: [...that.data.searchList.slice(0, index), ...that.data.searchList.slice(index + 1)]
       })
     })
-
   }
 })

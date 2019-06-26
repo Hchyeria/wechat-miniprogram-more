@@ -9,7 +9,7 @@
     <view class='hr-view'>
       <block wx:for='{{searchList}}'wx:key='svKey' wx:for-index='i' wx:for-item='item'>
         <view class='hr row align-center bottom-line'>
-          <view wx:if='{{item.history}}'class='hr hr-{{status}} row align-center' wx:key='{{item.hID}}' id='{{item.hID}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
+          <view wx:if='{{item.history}}'class='hr hr-{{status}} row align-center' wx:key='{{item.hID}}' data-history='{{item.history}}' id='{{item.hID}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
             <view>
               <image src='../../assets/time.png' mode="aspectFit" class="history-icon" />
             </view>
@@ -26,7 +26,7 @@
     <view class='text' wx:if='{{labelList.length}}'>您可能感兴趣的</view>
     <view class='label-view' wx:if='{{labelList}}'>
       <block wx:for='{{labelList}}' wx:key='svKey' wx:for-index='i' wx:for-item='item'>
-        <view wx:if='{{item}}' class='label hr-{{status}}' id='hr-{{i}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
+        <view wx:if='{{item}}' class='label hr-{{status}}' id='hr-{{i}}' data-history='{{item}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
         {{item}}
         </view>
       </block>
