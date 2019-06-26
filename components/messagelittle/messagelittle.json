@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "toggleIcon": "../../utils/toggleIcon/index",
-    "model": "/components/model/model"   
+    "model": "/components/model/model",
+    "searchText": "/components/searchText/searchText"   
   }
 }

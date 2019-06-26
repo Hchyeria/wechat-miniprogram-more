@@ -18,10 +18,10 @@
   <view class='null'>暂无帖子</view>
   </view>
   <block wx:for='{{searchlist}}'wx:key='article' wx:for-item='item' >
-    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' />
+    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}'/>
   </block>  
   <block wx:for='{{searchitemlist}}'wx:key='article' wx:for-item='item' >
-    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' />
+    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}'/>
   </block>  
   </view>
   </view>

@@ -1,0 +1,7 @@
+.text-true{
+  color: var(--tab-blue);
+}
+
+.text-false{
+  color:black;
+}
