@@ -38,21 +38,20 @@ function searchitem(that, type, searchTarget) {
       searchitemlist: [...that.data.searchitemlist,...data.result],
       length: that.data.length + data.result.length
     })
-    if(!data.result.length){
-      wx.showToast({
-        title: '暂无更多',
-      })
-    }
     if (!that.data.length) {
       that.setData({
         isnull: true,
       })
+      return
     }
-    else {
+    if (!data.result.length) {
+      wx.showToast({
+        title: '暂无更多',
+      })
+    }
       that.setData({
         isnull: false,
       })
-    }
   })
 }
 
