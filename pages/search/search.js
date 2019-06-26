@@ -38,8 +38,12 @@ function searchitem(that, type, searchTarget) {
       searchitemlist: [...that.data.searchitemlist,...data.result],
       length: that.data.length + data.result.length
     })
-    console.log(that.data.searchitemlist, that.data.length)
-    if (0 == data.result.length) {
+    if(!data.result.length){
+      wx.showToast({
+        title: '暂无更多',
+      })
+    }
+    if (!that.data.length) {
       that.setData({
         isnull: true,
       })
@@ -63,7 +67,8 @@ Page({
     art: String,
     article: "article",
     item: "item",
-    keywords:[]
+    keywords:[],
+    searchTarget:''
   },
   onReachBottom(){
     console.log('search refresh')
@@ -99,13 +104,17 @@ Page({
         art: "item"
       })
     }
-    if (this.data.searchTarget != null) {
+    if (this.data.searchTarget == '') {
+      wx.showToast({
+        title: '请输入内容'
+      })
+      return
+    }
       searchitem(this, this.data.type, this.data.searchTarget)
       this.setData({
         keywords: this.data.searchTarget.split(' '),
         issearch: false
       })
-    }
   },
   history(e) {
     page = 0

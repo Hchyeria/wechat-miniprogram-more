@@ -1,17 +1,11 @@
 /* pages/search/search.wxss */
 page{
-  height: 100%;
-background-color:#f9fafc;
-transition: all 0.2s ease-out;
-}
-.search{
-  height: 100%;
-
+  background-color:#f9fafc;
+  transition: all 0.2s ease-out;
 }
 .total{
   width: 90%;
   margin:auto;
-
 }
 .input{
   display: flex;
@@ -63,7 +57,7 @@ font-weight: 500
 margin:auto;
 letter-spacing:5px;
 font-weight: 900;
-color:#ced3d7
+color:#ced3d7;
 }
 .message2{
   display:flex;
