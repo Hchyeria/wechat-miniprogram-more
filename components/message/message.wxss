@@ -450,3 +450,8 @@
   margin-left:auto;
   margin-right:12px;
 }
+.account-type{
+  display: inline-block;
+  font-size: 0.6em;
+  color: var(--color-a);
+}

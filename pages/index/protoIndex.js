@@ -34,7 +34,7 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
     setLimit()
       .then(limit => {
         let params;
-        if (isrecent === 1 && type[0] === 'a'){
+        if (isrecent && type[0] === 'a'){
           params = {
             secondType: `recent_similar`,
             secret_key: app.globalData.secret_key
@@ -60,7 +60,6 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
               secret_key: app.globalData.secret_key
             }
           }
-          console.log(isOnlySchool)
           if (isOnlySchool) {
             params = {
               secondType: `select_${type}_by_type`,
@@ -92,16 +91,22 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
         }
       })
       .then(data => {
+        if (isrecent){
+          that.setData({
+            recentLength: data.result.length
+          })
+        }
         if (isRefsh){
           that.setData({
             contentList: data.result
           })
         }
-        else{
+        if (!isRefsh){
           that.setData({
             contentList: that.data.contentList.concat(data.result)
           })
         }
+
         resolve(data.result.length)
       })
   })
@@ -205,7 +210,8 @@ export function MPage(type) {
       mode: 1,
       isOnlySchool: 0,
       latitude:'',
-      longitude:''
+      longitude:'',
+      recentLength: 5
     },
     onShareAppMessage(res) {
       return onShare(res)

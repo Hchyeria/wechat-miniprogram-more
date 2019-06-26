@@ -35,6 +35,21 @@ function item(that) {
     })
   })
 }
+
+function addAccountType(type) {
+  let temp;
+  switch (type) {
+    case '0': temp = ''
+      break
+    case '1': temp = '社团组织'
+      break
+    case '2': temp = '商家企业'
+      break
+    default: temp = ''
+  }
+  return temp
+}
+
 const app = getApp()
 
 
@@ -69,7 +84,8 @@ Component({
               text: val.content,
               url: `/pages/detail/detail?Id=${val.ID}&type=${this.data.type}&from=share`,
               imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`)
-            }
+            },
+            accountType: addAccountType(val.account_type)
           })
         }
       }
@@ -104,7 +120,8 @@ Component({
     toastError: 0,
     toastMessage: "",
     isToast: false,
-    isfire:false
+    isfire:false,
+    accountType: ''
   },
   methods: {
     onTap() {

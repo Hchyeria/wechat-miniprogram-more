@@ -8,7 +8,9 @@
         <image src='{{!content.avatar || content.avatar==="undefined" ? "https://wx.qlogo.cn/mmopen/vi_32/Oqlx3vdfzd27c4iaY8RsDJ6CKD5iataIibZqV2NpGqGLMkTj7k70Cb5zsK1eRzdnr7DYrZXkJ2mf9a5icsibwUPffibw/132" : content.avatar }}' class='head-icon' mode="widthFix"/>
         <view class='column col-middle'>
           <view class='s-n'>
-            <text class='name'>{{content.username && content.username!=='undefined'? content.username : '暂无昵称' }}</text>
+            <view class='name'>{{content.username && content.username!=='undefined'? content.username : '暂无昵称' }}
+              <view class="account-type">{{accountType && "(" + accountType + ")"}}</view>
+            </view>
             <text class='school'>{{content.school_name && content.school_name!=='undefined'? content.school_name : '暂无学校'}}</text>
           </view>
           <view class='time-hot'>
