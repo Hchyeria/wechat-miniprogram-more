@@ -7,7 +7,7 @@ Component({
     },
     bannerTop:{
       type: String,
-      
+      value: '100px'
     }
   },
   data: {

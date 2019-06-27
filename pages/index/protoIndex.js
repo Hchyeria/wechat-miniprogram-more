@@ -247,7 +247,6 @@ export function MPage(type) {
     },
     onShow() {
       page = 1
-
       forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
       this.data.addIconActive && this.setData({
         addIconActive: false
@@ -262,8 +261,8 @@ export function MPage(type) {
       typeID = 1
       attachRefresher(this, type)
       loadBannerText(this, this.data.type)
-      if (this.data.type[0] === 'a') {
-        loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 1, this.data.isOnlySchool)
+      if (this.data.type[0] === 'a'){
+        loadContent(this, this.data.momde, this.data.type, page, typeID, 0, 1, this.data.isOnlySchool)
         loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
       } else {
         loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
@@ -277,15 +276,9 @@ export function MPage(type) {
         isloadDown: true
       })
       loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool).then(length => {
-        if (length !== 0) {
-          showRepeatMsg(this, '', `已为您加载${length}条内容`, {
-            isloadDown: false
-          })
-        } else {
-          that.setData({
-            isloadDown: false
-          })
-        }
+        that.setData({
+          isloadDown: false
+        })
       })
     },
     onBannerLoad() {
@@ -401,7 +394,7 @@ export function MPage(type) {
         case 3:
           contentList.sort((a, b) => {
             let rs = [a, b].map(m => (m.latitude - app.globalData.latitude) ** 2 + (m.longitude - app.globalData.longitude) ** 2)
-            return rs[1] - rs[0]
+            return rs[0] - rs[1]
           })
           break;
       }
