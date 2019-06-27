@@ -82,7 +82,7 @@ function deleteLabels(id){
 
 Page({
   data: {
-    type: undefined,
+    type: "article",
     searchList: Object,
     labelList: [],
     issearch: true,
@@ -102,10 +102,7 @@ Page({
   onLoad(option) {
     console.log(option)
     fetchLabels(this)
-    loadSearch(this),
-      this.setData({
-        type: option.type
-      })
+    loadSearch(this)
   },
   getInput(e) {
     this.setData({

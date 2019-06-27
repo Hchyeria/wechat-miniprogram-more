@@ -239,7 +239,6 @@ export function MPage(type) {
     },
     onShow() {
       page = 1
-
       forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
       this.data.addIconActive && this.setData({
         addIconActive: false
@@ -269,15 +268,9 @@ export function MPage(type) {
         isloadDown: true
       })
       loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool).then(length => {
-        if (length !== 0) {
-          showRepeatMsg(this, '', `已为您加载${length}条内容`, {
-            isloadDown: false
-          })
-        } else {
-          that.setData({
-            isloadDown: false
-          })
-        }
+        that.setData({
+          isloadDown: false
+        })
       })
     },
     onBannerLoad() {

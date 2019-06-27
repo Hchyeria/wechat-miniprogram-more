@@ -200,6 +200,7 @@
 .s-n {
   display: flex;
   flex-direction: column;
+  width: 75%;
 }
 
 .school {
@@ -327,6 +328,7 @@
   display: flex;
   width: 128px;
   transition: all 0.2s;
+  padding-top: 10px;
 }
 
 .row3 {
@@ -336,6 +338,7 @@
 .maxmore {
   width: 50%;
   margin-left: 20%;
+  padding-top: 10px;
 }
 
 .more {

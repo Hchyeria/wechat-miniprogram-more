@@ -14,24 +14,26 @@
     <image class='banner-text' wx:if='{{bannerText[typeID-1].url||bannerText[10].url}}' mode='aspectFit' src='https://{{BASE_URL}}/{{bannerText[typeID-1].url}}' binderror="onBannerTexerror"/>
     </view>
     
-    <view class='messageList'>
-    <view wx:if='{{type ==="article"}}'>
-      <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
-        <message content='{{item}}' type='{{type}}' toDetail='{{true}}' isde='{{true}}' bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
-      </block>
-    </view>
-    <view class='left' wx:if='{{type==="item"}}'>
-      <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
-        <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==0}}" bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
-      </block>
-    </view>
-    <view wx:if='{{type==="item"}}' class='right'>
-      <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
-        <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==1}}" bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
-      </block>
-    </view>
-    <view class='sk-spinner-pulse {{isloadDown? "" : "displayHide"}}'> </view>
- 
+    <view class='messageList'>  
+      <view class='null-item' wx:if='{{!contentList.length}}'>
+        <view class='null'>暂无帖子</view>
+      </view>
+      <view wx:if='{{type ==="article"}}'>
+        <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
+          <message content='{{item}}' type='{{type}}' toDetail='{{true}}' isde='{{true}}' bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
+        </block>
+      </view>
+      <view class='left' wx:if='{{type==="item"}}'>
+        <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
+          <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==0}}" bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
+        </block>
+      </view>
+      <view wx:if='{{type==="item"}}' class='right'>
+        <block wx:for='{{contentList}}' wx:key='{{type}}' wx:for-item='item'>
+          <message content='{{item}}' type='{{type}}' toDetail='{{true}}' wx:if="{{index%2==1}}" bindonLoadPictrue="onLoadPictrue" bind:delete='onDelete'/>
+        </block>
+      </view>
+      <view class='sk-spinner-pulse {{isloadDown? "" : "displayHide"}}'> </view>
   </view>
   
   
