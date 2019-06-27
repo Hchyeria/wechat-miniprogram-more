@@ -4,6 +4,10 @@ Component({
     loadClass: {
       type: String,
       value: ''
+    },
+    bannerTop:{
+      type: String,
+      
     }
   },
   data: {

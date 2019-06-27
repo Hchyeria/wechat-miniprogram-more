@@ -73,8 +73,12 @@ page {
   display: flex;
   margin-top: 2%;
   margin-right: 5%;
+<<<<<<< HEAD
   border-bottom: 1px solid #ababab;
   flex: 0 0 20%;
+=======
+  border-bottom:1px solid #ababab;
+>>>>>>> b691033a0bae0265441add91c12363e33d69e4fe
   padding-left: 10px;
   margin-bottom: 10px;
 }

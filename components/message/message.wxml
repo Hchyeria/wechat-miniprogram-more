@@ -143,14 +143,14 @@
 
   <view class='bg shadowcustom'>
     <view class='detail'>
-      <image src='../../assets/detail.png' mode="widthFix" class='DETAILS ' ></image>
+      <image src='../../assets/detail-text.png' mode="aspectFit" class='details'></image>
     </view>
     <view class='content2'>{{content.content}}</view>
   </view>
 
   <view class='bg shadowcustom'>
-    <view class='lianxi'>
-      <image src='../../assets/contact.png' mode="widthFix" class='DETAILS contact_way'></image>
+    <view class='detail'>
+      <image src='../../assets/contact-text.png' mode="aspectFit" class='contact-way'></image>
     </view>
     <view class='content2'>{{content.contact_way}}</view>
   </view>

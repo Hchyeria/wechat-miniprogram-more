@@ -38,8 +38,13 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
           params = {
             secondType: `recent_similar`,
             secret_key: app.globalData.secret_key,
+<<<<<<< HEAD
             latitude:app.globalData.latitude,
             longitude:app.globalData.longitude
+=======
+            latitude: app.globalData.latitude,
+            longitude: app.globalData.longitude
+>>>>>>> b691033a0bae0265441add91c12363e33d69e4fe
           }
           return request( `users.php`, params)
         }

@@ -8,7 +8,7 @@
 </view>
 <view bindtouchstart="touchStart" bindtouchend="touchEnd">
  
-  <load isShow="{{isLoad}}" loadClass="{{isSlide[0]? 'loadslideright' : isSlide[1]? 'loadslideleft' : ''}}"/>
+  <load isShow="{{isLoad}}" loadClass="{{isSlide[0]? 'loadslideright' : isSlide[1]? 'loadslideleft' : ''}}" bannerTop="{{bannerTop}}"/>
     <view wx:if='{{banner}}' class='banner' style='padding-top:{{bannerTop}}'>
     <image class='isLoad? "" : "banner-motion"' mode='widthFix' src='https://{{BASE_URL}}/upload/banners/{{banner}}' bindload="onBannerLoad" binderror="onBannerLoad"/>
     <image class='banner-text' wx:if='{{bannerText[typeID-1].url||bannerText[10].url}}' mode='aspectFit' src='https://{{BASE_URL}}/{{bannerText[typeID-1].url}}' binderror="onBannerTexerror"/>
