@@ -5,7 +5,7 @@
     </view>
     <view class='bar' bindtap='onTap'>
       <view class='row'>
-        <image src='{{!content.avatar || content.avatar==="undefined" ? "https://wechatmore.xyz:666/upload/icon/default_avatar" : content.avatar }}' class='head-icon' mode="widthFix"/>
+        <image src='{{!content.avatar || content.avatar==="undefined" ? "https://wechatmore.xyz:666/upload/icon/default_avatar.jpg" : content.avatar }}' class='head-icon' mode="widthFix"/>
         <view class='column col-middle'>
           <view class='s-n'>
             <view class='name'>{{content.username && content.username!=='undefined'? content.username : '暂无昵称' }}

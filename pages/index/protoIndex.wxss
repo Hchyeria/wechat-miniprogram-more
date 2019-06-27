@@ -81,3 +81,7 @@ page{
   width: 100%;
   position: fixed;
 }
+.null-item{
+  transform: translate(0, 150%);
+  display: flex;
+}

@@ -1,12 +1,17 @@
 import {
-  request, BASE_URL
+  request,
+  BASE_URL
 } from '../../utils/request.js'
 
 import {
   forTabBar
 } from '../../custom-tab-bar/switchTab.js'
-import { onShare } from '../../utils/share.js'
-import { showRepeatMsg } from '../../utils/pick.js'
+import {
+  onShare
+} from '../../utils/share.js'
+import {
+  showRepeatMsg
+} from '../../utils/pick.js'
 
 const app = getApp()
 
@@ -34,76 +39,88 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
     setLimit()
       .then(limit => {
         let params;
-        if (isrecent && type[0] === 'a'){
+        if (isrecent && type[0] === 'a') {
           params = {
             secondType: `recent_similar`,
             secret_key: app.globalData.secret_key,
             latitude: app.globalData.latitude,
             longitude: app.globalData.longitude
           }
-          return request( `users.php`, params)
-        }
-        else{
-        if (type[0] === 'a') {
-          if(mode === 3){
-            params = {
-              secondType: `select_${type}_by_type`,
-              typeID, mode, limit, page,
-              longitude: app.globalData.longitude,
-              latitude: app.globalData.latitude,
-              secret_key: app.globalData.secret_key
-            }
-              
-          }
-          if(mode !== 3) {
-            params = {
-              secondType: `select_${type}_by_type`,
-              typeID, mode, limit, page,
-              secret_key: app.globalData.secret_key
-            }
-          }
-          if (isOnlySchool) {
-            params = {
-              secondType: `select_${type}_by_type`,
-              typeID, mode: 2, limit, page, only_school: 1,
-              secret_key: app.globalData.secret_key
-            }
-          }
+          return request(`users.php`, params)
         } else {
-          if(mode!='3'){
-          params = {
-            secondType: `select_${type}_by_type`,
-            type: typeID,
-            limit, page,mode,
-            secret_key: app.globalData.secret_key
-          }
-          }
-          else{
-            params = {
-              secondType: `select_${type}_by_type`,
-              type: typeID,
-              limit, page, mode, 
-              longitude: app.globalData.longitude,
-              latitude: app.globalData.latitude,
-              secret_key: app.globalData.secret_key
+          if (type[0] === 'a') {
+            if (mode === 3) {
+              params = {
+                secondType: `select_${type}_by_type`,
+                typeID,
+                mode,
+                limit,
+                page,
+                longitude: app.globalData.longitude,
+                latitude: app.globalData.latitude,
+                secret_key: app.globalData.secret_key
+              }
+
+            }
+            if (mode !== 3) {
+              params = {
+                secondType: `select_${type}_by_type`,
+                typeID,
+                mode,
+                limit,
+                page,
+                secret_key: app.globalData.secret_key
+              }
+            }
+            if (isOnlySchool) {
+              params = {
+                secondType: `select_${type}_by_type`,
+                typeID,
+                mode: 2,
+                limit,
+                page,
+                only_school: 1,
+                secret_key: app.globalData.secret_key
+              }
+            }
+          } else {
+            if (mode != '3') {
+              params = {
+                secondType: `select_${type}_by_type`,
+                type: typeID,
+                limit,
+                page,
+                mode,
+                secret_key: app.globalData.secret_key
+              }
+            } else {
+              params = {
+                secondType: `select_${type}_by_type`,
+                type: typeID,
+                limit,
+                page,
+                mode,
+                longitude: app.globalData.longitude,
+                latitude: app.globalData.latitude,
+                secret_key: app.globalData.secret_key
+              }
             }
           }
-        }
           return request(`${type}s.php`, params)
         }
       })
       .then(data => {
-        if (isrecent){
+        if (isrecent) {
           that.setData({
             recentLength: data.result.length
           })
         }
-        if (isRefsh){
+        if (isRefsh) {
           that.setData({
             contentList: data.result
           })
         }
-        if (!isRefsh){
+        if (!isRefsh) {
           that.setData({
             contentList: that.data.contentList.concat(data.result)
           })
@@ -116,7 +133,7 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
 export function loadBanner(that, second_type, type) {
   return new Promise((resolve, reject) => {
     that.setData({
-      banner:false
+      banner: false
     })
     request('pictures.php', {
       secondType: 'get_banner_by_type',
@@ -157,8 +174,7 @@ export function tabChange(typeID, that, page) {
         isSlide: [0, 0]
       })
     }, 400)
-  }
-  else {
+  } else {
     that.setData({
       contentList: [],
       typeID: typeID,
@@ -175,7 +191,7 @@ export function tabChange(typeID, that, page) {
   loadBanner(that, typeID, that.data.type)
 }
 
-function attachRefresher(that,type){
+function attachRefresher(that, type) {
   app[`refresher_${type}`] = () => {
     console.log(`refresh_${type}`)
     that.onPullDownRefresh()
@@ -193,8 +209,8 @@ export function MPage(type) {
 
   return Page({
     data: {
-      overlayHeight: app.globalData.deviceH+20 + "px",
-      isOverlay:false,
+      overlayHeight: app.globalData.deviceH + 20 + "px",
+      isOverlay: false,
       contentList: [],
       BASE_URL,
       banner: undefined,
@@ -211,8 +227,8 @@ export function MPage(type) {
       isloadDown: false,
       mode: 1,
       isOnlySchool: 0,
-      latitude:'',
-      longitude:'',
+      latitude: '',
+      longitude: '',
       recentLength: 5
     },
     onShareAppMessage(res) {
@@ -223,26 +239,24 @@ export function MPage(type) {
     },
     onShow() {
       page = 1
-      
       forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
-      this.data.addIconActive &&  this.setData({
+      this.data.addIconActive && this.setData({
         addIconActive: false
       })
     },
     onLoad() {
-      if (this.data.type[0] === 'i'){
+      if (this.data.type[0] === 'i') {
         this.setData({
-          mode:2
+          mode: 2
         })
       }
       typeID = 1
-      attachRefresher(this,type)
+      attachRefresher(this, type)
       loadBannerText(this, this.data.type)
       if (this.data.type[0] === 'a'){
         loadContent(this, this.data.momde, this.data.type, page, typeID, 0, 1, this.data.isOnlySchool)
         loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
-      }
-      else{
+      } else {
         loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
       }
       loadBanner(this, typeID, this.data.type)
@@ -254,17 +268,12 @@ export function MPage(type) {
         isloadDown: true
       })
       loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool).then(length => {
-        if (length !== 0) {
-          showRepeatMsg(this, '', `已为您加载${length}条内容`, { isloadDown: false })
-        }
-        else {
-          that.setData({
-            isloadDown: false
-          })
-        }
+        that.setData({
+          isloadDown: false
+        })
       })
     },
-    onBannerLoad(){
+    onBannerLoad() {
       if (this.data.isLoad) {
         wx.pageScrollTo({
           scrollTop: 0
@@ -273,10 +282,10 @@ export function MPage(type) {
           isLoad: ''
         })
         let that = this;
-        if (!this.data.bannerTop){
+        if (!this.data.bannerTop) {
           var query = wx.createSelectorQuery();
           query.select('.top').boundingClientRect()
-          query.exec(function (res) {
+          query.exec(function(res) {
             that.setData({
               bannerTop: res[0].height + 'px'
             })
@@ -284,8 +293,8 @@ export function MPage(type) {
         }
       }
     },
-    onLoadPictrue(){
-      if (this.data.typeID == 1){
+    onLoadPictrue() {
+      if (this.data.typeID == 1) {
         if (this.data.isLoad) {
           this.setData({
             isLoad: ''
@@ -330,7 +339,7 @@ export function MPage(type) {
           this.setData({
             typeID
           })
-        } 
+        }
       }
       if (touchMove[0] - touchDot[0] >= 80 && time < 10 && tempY <= 40) {
         if (typeID > 1) {
@@ -351,38 +360,64 @@ export function MPage(type) {
       this.setData({
         addIconActive: true
       })
-      setTimeout(() =>{
+      setTimeout(() => {
         wx.navigateTo({
           url: '../send/send'
         })
       }, 50)
-     
+
     },
-    onChooseMode(e){
+    onChooseMode(e) {
       let that = this;
-      let { id, isOnlySchool } = e.detail
+      let {
+        id,
+        isOnlySchool
+      } = e.detail
+      let {
+        contentList
+      } = this.data
+      switch (id) {
+        case 1:
+          contentList.sort((a, b) => b.hot - a.hot)
+          break;
+        case 2:
+          contentList.sort((a, b) => b.ID - a.ID)
+          break;
+        case 3:
+          contentList.sort((a, b) => {
+            let rs = [a, b].map(m => (m.latitude - app.globalData.latitude) ** 2 + (m.longitude - app.globalData.longitude) ** 2)
+            return rs[0] - rs[1]
+          })
+          break;
+      }
+      console.log(contentList)
       this.setData({
-        contentList: [],
+        contentList,
         mode: id,
         isOnlySchool,
         isloadDown: true
       })
+      /*
       page = 1
       loadContent(this, id, this.data.type, page, typeID, 0, 0, isOnlySchool).then(() =>{
         that.setData({
           isloadDown: false
         })
       })
-      
+      */
     },
-    onOverlay(e){
-      let { isOverlay } = e.detail
+    onOverlay(e) {
+      let {
+        isOverlay
+      } = e.detail
       this.setData({
         isOverlay
       })
     },
-    onCloseOverlay(e){
-      this.data.isOverlay &this.setData({isOverlay: false})
+    onCloseOverlay(e) {
+      this.data.isOverlay & this.setData({
+        isOverlay: false
+      })
     }
   })
 }

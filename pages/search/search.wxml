@@ -63,5 +63,21 @@
         <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}' />
       </block>
     </view>
+<<<<<<< HEAD
+=======
+ </view>
+
+  <view class='message'wx-if='{{!issearch}}'>
+  <view class='message2' wx:if='{{isnull}}'>
+    <view class='null'>暂无帖子</view>
+  </view>
+  <block wx:for='{{searchlist}}'wx:key='article' wx:for-item='item' >
+    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}'/>
+  </block>  
+  <block wx:for='{{searchitemlist}}'wx:key='article' wx:for-item='item' >
+    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}'/>
+  </block>  
+  </view>
+>>>>>>> e2320b7c8cd3d2e2483344416285a67c3e91ae13
   </view>
 </view>
