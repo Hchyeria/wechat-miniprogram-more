@@ -257,7 +257,7 @@
 
 .content2 {
   margin: auto;
-  margin-top: 2%;
+  margin-top: 10px;
   padding-bottom: 3%;
   width: 90%;
 }
@@ -289,22 +289,27 @@
 .download {
   margin-left: auto;
 }
+.detail{
+  background-color: var(--color-b);
+  padding: 2px 0px;
+  box-sizing: border-box;
+  width: 56%;
+}
+.details {
+ width: 400rpx;
+  height: 50rpx;
+  margin: 10rpx 0 10rpx 5rpx;
 
-.DETAILS {
-  width: 202px;
-  height: 54rpx;
-  margin: 15rpx;
-  margin-left: 0;
 }
 
 .lianxi {
   width: 50%;
 }
 
-.contact_way {
-  width: 202px;
-  margin: 15rpx;
-  margin-left: 0;
+.contact-way {
+  width: 400rpx;
+  height: 50rpx;
+  margin: 10rpx 0 10rpx 15rpx;
 }
 
 .bg {

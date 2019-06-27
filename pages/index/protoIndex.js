@@ -37,7 +37,9 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
         if (isrecent && type[0] === 'a'){
           params = {
             secondType: `recent_similar`,
-            secret_key: app.globalData.secret_key
+            secret_key: app.globalData.secret_key,
+            latitude: app.globalData.latitude,
+            longitude: app.globalData.longitude
           }
           return request( `users.php`, params)
         }
