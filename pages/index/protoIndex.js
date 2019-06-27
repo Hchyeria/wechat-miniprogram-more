@@ -386,7 +386,7 @@ export function MPage(type) {
         case 3:
           contentList.sort((a, b) => {
             let rs = [a, b].map(m => (m.latitude - app.globalData.latitude) ** 2 + (m.longitude - app.globalData.longitude) ** 2)
-            return rs[1] - rs[0]
+            return rs[0] - rs[1]
           })
           break;
       }
