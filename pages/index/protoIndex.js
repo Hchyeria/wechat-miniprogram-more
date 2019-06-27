@@ -239,7 +239,7 @@ export function MPage(type) {
       attachRefresher(this,type)
       loadBannerText(this, this.data.type)
       if (this.data.type[0] === 'a'){
-        loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 1, this.data.isOnlySchool)
+        loadContent(this, this.data.momde, this.data.type, page, typeID, 0, 1, this.data.isOnlySchool)
         loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
       }
       else{

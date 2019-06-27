@@ -45,7 +45,7 @@ Component({
         "type_name": "搜索结果"
       }
     ],
-    sortMode: 1,
+    sortMode: '',
     sortList: ['热度', '时间', '就近'],
     selected: 0,
     isSelect: [false, false],

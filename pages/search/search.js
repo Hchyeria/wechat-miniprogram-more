@@ -26,6 +26,7 @@ function formatKey(text){
 }
 
 function searchitem(that, type, searchTarget) {
+  console.log(that.data.ispart)
   page++
   request('search.php', {
     type: type,
@@ -34,10 +35,27 @@ function searchitem(that, type, searchTarget) {
     limit: 5,
     secret_key: app.globalData.secret_key,
   }).then(data => {
+    if (that.data.ispart[1] || that.data.ispart[0]){
+      that.setData({
+        searchitemlist: data.result,
+        length: data.result.length
+      })
+    }
+    if (!that.data.ispart[1] && !that.data.ispart[0]){
+      that.setData({
+        searchitemlist: [...that.data.searchitemlist, ...data.result],
+        length: that.data.length + data.result.length
+      })
+    }else{
     that.setData({
       searchitemlist: [...that.data.searchitemlist,...data.result],
       length: that.data.length + data.result.length
+    })}
+    if(that.data.ispart[0]||that.data.ispart[1])
+    that.setData({
+      ispart:[false,false]
     })
+
     if (!that.data.length) {
       that.setData({
         isnull: true,
@@ -93,7 +111,10 @@ Page({
     item: "item",
     keywords:[],
     searchTarget:'',
-    ischoose:[true,false]
+    ischoose:[true,false],
+    history:'',
+    ispart:[false,false],
+    
   },
   onReachBottom(){
     console.log('search refresh')
@@ -164,9 +185,10 @@ Page({
         art: "item"
       })
     }
-    let {history} = e.currentTarget.dataset
+    let {history}= e.currentTarget.dataset
     this.setData({
       issearch: false,
+      history: e.currentTarget.dataset,
       searchTarget: history,
       keywords: history.split(',')
     })
@@ -183,15 +205,29 @@ Page({
     })
   },
   chooseArt(){
+    page = 0,
      this.setData({
-       type:"article",
+       type:1,
        ischoose:[true,false]
      })
+    if (!this.data.ispart[0] || this.data.ispart[1]) {
+      this.setData({
+        ispart:[true,false]
+      })
+      searchitem(this, this.data.type, this.data.searchTarget)
+    }
   },
   chooseItem(){
+    page = 0,
     this.setData({
-      type: "item",
+      type: 2,
       ischoose: [false, true]
     })
+    if(!this.data.ispart[0]||this.data.ispart[1]){
+      this.setData({
+        ispart: [false, true]
+      })
+      searchitem(this, this.data.type, this.data.searchTarget)
+    }
   }
 })

@@ -10,7 +10,7 @@ function navigateToDetail(that) {
 function searchart(that, php, secondType) {
   return request(php, {
     secondType: secondType,
-    ID: that.data.ID,
+    ID: that.data.ID||that.data.iID,
     secret_key: app.globalData.secret_key
   }).then(data => {
     that.setData({
@@ -32,7 +32,7 @@ Component({
         this.setData({
           timestamp: parseTimeStamp(val.time),
           isout: val.status == 1 ? true : false,
-          ID: val.aID || val.ID,
+          ID: val.aID || val.ID||val.iID,
           labels: val.Labels ? val.Labels.split(',') : null,
         })
       }
@@ -93,7 +93,7 @@ Component({
     click() {
       this.setData({
         isclick: !this.data.isclick,
-        ID: this.data.article.ID || this.data.article.aID
+        ID: this.data.article.ID || this.data.article.aID||this.data.iID
       })
 
     },

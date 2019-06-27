@@ -1,65 +1,67 @@
 <view class='search'>
-<view class='total'>
-<view class='two'>
- <view class='inputleft'><image src='../../assets/search.png' class='icon'/></view>
- <input class='input' bindblur='toggle' confirm-type='search' bindinput='getInput' bindconfirm="search" placeholder='搜索'/>
- </view>
-<view class='choose'>
+  <view class='total'>
+    <view class='two'>
+      <view class='inputleft'>
+        <image src='../../assets/search.png' class='icon' />
+      </view>
+      <input class='input' bindblur='toggle' confirm-type='search' bindinput='getInput' bindconfirm="search" placeholder='搜索' />
+    </view>
+    <view class='choose'>
 
-<view class='choose-part {{ischoose[0]? "hhh":""}}' bindtap='chooseArt' >
-<view class='choose-text'>
-<text class='ctext'>信息</text>
-<view class='line' wx:if='{{ischoose[0]}}'></view>
-</view>
-</view>
+      <view class='choose-part {{ischoose[0]? "hhh":""}}' bindtap='chooseArt'>
+        <view class='choose-text'>
+          <text class='ctext'>信息</text>
+          <view class='line' wx:if='{{ischoose[0]}}'></view>
+        </view>
+      </view>
 
-<view class='choose-part {{ischoose[1]? "hhh":""}}' bindtap='chooseItem' >
-<view class='choose-text'>
-<text class='ctext'>商品</text>
-<view class='line' wx:if='{{ischoose[1]}}'></view>
-</view>
-</view>
+      <view class='choose-part {{ischoose[1]? "hhh":""}}' bindtap='chooseItem'>
+        <view class='choose-text'>
+          <text class='ctext'>商品</text>
+          <view class='line' wx:if='{{ischoose[1]}}'></view>
+        </view>
+      </view>
 
-</view>
- <view wx:if='{{issearch}}'>
-   <view class='text'wx:if='{{searchList.length}}'>历史搜索</view>
-    <view class='hr-view'>
-      <block wx:for='{{searchList}}'wx:key='svKey' wx:for-index='i' wx:for-item='item'>
-        <view class='hr row align-center bottom-line'>
-          <view wx:if='{{item.history}}'class='hr hr-{{status}} row align-center' wx:key='{{item.hID}}' data-history='{{item.history}}' id='{{item.hID}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
-            <view>
-              <image src='../../assets/time.png' mode="aspectFit" class="history-icon" />
+    </view>
+    <view wx:if='{{issearch}}'>
+      <view class='text' wx:if='{{searchList.length}}'>历史搜索</view>
+      <view class='hr-view'>
+        <block wx:for='{{searchList}}' wx:key='svKey' wx:for-index='i' wx:for-item='item'>
+          <view class='hr row align-center bottom-line'>
+            <view wx:if='{{item.history}}' class='hr hr-{{status}} row align-center' wx:key='{{item.hID}}' data-history='{{item.history}}' id='{{item.hID}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
+              <view>
+                <image src='../../assets/time.png' mode="aspectFit" class="history-icon" />
+              </view>
+              <view class="history">
+                {{item.history}}
+              </view>
             </view>
-            <view class="history">
-              {{item.history}}
+            <view class="remove-history" id='{{item.hID}}' data-index='{{i}}' bindtap='removeHistory'>
+              <image src='../../assets/remove-button.png' mode="aspectFit" class="history-icon" />
             </view>
           </view>
-          <view class="remove-history" id='{{item.hID}}' data-index='{{i}}' bindtap='removeHistory'>
-            <image src='../../assets/remove-button.png' mode="aspectFit" class="history-icon" />
+        </block>
+      </view>
+      <view class='text' wx:if='{{labelList.length}}'>您可能感兴趣的</view>
+      <view class='label-view' wx:if='{{labelList}}'>
+        <block wx:for='{{labelList}}' wx:key='svKey' wx:for-index='i' wx:for-item='item'>
+          <view wx:if='{{item}}' class='label hr-{{status}}' id='hr-{{i}}' data-history='{{item}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
+            {{item}}
           </view>
-        </view>
-      </block>
+        </block>
+      </view>
     </view>
-    <view class='text' wx:if='{{labelList.length}}'>您可能感兴趣的</view>
-    <view class='label-view' wx:if='{{labelList}}'>
-      <block wx:for='{{labelList}}' wx:key='svKey' wx:for-index='i' wx:for-item='item'>
-        <view wx:if='{{item}}' class='label hr-{{status}}' id='hr-{{i}}' data-history='{{item}}' style='transition-duration: {{0.3+(status?i:(searchList.length-i))*0.3/searchList.length}}s' bindtap='history'>
-        {{item}}
-        </view>
-      </block>
-    </view>
- </view>
 
-  <view class='message'wx-if='{{!issearch}}'>
-  <view class='message2' wx:if='{{isnull}}'>
-  <view class='null'>暂无帖子</view>
-  </view>
-  <block wx:for='{{searchlist}}'wx:key='article' wx:for-item='item' >
-    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}'/>
-  </block>  
-  <block wx:for='{{searchitemlist}}'wx:key='article' wx:for-item='item' >
-    <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}'/>
-  </block>  
-  </view>
+    <view class='message' wx-if='{{!issearch}}'>
+      <view class='message2' wx:if='{{isnull}}'>
+        <view class='null'>暂无帖子</view>
+      </view>
+      <block wx:for='{{searchlist}}' wx:key='article' wx:for-item='item'>
+        <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}' />
+      </block>
+      <block wx:for='{{searchitemlist}}' wx:key='article' wx:for-item='item'>
+        <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}' />
+      </block>
+    </view>
   </view>
 </view>
