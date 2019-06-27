@@ -223,7 +223,6 @@ export function MPage(type) {
     },
     onShow() {
       page = 1
-      
       forTabBar(this, this.data.type[0] === 'a' ? 0 : 1)
       this.data.addIconActive &&  this.setData({
         addIconActive: false
