@@ -106,14 +106,13 @@ Page({
     getComments(this, this.data.Id, this.data.type)
       .then(length => {
         if (length !== 0 && !noToast) {
-          showRepeatMsg(that, '', `已为您加载${length}条内容`, { isloadDown: false })
         }
         else {
           page--
-          that.setData({
-            isloadDown: false
-          })
         }
+        that.setData({
+          isloadDown: false
+        })
       })
   },
   toReply(e) {

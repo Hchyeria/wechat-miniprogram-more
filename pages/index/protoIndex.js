@@ -247,20 +247,17 @@ export function MPage(type) {
       loadBanner(this, typeID, this.data.type)
     },
     onReachBottom() {
-      page++;
       let that = this;
       that.setData({
         isloadDown: true
       })
       loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool).then(length => {
-        if (length !== 0) {
-          showRepeatMsg(this, '', `已为您加载${length}条内容`, { isloadDown: false })
+        if(length !== 0 ){
+          page++;
         }
-        else {
-          that.setData({
-            isloadDown: false
-          })
-        }
+        that.setData({
+          isloadDown: false
+        })
       })
     },
     onBannerLoad(){

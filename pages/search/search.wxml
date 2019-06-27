@@ -52,7 +52,7 @@
 
   <view class='message'wx-if='{{!issearch}}'>
   <view class='message2' wx:if='{{isnull}}'>
-  <view class='null'>暂无帖子</view>
+    <view class='null'>暂无帖子</view>
   </view>
   <block wx:for='{{searchlist}}'wx:key='article' wx:for-item='item' >
     <messagelittle article='{{item}}' toDetail='{{true}}' art='{{art}}' keywords='{{keywords}}'/>
