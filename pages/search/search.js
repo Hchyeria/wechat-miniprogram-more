@@ -41,6 +41,7 @@ function searchitem(that, type, searchTarget) {
         length: data.result.length
       })
     }
+    else{
     if (!that.data.ispart[1] && !that.data.ispart[0]){
       that.setData({
         searchitemlist: [...that.data.searchitemlist, ...data.result],
@@ -51,6 +52,7 @@ function searchitem(that, type, searchTarget) {
       searchitemlist: [...that.data.searchitemlist,...data.result],
       length: that.data.length + data.result.length
     })}
+    }
     if(that.data.ispart[0]||that.data.ispart[1])
     that.setData({
       ispart:[false,false]
