@@ -74,17 +74,21 @@ Component({
               isfire: true
             })
           }
+          if (val.pictures){
+            this.setData({
+              imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`),
+              sharence: {
+                text: val.content,
+                url: `/pages/detail/detail?Id=${val.ID}&type=${this.data.type}&from=share`,
+                imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`)
+              },
+            })
+          }
           this.setData({
             timestamp: parseTimeStamp(val.time),
-            imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`),
             ID: val.ID,
             collected: val.is_collection,
             labels: val.labels ? val.labels.split(',') : null,
-            sharence: {
-              text: val.content,
-              url: `/pages/detail/detail?Id=${val.ID}&type=${this.data.type}&from=share`,
-              imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`)
-            },
             accountType: addAccountType(val.account_type)
           })
         }
@@ -121,7 +125,8 @@ Component({
     toastMessage: "",
     isToast: false,
     isfire:false,
-    accountType: ''
+    accountType: '',
+    fid:''
   },
   methods: {
     onTap() {

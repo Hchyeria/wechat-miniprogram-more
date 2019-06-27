@@ -4,6 +4,23 @@
  <view class='inputleft'><image src='../../assets/search.png' class='icon'/></view>
  <input class='input' bindblur='toggle' confirm-type='search' bindinput='getInput' bindconfirm="search" placeholder='搜索'/>
  </view>
+<view class='choose'>
+
+<view class='choose-part {{ischoose[0]? "hhh":""}}' bindtap='chooseArt' >
+<view class='choose-text'>
+<text class='ctext'>信息</text>
+<view class='line' wx:if='{{ischoose[0]}}'></view>
+</view>
+</view>
+
+<view class='choose-part {{ischoose[1]? "hhh":""}}' bindtap='chooseItem' >
+<view class='choose-text'>
+<text class='ctext'>商品</text>
+<view class='line' wx:if='{{ischoose[1]}}'></view>
+</view>
+</view>
+
+</view>
  <view wx:if='{{issearch}}'>
    <view class='text'wx:if='{{searchList.length}}'>历史搜索</view>
     <view class='hr-view'>

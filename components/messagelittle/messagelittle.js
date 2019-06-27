@@ -32,7 +32,8 @@ Component({
         this.setData({
           timestamp: parseTimeStamp(val.time),
           isout: val.status == 1 ? true : false,
-          ID: val.aID || val.ID
+          ID: val.aID || val.ID,
+          labels: val.Labels ? val.Labels.split(',') : null,
         })
       }
     },

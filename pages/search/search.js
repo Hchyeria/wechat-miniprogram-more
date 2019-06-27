@@ -92,7 +92,8 @@ Page({
     article: "article",
     item: "item",
     keywords:[],
-    searchTarget:''
+    searchTarget:'',
+    ischoose:[true,false]
   },
   onReachBottom(){
     console.log('search refresh')
@@ -179,6 +180,18 @@ Page({
       that.setData({
         searchList: [...that.data.searchList.slice(0, index), ...that.data.searchList.slice(index + 1)]
       })
+    })
+  },
+  chooseArt(){
+     this.setData({
+       type:"article",
+       ischoose:[true,false]
+     })
+  },
+  chooseItem(){
+    this.setData({
+      type: "item",
+      ischoose: [false, true]
     })
   }
 })

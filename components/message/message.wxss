@@ -71,7 +71,7 @@
   color: var(--color-a);
   font-size: 0.7rem;
   padding-top: 2%;
-  float: right
+  float: right;
 }
 
 .smallone {
@@ -428,29 +428,35 @@
   padding: 5px;
   box-sizing: border-box;
 }
+
 .flexrow {
-  display:flex;
-  flex-direction:row;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-}  
-.margintop3{
+}
+
+.margintop3 {
   margin-top: 3%;
 }
-.hot-fire{
-  position:absolute;
+
+.hot-fire {
+  position: absolute;
 }
-.fire{
+
+.fire {
   width: 50rpx;
   height: 50rpx;
 }
-.hot{
-  font-size:0.7rem;
-  color:var(--color-a);
-  margin-left:auto;
-  margin-right:12px;
+
+.hot {
+  font-size: 0.7rem;
+  color: var(--color-a);
+  margin-left: auto;
+  margin-right: 12px;
 }
-.account-type{
+
+.account-type {
   display: inline-block;
   font-size: 0.6em;
   color: var(--color-a);

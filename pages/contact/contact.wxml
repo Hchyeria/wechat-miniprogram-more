@@ -3,7 +3,8 @@
 <toast isError="{{toastError}}" message="{{toastMessage}}" wx:if="{{isToast}}" />
   <view class='input'>
     <view class='area'>
-      <view class='text'>想对我们说的话</view>
+      <view class='text'>想对我们说的话
+      </view>
         <textarea class='contact-input' value="{{textareaVal}}" bindinput='onText' confirm-type='确认'></textarea>
     </view>
     <view class='area'>

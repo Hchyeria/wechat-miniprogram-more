@@ -18,6 +18,15 @@
   </view>
   <view disabled class='message'bindtap='onTap'>
     <searchText innerText='{{article.content||article.item_info}}' keywords='{{keywords}}'/>
+    <view class='label' wx:if='{{labels}}'>
+      <block wx:key='labelKey' wx:for='{{labels}}' wx:for-item='labelItem' wx:for-index='e'>
+        <view class='label-item'>
+          <image mode='aspectFill' src='../../assets/label-grey.png'
+        class="height label-icon" />
+        {{labelItem}}
+        </view>
+      </block>
+    </view>
   </view>
   <view class='depart' wx:if='{{isdelete}}'>
     <image src='../../assets/delete.png' class='delete' bindtap='click'></image>
