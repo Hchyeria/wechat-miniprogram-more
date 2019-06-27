@@ -27,7 +27,8 @@ Page({
     contact_way: '',
     toastError: 0,
     toastMessage: "",
-    isToast: false
+    isToast: false,
+    isSelect: [false, false],
   },
   onText(e) {
     this.setData({

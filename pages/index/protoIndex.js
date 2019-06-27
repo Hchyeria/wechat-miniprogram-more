@@ -229,7 +229,7 @@ export function MPage(type) {
       })
     },
     onLoad() {
-      if (this.data.type[0] === 'a'){
+      if (this.data.type[0] === 'i'){
         this.setData({
           mode:2
         })
@@ -237,8 +237,9 @@ export function MPage(type) {
       typeID = 1
       attachRefresher(this,type)
       loadBannerText(this, this.data.type)
-      if (type[0] === 'a'){
+      if (this.data.type[0] === 'a'){
         loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 1, this.data.isOnlySchool)
+        loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
       }
       else{
         loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool)
