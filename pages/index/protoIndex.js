@@ -121,9 +121,17 @@ export function loadContent(that, mode, type, page, typeID, isRefsh = 0, isrecen
           })
         }
         if (!isRefsh) {
-          that.setData({
-            contentList: that.data.contentList.concat(data.result)
+          let contentList = that.data.contentList
+          data.result.forEach(item => {
+            let i = true
+            contentList.forEach(m => {
+              if(item.ID === m.ID){
+                i = false
+              }
+            })
+            i && contentList.push(item)
           })
+          that.setData({contentList})
         }
 
         resolve(data.result.length)
@@ -390,7 +398,6 @@ export function MPage(type) {
           })
           break;
       }
-      console.log(contentList)
       this.setData({
         contentList,
         mode: id,
