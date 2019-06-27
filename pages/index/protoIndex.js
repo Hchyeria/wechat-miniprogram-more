@@ -247,14 +247,12 @@ export function MPage(type) {
       loadBanner(this, typeID, this.data.type)
     },
     onReachBottom() {
+      page++;
       let that = this;
       that.setData({
         isloadDown: true
       })
       loadContent(this, this.data.mode, this.data.type, page, typeID, 0, 0, this.data.isOnlySchool).then(length => {
-        if(length !== 0 ){
-          page++;
-        }
         that.setData({
           isloadDown: false
         })
