@@ -124,8 +124,8 @@ Page({
   },
   replySuccess(e) {
     let that = this;
-
     if (that.data.list.length % limit !== 0) {
+      console.log(app.globalData.userInfo)
       showRepeatMsg(that, '', `回复成功！`, { list: [...that.data.list, { ...app.globalData.userInfo, time: getIsoTime(), content: e.detail }] })
       return;
     }
