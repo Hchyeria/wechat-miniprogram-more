@@ -390,21 +390,11 @@ export function MPage(type) {
           })
           break;
       }
-      console.log(contentList)
       this.setData({
         contentList,
         mode: id,
-        isOnlySchool,
-        isloadDown: true
+        isOnlySchool
       })
-      /*
-      page = 1
-      loadContent(this, id, this.data.type, page, typeID, 0, 0, isOnlySchool).then(() =>{
-        that.setData({
-          isloadDown: false
-        })
-      })
-      */
     },
     onOverlay(e) {
       let {
