@@ -4,7 +4,7 @@
     </view >
 <view class='top {{islogin? "hide" : ""}}'>
   <topBar searchList='{{searchList}}' bindtap='topBar' type='{{type}}' />
-  <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" index='{{typeID}}' isRenderS='{{type[0]==="a"?true:false}}' bindstoreLeng='onStoreLeng' isOverlay='{{isOverlay}}'  bindchooseMode='onChooseMode' bindchangeOverlay='onOverlay'/>
+  <tabBar bindtabTap='tabTap' type='{{type}}' class="tabBar" index='{{typeID}}' isRenderS='{{type[0]==="a"?true:false}}' bindstoreLeng='onStoreLeng' isOverlay='{{isOverlay}}'  bindchooseMode='onChooseMode' bindchangeOverlay='onOverlay' bindchangeOnlySchool='onChangeOnlySvhool'/>
 </view>
 <view bindtouchstart="touchStart" bindtouchend="touchEnd">
  

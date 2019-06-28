@@ -375,11 +375,29 @@ export function MPage(type) {
       }, 50)
 
     },
-    onChooseMode(e) {
+    onChangeOnlySvhool(e){
       let that = this;
       let {
         id,
         isOnlySchool
+      } = e.detail
+      this.setData({
+        contentList: [],
+        mode: id,
+        isOnlySchool,
+        isloadDown: true
+      })
+      page = 1
+      loadContent(this, id, this.data.type, page, typeID, 0, 0, isOnlySchool).then(() =>{
+        this.setData({
+          isloadDown: false
+        })
+      })
+    },
+    onChooseMode(e) {
+      let that = this;
+      let {
+        id
       } = e.detail
       let {
         contentList
@@ -400,8 +418,7 @@ export function MPage(type) {
       }
       this.setData({
         contentList,
-        mode: id,
-        isOnlySchool
+        mode: id
       })
     },
     onOverlay(e) {
