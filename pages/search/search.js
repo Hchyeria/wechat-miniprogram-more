@@ -18,15 +18,14 @@ function loadSearch(that) {
   })
 }
 
-let page  = 0
+let page = 0
 
-function formatKey(text){
+function formatKey(text) {
   let arr = [...new Set(text.split(' '))]
   return arr.filter(item => item !== '').join(',')
 }
 
 function searchitem(that, type, searchTarget) {
-  console.log(that.data.ispart)
   page++
   request('search.php', {
     type: type,
@@ -35,28 +34,28 @@ function searchitem(that, type, searchTarget) {
     limit: 5,
     secret_key: app.globalData.secret_key,
   }).then(data => {
-    if (that.data.ispart[1] || that.data.ispart[0]){
+    if (that.data.ispart[1] || that.data.ispart[0]) {
       that.setData({
         searchitemlist: data.result,
         length: data.result.length
       })
+    } else {
+      if (!that.data.ispart[1] && !that.data.ispart[0]) {
+        that.setData({
+          searchitemlist: [...that.data.searchitemlist, ...data.result],
+          length: that.data.length + data.result.length
+        })
+      } else {
+        that.setData({
+          searchitemlist: [...that.data.searchitemlist, ...data.result],
+          length: that.data.length + data.result.length
+        })
+      }
     }
-    else{
-    if (!that.data.ispart[1] && !that.data.ispart[0]){
+    if (that.data.ispart[0] || that.data.ispart[1])
       that.setData({
-        searchitemlist: [...that.data.searchitemlist, ...data.result],
-        length: that.data.length + data.result.length
+        ispart: [false, false]
       })
-    }else{
-    that.setData({
-      searchitemlist: [...that.data.searchitemlist,...data.result],
-      length: that.data.length + data.result.length
-    })}
-    }
-    if(that.data.ispart[0]||that.data.ispart[1])
-    that.setData({
-      ispart:[false,false]
-    })
 
     if (!that.data.length) {
       that.setData({
@@ -69,13 +68,25 @@ function searchitem(that, type, searchTarget) {
         title: '暂无更多',
       })
     }
+    that.setData({
+      isnull: false,
+    })
+    if (that.data.type == "article" || that.data.type == 1) {
       that.setData({
-        isnull: false,
+        type,
+        art: "article"
       })
+    } else {
+      type = 2
+      that.setData({
+        type,
+        art: "item"
+      })
+    }
   })
 }
 
-function fetchLabels(that){
+function fetchLabels(that) {
   return new Promise(() => {
     request('users.php', {
       secondType: 'recent_labels',
@@ -88,7 +99,7 @@ function fetchLabels(that){
   })
 }
 
-function deleteLabels(id){
+function deleteLabels(id) {
   return new Promise((resolve, reject) => {
     request('search.php', {
       secondType: 'delete',
@@ -111,14 +122,14 @@ Page({
     art: String,
     article: "article",
     item: "item",
-    keywords:[],
-    searchTarget:'',
-    ischoose:[true,false],
-    history:'',
-    ispart:[false,false],
-    
+    keywords: [],
+    searchTarget: '',
+    ischoose: [true, false],
+    history: '',
+    ispart: [false, false],
+
   },
-  onReachBottom(){
+  onReachBottom() {
     console.log('search refresh')
     searchitem(this, this.data.type, this.data.searchTarget)
   },
@@ -145,13 +156,13 @@ Page({
         art: "article"
       })
     } else {
-      type  = 2
+      type = 2
       this.setData({
         type,
         art: "item"
       })
     }
-    if (!this.data.searchTarget.trim()){
+    if (!this.data.searchTarget.trim()) {
       x.showToast({
         title: '请输入内容'
       })
@@ -165,7 +176,7 @@ Page({
   },
   history(e) {
     page = 0
-    
+
     this.setData({
       searchitemlist: [],
       length: 0
@@ -176,15 +187,16 @@ Page({
         type,
         art: "article"
       })
-    }
-    else {
+    } else {
       type = 2
       this.setData({
         type,
         art: "item"
       })
     }
-    let {history}= e.currentTarget.dataset
+    let {
+      history
+    } = e.currentTarget.dataset
     this.setData({
       issearch: false,
       history: e.currentTarget.dataset,
@@ -193,36 +205,40 @@ Page({
     })
     searchitem(this, this.data.type, history)
   },
-  removeHistory(e){
+  removeHistory(e) {
     let that = this;
-    let { id } = e.currentTarget
-    let { index } = e.currentTarget.dataset
+    let {
+      id
+    } = e.currentTarget
+    let {
+      index
+    } = e.currentTarget.dataset
     deleteLabels(id).then(() => {
       that.setData({
         searchList: [...that.data.searchList.slice(0, index), ...that.data.searchList.slice(index + 1)]
       })
     })
   },
-  chooseArt(){
+  chooseArt() {
     page = 0,
-     this.setData({
-       type:1,
-       ischoose:[true,false]
-     })
+      this.setData({
+        type: 1,
+        ischoose: [true, false]
+      })
     if (!this.data.ispart[0] || this.data.ispart[1]) {
       this.setData({
-        ispart:[true,false]
+        ispart: [true, false]
       })
       searchitem(this, this.data.type, this.data.searchTarget)
     }
   },
-  chooseItem(){
+  chooseItem() {
     page = 0,
-    this.setData({
-      type: 2,
-      ischoose: [false, true]
-    })
-    if(!this.data.ispart[0]||this.data.ispart[1]){
+      this.setData({
+        type: 2,
+        ischoose: [false, true]
+      })
+    if (!this.data.ispart[0] || this.data.ispart[1]) {
       this.setData({
         ispart: [false, true]
       })
