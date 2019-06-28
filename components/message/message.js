@@ -39,13 +39,17 @@ function item(that) {
 function addAccountType(type) {
   let temp;
   switch (type) {
-    case '0': temp = ''
+    case '0':
+      temp = ''
       break
-    case '1': temp = '社团组织'
+    case '1':
+      temp = '社团组织'
       break
-    case '2': temp = '商家企业'
+    case '2':
+      temp = '商家企业'
       break
-    default: temp = ''
+    default:
+      temp = ''
   }
   return temp
 }
@@ -69,12 +73,10 @@ Component({
               isadd: true
             })
           }
-          if(val.hot>=30){
-            this.setData({
-              isfire: true
-            })
-          }
-          if (val.pictures){
+          this.setData({
+            isfire: val.hot >= 30
+          })
+          if (val.pictures) {
             this.setData({
               imgUrls: val.pictures.map(e => `https://${BASE_URL}${e.pURL}`),
               sharence: {
@@ -124,9 +126,9 @@ Component({
     toastError: 0,
     toastMessage: "",
     isToast: false,
-    isfire:false,
+    isfire: false,
     accountType: '',
-    fid:''
+    fid: ''
   },
   methods: {
     onTap() {
