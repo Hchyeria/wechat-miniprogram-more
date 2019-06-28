@@ -129,7 +129,7 @@ Page({
       showRepeatMsg(that, '', `回复成功！`, { list: [...that.data.list, { ...app.globalData.userInfo, time: getIsoTime(), content: e.detail }] })
       return;
     }
-    showRepeatMsg(that, '', `回复成功！`)
+    showRepeatMsg(that, '', `回复成功！`, { list: [{ ...app.globalData.userInfo, time: getIsoTime(), content: e.detail }]})
   },
   goToCrab() {
     toCrab({
