@@ -113,7 +113,7 @@ Page({
     let res = e.detail.userInfo
     showRepeatMsg(that, '', "正在登陆")
     if (res) {
-      app.globalData.userInfo.nickName = res
+      app.globalData.userInfo = res
       postCode(app).then(data => {
         showRepeatMsg(that, '', "登陆成功", {
           islogin: true
