@@ -1,0 +1,3 @@
+*.wxml linguist-language=html
+*.wxss linguist-language=css
+*.wxs linguist-language=js
